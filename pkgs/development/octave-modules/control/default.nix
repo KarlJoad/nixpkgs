@@ -30,6 +30,7 @@ stdenv.mkDerivation rec {
   postBuild = ''
     mkdir -p $out/
     cp *.oct $out/
+    cp -r $src/inst/* $out/
   '';
 
   installPhase = ''
