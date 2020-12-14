@@ -1,0 +1,64 @@
+# This file contains the GNU Octave add-on packages set.
+# Each attribute is an Octave library.
+# Expressions for the Octave libraries are supposed to be in `pkgs/development/octave-modules/<name>/default.nix`.
+
+{ pkgs
+, lib
+, stdenv
+, fetchTarball
+, newScope
+, octave
+, lapack, blas, flibs
+, gfortran
+, autoreconfHook
+, python
+, pythonPackages
+}:
+
+let
+
+  isOctaveFull = octave.enableQt;
+  isOctaveJIT = octave.enableJIT;
+
+  callPackage = pkgs.newScope {
+    inherit (pkgs) lib;
+    inherit pkgs fetchTarball octave;
+  };
+
+  callPythonPackage = pkgs.newScope {
+    inherit callPackage;
+    inherit python;
+  };
+
+  namePrefix = octave.pname;
+
+  sympy = pkgs.pythonPackages.sympy;
+  mpmath = pkgs.pythonPackages.mpmath;
+
+in rec {
+
+  inherit namePrefix;
+
+  control = callPackage ../development/octave-modules/control {
+    gfortran = gfortran;
+    autoreconfHook = autoreconfHook;
+    lapack = lapack;
+    blas = blas;
+    flibs = flibs;
+  };
+
+  linearAlgebra = callPackage ../development/octave-modules/linear-algebra { };
+
+  signal = callPackage ../development/octave-modules/signal {
+    stdenv = stdenv;
+    python = python;
+    control = control;
+  };
+
+  symbolic = callPackage ../development/octave-modules/symbolic {
+    python = python;
+    sympy = pythonPackages.sympy;
+    mpmath = pythonPackages.mpmath;
+  };
+
+}
