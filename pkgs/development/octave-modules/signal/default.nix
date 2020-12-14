@@ -23,6 +23,7 @@ stdenv.mkDerivation rec {
     control
   ];
 
+  sourceRoot = "source/src";
 
 
   installPhase = ''
