@@ -25,6 +25,10 @@ stdenv.mkDerivation rec {
 
   sourceRoot = "source/src";
 
+  postBuild = ''
+    mkdir -p $out/
+    cp *.oct $out/
+  '';
 
   installPhase = ''
     mkdir -p $out/
