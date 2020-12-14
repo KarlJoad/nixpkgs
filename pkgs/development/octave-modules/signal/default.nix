@@ -24,10 +24,6 @@ stdenv.mkDerivation rec {
   ];
 
 
-  dontPatch = true;
-  dontConfigure = true;
-  dontBuild = true;
-  dontCheck = true;
 
   installPhase = ''
     mkdir -p $out/
@@ -35,11 +31,6 @@ stdenv.mkDerivation rec {
     mkdir -p $out/packinfo
     cp $src/COPYING $src/DESCRIPTION $src/INDEX $src/NEWS $out/packinfo/
   '';
-
-  # dontInstall = true;
-  dontFixup = true;
-  dontInstallCheckPhase = true;
-  dontDistPhase = true;
 
   meta = {
     homepage = "https://octave.sourceforge.io/${pname}/index.html";
