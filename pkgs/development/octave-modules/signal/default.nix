@@ -1,17 +1,13 @@
-{ pkgs ? import <nixpkgs> {}
-, lib ? import <nixpkgs/lib> {}
-# , stdenv
-# , fetchTarball
-# , control ? octavePackages.control
+{stdenv
+, fetchTarball
+, octave
+, python
+, control
 }:
-
-with pkgs;
 
 stdenv.mkDerivation rec {
   pname = "signal";
   version = "1.4.1";
-
-  control = import ../control { };
 
   src = fetchTarball {
     url = "https://octave.sourceforge.io/download.php?package=${pname}-${version}.tar.gz";
@@ -48,7 +44,7 @@ stdenv.mkDerivation rec {
   meta = {
     homepage = "https://octave.sourceforge.io/${pname}/index.html";
     license = stdenv.lib.licenses.gpl3Plus;
-    maintainers = with maintainers; [ KarlJoad ];
+    maintainers = with stdenv.pkgs.maintainers; [ KarlJoad ];
     description = "Signal processing tools, including filtering, windowing and display functions";
   };
 }
