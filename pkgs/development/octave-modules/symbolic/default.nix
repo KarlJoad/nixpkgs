@@ -63,7 +63,7 @@ stdenv.mkDerivation rec {
 
   installPhase = ''
     mkdir -p $out/
-    cp -r $src/* $out/
+    cp -r $src/inst/* $out/
   '';
 
 
