@@ -29,14 +29,10 @@ let
     inherit pkgs fetchTarball octave;
   };
 
-  namePrefix = octave.pname;
-
   sympy = pkgs.pythonPackages.sympy;
   mpmath = pkgs.pythonPackages.mpmath;
 
 in rec {
-
-  inherit namePrefix;
 
   control = callPackage ../development/octave-modules/control {
     gfortran = gfortran;
