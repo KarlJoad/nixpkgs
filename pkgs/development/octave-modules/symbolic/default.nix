@@ -26,6 +26,8 @@ stdenv.mkDerivation rec {
     mpmath
   ];
 
+  sourceRoot = "source";
+
   installPhase = ''
     mkdir -p $out/
     cp -r $src/* $out/
