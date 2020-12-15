@@ -29,11 +29,6 @@ let
     inherit pkgs fetchTarball octave;
   };
 
-  callPythonPackage = pkgs.newScope {
-    inherit callPackage;
-    inherit python;
-  };
-
   namePrefix = octave.pname;
 
   sympy = pkgs.pythonPackages.sympy;
