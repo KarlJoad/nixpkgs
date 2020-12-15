@@ -28,6 +28,9 @@ stdenv.mkDerivation rec {
 
   sourceRoot = "source";
 
+  # Empty build phase so that tests in checkPhase are run.
+  buildPhase = "";
+
   installPhase = ''
     mkdir -p $out/
     cp -r $src/* $out/
