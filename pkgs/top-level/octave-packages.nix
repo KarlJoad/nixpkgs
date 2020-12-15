@@ -26,7 +26,8 @@ let
 
   callPackage = pkgs.newScope {
     inherit (pkgs) lib;
-    inherit pkgs fetchTarball octave;
+    inherit pkgs fetchTarball stdenv;
+    inherit octave gnuplot texinfo;
   };
 
 in rec {
