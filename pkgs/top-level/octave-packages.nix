@@ -15,6 +15,8 @@
 , python27Packages
 , python3
 , python38Packages
+, gnuplot
+, texinfo
 }:
 
 let
