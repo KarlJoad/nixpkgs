@@ -2,8 +2,8 @@
 , stdenv
 , fetchTarball
 , octave
-, python
 , gnuplot
+, python3
 , sympy
 , mpmath
 , texinfo
@@ -23,7 +23,7 @@ stdenv.mkDerivation rec {
   ];
 
   propagatedBuildInputs = [
-    python
+    python3
     sympy
     mpmath
   ];
