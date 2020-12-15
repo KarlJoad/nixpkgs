@@ -37,6 +37,10 @@ stdenv.mkDerivation rec {
 
   doCheck = true;
   checkTarget = "test";
+  checkInputs = [
+    gnuplot
+    texinfo
+  ];
   installPhase = ''
     mkdir -p $out/
     cp -r $src/* $out/
