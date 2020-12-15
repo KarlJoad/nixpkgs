@@ -33,6 +33,8 @@ stdenv.mkDerivation rec {
 
   OCTAVE_HISTFILE = "/build/.octave_hist";
 
+  doCheck = true;
+  checkTarget = "test";
   installPhase = ''
     mkdir -p $out/
     cp -r $src/* $out/
