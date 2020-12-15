@@ -51,6 +51,13 @@ stdenv.mkDerivation rec {
     touch $OCTAVE_HISTFILE
   '';
 
+  # Keep a copy of the octave tests detailed results in the output derivation,
+  # because someone may care.
+  postCheck = ''
+    mkdir -p $out/
+    cp fntests.log $out/${pname}-${version}-fntests.log
+  '';
+
   installPhase = ''
     mkdir -p $out/
     cp -r $src/* $out/
