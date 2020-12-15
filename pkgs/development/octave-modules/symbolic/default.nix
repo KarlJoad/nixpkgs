@@ -41,6 +41,16 @@ stdenv.mkDerivation rec {
     gnuplot
     texinfo
   ];
+  # The Makefile has /bin/bash hardcoded. Switch to using /usr/bin/env bash.
+  # As of writing this file, octave as provided by octaveFull is broken (at least
+  # on my machine). To get around this, octave-cli still works.
+  preCheck = ''
+    sed -i s/"\/bin\/bash"/"\/usr\/bin\/env bash"/ Makefile
+    sed -i 's/octave/octave-cli/' Makefile
+    # Octave writes the commands run during testing to OCTAVE_HISTFILE
+    touch $OCTAVE_HISTFILE
+  '';
+
   installPhase = ''
     mkdir -p $out/
     cp -r $src/* $out/
