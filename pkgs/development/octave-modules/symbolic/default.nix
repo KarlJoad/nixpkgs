@@ -3,8 +3,10 @@
 , fetchTarball
 , octave
 , python
+, gnuplot
 , sympy
 , mpmath
+, texinfo
 }:
 
 stdenv.mkDerivation rec {
