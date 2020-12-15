@@ -31,6 +31,8 @@ stdenv.mkDerivation rec {
   # Empty build phase so that tests in checkPhase are run.
   buildPhase = "";
 
+  OCTAVE_HISTFILE = "/build/.octave_hist";
+
   installPhase = ''
     mkdir -p $out/
     cp -r $src/* $out/
