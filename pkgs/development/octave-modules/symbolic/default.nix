@@ -66,7 +66,6 @@ stdenv.mkDerivation rec {
     cp -r $src/* $out/
   '';
 
-  phases = [ "unpackPhase" "installPhase" ];
 
   meta = {
     homepage = "https://octave.sourceforge.io/${pname}/index.html";
