@@ -29,9 +29,6 @@ let
     inherit pkgs fetchTarball octave;
   };
 
-  sympy = pkgs.pythonPackages.sympy;
-  mpmath = pkgs.pythonPackages.mpmath;
-
 in rec {
 
   control = callPackage ../development/octave-modules/control {
