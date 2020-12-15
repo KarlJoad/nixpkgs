@@ -43,14 +43,14 @@ in rec {
 
   signal = callPackage ../development/octave-modules/signal {
     stdenv = stdenv;
-    python = python;
+    python = python3;
     control = control;
   };
 
   symbolic = callPackage ../development/octave-modules/symbolic {
-    python = python;
-    sympy = pythonPackages.sympy;
-    mpmath = pythonPackages.mpmath;
+    python3 = python3;
+    sympy = python27Packages.sympy;
+    mpmath = python38Packages.mpmath;
   };
 
 }
