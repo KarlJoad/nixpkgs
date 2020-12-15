@@ -11,8 +11,10 @@
 , lapack, blas, flibs
 , gfortran
 , autoreconfHook
-, python
-, pythonPackages
+, python27
+, python27Packages
+, python3
+, python38Packages
 }:
 
 let
