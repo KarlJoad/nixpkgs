@@ -35,6 +35,9 @@ stdenv.mkDerivation rec {
   installPhase = ''
     # Copy all the Octave files, with the package's functions, out.
     cp -r $src/inst/* $out/
+  '';
+
+  postInstall = ''
     # Copy the distribution information.
     mkdir -p $out/packinfo
     cp $src/COPYING $src/DESCRIPTION $src/INDEX $src/NEWS $out/packinfo/
