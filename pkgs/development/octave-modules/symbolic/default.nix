@@ -66,6 +66,11 @@ stdenv.mkDerivation rec {
     cp -r $src/inst/* $out/
   '';
 
+  postInstall = ''
+    # Copy the distribution information.
+    mkdir -p $out/packinfo
+    cp $src/COPYING $src/DESCRIPTION $src/INDEX $src/NEWS $out/packinfo/
+  '';
 
   meta = {
     homepage = "https://octave.sourceforge.io/${pname}/index.html";
