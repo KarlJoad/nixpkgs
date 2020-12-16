@@ -3,7 +3,7 @@
 , octave
 , gfortran
 , autoreconfHook
-, lapack, blas, flibs
+, lapack, blas
 }:
 
 stdenv.mkDerivation rec {
