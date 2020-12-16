@@ -10547,6 +10547,11 @@ in
     jdk = jdk8; # TODO: remove override https://github.com/NixOS/nixpkgs/pull/89731
   };
 
+  octavePackages = callPackage ./octave-packages.nix {
+    lapack = lapack;
+    blas = blas;
+  };
+
   ocropus = callPackage ../applications/misc/ocropus { };
 
   pachyderm = callPackage ../applications/networking/cluster/pachyderm { };
