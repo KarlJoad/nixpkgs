@@ -1,6 +1,6 @@
 { lib
 , stdenv
-, fetchTarball
+, fetchurl
 , octave
 }:
 
@@ -8,9 +8,9 @@ stdenv.mkDerivation rec {
   pname = "linear-algebra";
   version = "2.2.3";
 
-  src = builtins.fetchTarball {
+  src = builtins.fetchurl {
     url = "https://octave.sourceforge.io/download.php?package=${pname}-${version}.tar.gz";
-    sha256 = "1plhw95dadddfa7bxm42z6xmif1izcvqfsd1gj1i0prwr3cpzify";
+    sha256 = "1wwjpxp9vjc6lszh0z3kgy4hyzpib8rvvh6b74ijh9qk9r9nmvjk";
   };
 
   propagatedBuildInputs = [

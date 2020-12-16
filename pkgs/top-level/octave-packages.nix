@@ -5,7 +5,7 @@
 { pkgs
 , lib
 , stdenv
-, fetchTarball
+, fetchurl
 , newScope
 , octave
 , lapack, blas, flibs
@@ -26,7 +26,7 @@ let
 
   callPackage = pkgs.newScope {
     inherit (pkgs) lib;
-    inherit pkgs fetchTarball stdenv;
+    inherit pkgs fetchurl stdenv;
     inherit octave gnuplot texinfo;
   };
 

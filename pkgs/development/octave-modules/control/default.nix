@@ -1,5 +1,5 @@
 {stdenv
-, fetchTarball
+, fetchurl
 , octave
 , gfortran
 , autoreconfHook
@@ -10,9 +10,9 @@ stdenv.mkDerivation rec {
   pname = "control";
   version = "3.2.0";
 
-  src = fetchTarball {
+  src = fetchurl {
     url = "https://octave.sourceforge.io/download.php?package=${pname}-${version}.tar.gz";
-    sha256 = "1l9lr3fxmjf8j900jrgcc7qffymmkmnnar4ahvaap87blgv07wcm";
+    sha256 = "0gjyjsxs01x0nyc4cgn3d5af17l3lzs8h4hsm57nxd3as48dbwgs";
   };
 
   buildInputs = [
