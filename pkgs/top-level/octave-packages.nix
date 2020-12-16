@@ -15,6 +15,7 @@
 , python27Packages
 , python3
 , python38Packages
+, jdk
 , gnuplot
 , texinfo
 }:
@@ -37,6 +38,11 @@ in rec {
     autoreconfHook = autoreconfHook;
     lapack = lapack;
     blas = blas;
+  };
+
+  io = callPackage ../development/octave-modules/io {
+    enableJava = true;
+    jdk = jdk;
   };
 
   linearAlgebra = callPackage ../development/octave-modules/linear-algebra { };
