@@ -10735,6 +10735,11 @@ in
     overridePlatforms = ["x86_64-linux" "x86_64-darwin"];
   };
 
+  octavePackages = callPackage ./octave-packages.nix {
+    lapack = lapack;
+    blas = blas;
+  };
+
   ocropus = callPackage ../applications/misc/ocropus { };
 
   pachyderm = callPackage ../applications/networking/cluster/pachyderm { };
