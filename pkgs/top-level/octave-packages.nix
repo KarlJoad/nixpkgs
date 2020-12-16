@@ -8,7 +8,7 @@
 , fetchurl
 , newScope
 , octave
-, lapack, blas, flibs
+, lapack, blas
 , gfortran
 , autoreconfHook
 , python27
@@ -37,7 +37,6 @@ in rec {
     autoreconfHook = autoreconfHook;
     lapack = lapack;
     blas = blas;
-    flibs = flibs;
   };
 
   linearAlgebra = callPackage ../development/octave-modules/linear-algebra { };
