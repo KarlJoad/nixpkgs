@@ -10550,6 +10550,7 @@ in
   octavePackages = callPackage ./octave-packages.nix {
     lapack = lapack;
     blas = blas;
+    jdk = jdk8;
   };
 
   ocropus = callPackage ../applications/misc/ocropus { };
