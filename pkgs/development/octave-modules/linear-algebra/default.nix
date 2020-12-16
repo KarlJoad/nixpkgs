@@ -12,7 +12,7 @@ stdenv.mkDerivation rec {
     sha256 = "1wwjpxp9vjc6lszh0z3kgy4hyzpib8rvvh6b74ijh9qk9r9nmvjk";
   };
 
-  propagatedBuildInputs = [
+  buildInputs = [
     octave
   ];
 
