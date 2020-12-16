@@ -1,5 +1,4 @@
-{ lib
-, stdenv
+{ stdenv
 , fetchurl
 , octave
 }:
@@ -26,11 +25,11 @@ stdenv.mkDerivation rec {
 
   meta = {
     homepage = "https://octave.sourceforge.io/${pname}/index.html";
-    licenses = with lib.licenses; [ gpl3Plus
-                                    lgpl3Plus
-                                    bsd
-                                  ];
-    maintainers = with lib.maintainers; [ KarlJoad ];
+    licenses = with stdenv.lib.licenses; [ gpl3Plus
+                                           lgpl3Plus
+                                           bsd
+                                         ];
+    maintainers = with stdenv.pkgs.maintainers; [ KarlJoad ];
     description = "Additional linear algebra code, including matrix functions";
   };
 }
