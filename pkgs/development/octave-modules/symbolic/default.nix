@@ -1,6 +1,6 @@
 { lib
 , stdenv
-, fetchTarball
+, fetchurl
 , octave
 , gnuplot
 , python3
@@ -13,9 +13,9 @@ stdenv.mkDerivation rec {
   pname = "symbolic";
   version = "2.9.0";
 
-  src = fetchTarball {
+  src = fetchurl {
     url = "https://octave.sourceforge.io/download.php?package=${pname}-${version}.tar.gz";
-    sha256 = "08l8baf4641mfcmf9bjrxi0zdh9728vwpg5nckim8jmp1b5qbxcd";
+    sha256 = "1jr3kg9q6r4r4h3hiwq9fli6wsns73rqfzkrg25plha9195c97h8";
   };
 
   buildInputs = [

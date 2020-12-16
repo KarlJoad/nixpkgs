@@ -1,5 +1,5 @@
 {stdenv
-, fetchTarball
+, fetchurl
 , octave
 , python
 , control
@@ -9,9 +9,9 @@ stdenv.mkDerivation rec {
   pname = "signal";
   version = "1.4.1";
 
-  src = fetchTarball {
+  src = fetchurl {
     url = "https://octave.sourceforge.io/download.php?package=${pname}-${version}.tar.gz";
-    sha256 = "1147ji1q5nlnl2ry9nv1z7mbc0fn54sday06v1r2qzvjw8q8z61d";
+    sha256 = "1amfh7ifjqxz2kr34hgq2mq8ygmd5j3cjdk1k2dk6qcgic7n0y6r";
   };
 
   buildInputs = [
