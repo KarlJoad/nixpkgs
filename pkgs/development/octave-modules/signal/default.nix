@@ -1,7 +1,6 @@
 {stdenv
 , fetchurl
 , octave
-, python
 , control
 }:
 
@@ -19,7 +18,6 @@ stdenv.mkDerivation rec {
   ];
 
   propagatedBuildInputs = [
-    python
     control
   ];
 
