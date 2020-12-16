@@ -16,6 +16,8 @@ stdenv.mkDerivation rec {
     octave
   ];
 
+  sourceRoot = "${pname}-${version}";
+
   installPhase = ''
     mkdir -p $out/
     cp -r $src/inst/* $out/
