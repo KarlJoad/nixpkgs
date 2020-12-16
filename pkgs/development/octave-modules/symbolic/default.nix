@@ -1,5 +1,4 @@
-{ lib
-, stdenv
+{stdenv
 , fetchurl
 , octave
 , gnuplot
@@ -74,8 +73,8 @@ stdenv.mkDerivation rec {
 
   meta = {
     homepage = "https://octave.sourceforge.io/${pname}/index.html";
-    license = lib.licenses.gpl3Plus;
-    maintainers = with lib.maintainers; [ KarlJoad ];
+    license = stdenv.lib.licenses.gpl3Plus;
+    maintainers = with stdenv.pkgs.maintainers; [ KarlJoad ];
     description = "Adds symbolic calculation features to GNU Octave";
   };
 }
