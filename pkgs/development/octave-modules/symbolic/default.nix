@@ -28,7 +28,7 @@ stdenv.mkDerivation rec {
     mpmath
   ];
 
-  sourceRoot = "source";
+  sourceRoot = "${pname}-${version}";
 
   # Empty build phase so that tests in checkPhase are run.
   buildPhase = "";
@@ -63,13 +63,13 @@ stdenv.mkDerivation rec {
 
   installPhase = ''
     mkdir -p $out/
-    cp -r $src/inst/* $out/
+    cp -r inst/* $out/
   '';
 
   postInstall = ''
     # Copy the distribution information.
     mkdir -p $out/packinfo
-    cp $src/COPYING $src/DESCRIPTION $src/INDEX $src/NEWS $out/packinfo/
+    cp COPYING DESCRIPTION INDEX NEWS $out/packinfo/
   '';
 
   meta = {
