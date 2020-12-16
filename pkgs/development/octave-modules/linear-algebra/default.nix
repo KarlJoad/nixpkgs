@@ -20,9 +20,14 @@ stdenv.mkDerivation rec {
 
   installPhase = ''
     mkdir -p $out/
-    cp -r $src/inst/* $out/
+    cp -r inst/* $out/
   '';
 
+  postInstall = ''
+    # Copy the distribution information.
+    mkdir -p $out/packinfo
+    cp COPYING DESCRIPTION INDEX NEWS $out/packinfo/
+  '';
 
   meta = {
     homepage = "https://octave.sourceforge.io/${pname}/index.html";
