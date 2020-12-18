@@ -1,14 +1,15 @@
-{ stdenv
+{ buildOctaveLibrary
+, stdenv
 , fetchurl
 , octave
 , gnuplot
-, python3
+, python
 , sympy
 , mpmath
 , texinfo
 }:
 
-stdenv.mkDerivation rec {
+buildOctaveLibrary rec {
   pname = "symbolic";
   version = "2.9.0";
 
@@ -17,22 +18,20 @@ stdenv.mkDerivation rec {
     sha256 = "1jr3kg9q6r4r4h3hiwq9fli6wsns73rqfzkrg25plha9195c97h8";
   };
 
-  buildInputs = [
-    octave
-  ];
+  root = "${pname}-${version}";
+  # This package has no compiled programs, so the src directory doesn't exist.
+  # Set the source root to the root of the package instead.
+  srcRoot = root;
 
-  propagatedBuildInputs = [
-    python3
+  buildInputs = [
+    python
     sympy
     mpmath
   ];
 
-  sourceRoot = "${pname}-${version}";
-
   # Empty build phase so that tests in checkPhase are run.
   buildPhase = "";
-
-  OCTAVE_HISTFILE = "/build/.octave_hist";
+  emptyBuild = true;
 
   doCheck = true;
   checkTarget = "test";
@@ -58,17 +57,6 @@ stdenv.mkDerivation rec {
   postCheck = ''
     mkdir -p $out/
     cp fntests.log $out/${pname}-${version}-fntests.log
-  '';
-
-  installPhase = ''
-    mkdir -p $out/
-    cp -r inst/* $out/
-  '';
-
-  postInstall = ''
-    # Copy the distribution information.
-    mkdir -p $out/packinfo
-    cp COPYING DESCRIPTION INDEX NEWS $out/packinfo/
   '';
 
   meta = {
