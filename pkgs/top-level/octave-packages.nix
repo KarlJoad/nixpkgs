@@ -16,6 +16,7 @@
 , jdk
 , gnuplot
 , texinfo
+, nettle
 }:
 
 let
@@ -48,6 +49,10 @@ in rec {
   io = callPackage ../development/octave-modules/io {
     enableJava = true;
     jdk = jdk;
+  };
+
+  general = callPackage ../development/octave-modules/general {
+    nettle = nettle;
   };
 
   linearAlgebra = callPackage ../development/octave-modules/linear-algebra { };
