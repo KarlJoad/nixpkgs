@@ -1,4 +1,5 @@
-{ stdenv
+{ pkgs
+, stdenv
 # Note: either stdenv.mkDerivation or, for octaveFull, the qt-5 mkDerivation
 # with wrapQtAppsHook (comes from libsForQt5.callPackage)
 , mkDerivation
@@ -58,7 +59,39 @@
 
 assert (!blas.isILP64) && (!lapack.isILP64);
 
-mkDerivation rec {
+let
+  passthruFun =
+    { sitePackages
+    , sitePath
+    , self
+    }: let
+      octavePackages = pkgs.callPackage ({ pkgs, stdenv, octave, overrides }: let
+        octavePackagesFun = import ../../../top-level/octave-packages.nix {
+          inherit pkgs;
+          inherit (pkgs) lib stdenv fetchurl newScope;
+          octave = self;
+          lapack = pkgs.lapack;
+          blas = pkgs.blas;
+          gfortran = pkgs.gfortran;
+          autoreconfHook = pkgs.autoreconfHook;
+          python27 = pkgs.python27;
+          python27Packages = pkgs.python27Packages;
+          python3 = pkgs.python3;
+          python3Packages = pkgs.python3Packages;
+          jdk = jdk;
+          gnuplot = pkgs.gnuplot;
+          texinfo = pkgs.texinfo;
+          nettle = pkgs.nettle;
+        };
+      in pkgs.lib.makeScope pkgs.newScope (pkgs.lib.extends overrides octavePackagesFun)) {
+        overrides = {};
+      };
+    in rec {
+      buildEnv = pkgs.callPackage ./wrapper.nix { octave = self; inherit (octavePackages); };
+      pkgs = octavePackages;
+    };
+
+in mkDerivation rec {
   version = "6.1.0";
   pname = "octave";
 
@@ -148,9 +181,10 @@ mkDerivation rec {
     cp test/fntests.log $out/share/octave/${pname}-${version}-fntests.log || true
   '';
 
-  passthru = {
-    inherit version;
+  passthru = passthruFun rec {
+    sitePackages = "share/octave/octave_packages";
     sitePath = "share/octave/${version}/site";
+    self = pkgs.octave;
   };
 
   meta = {
