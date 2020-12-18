@@ -30,7 +30,7 @@ let
   };
 
   callPackage = pkgs.newScope {
-    inherit (pkgs) lib;
+    inherit (pkgs) lib stdenv;
     inherit buildOctaveLibrary;
     inherit fetchurl;
     inherit gnuplot texinfo;
