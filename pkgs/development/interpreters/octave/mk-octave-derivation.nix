@@ -49,6 +49,8 @@
 , preCheck ? ""
 , postCheck ? ""
 
+, postInstall ? ""
+
 , meta ? {}
 
 , passthru ? {}
@@ -103,7 +105,7 @@ let
             cp -r inst/* $out/
        '';
 
-    postInstall = ''
+    postInstall = postInstall + ''
       # Copy the distribution information.
       mkdir -p $out/packinfo
       cp COPYING DESCRIPTION INDEX NEWS $out/packinfo/
