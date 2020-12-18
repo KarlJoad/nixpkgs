@@ -1,11 +1,11 @@
-{ stdenv
+{ buildOctaveLibrary
+, stdenv
 , fetchurl
-, octave
 , enableJava ? true
 , jdk ? null
 }:
 
-stdenv.mkDerivation rec {
+buildOctaveLibrary rec {
   pname = "io";
   version = "2.6.3";
 
@@ -14,35 +14,14 @@ stdenv.mkDerivation rec {
     sha256 = "044y8lfp93fx0592mv6x2ss0nvjkjgvlci3c3ahav76pk1j3rikb";
   };
 
-  buildInputs = [
-    octave
-  ]
-  ++ (stdenv.lib.optional (enableJava) jdk);
 
-  sourceRoot = "${pname}-${version}";
+  root = "${pname}-${version}";
 
-  OCTAVE_HISTFILE = "/build/.octave_hist";
-
-  preBuild = ''
-    cd src
-  '';
-
-  postBuild = ''
-    mkdir -p $out/
-    cp *.oct $out/
-  '';
-
-  installPhase = ''
-    cd .. # Return to sourceRoot
-    cp -r inst/* $out/
-    # Copy the documentation
-    cp -r doc $out/
-  '';
+  buildInputs = stdenv.lib.optional enableJava jdk;
 
   postInstall = ''
-    # Copy the distribution information.
-    mkdir -p $out/packinfo
-    cp COPYING DESCRIPTION INDEX NEWS $out/packinfo/
+    # Copy the documentation
+    cp -r doc $out/
   '';
 
   meta = {
