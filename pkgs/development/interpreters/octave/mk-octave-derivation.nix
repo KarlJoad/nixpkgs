@@ -24,9 +24,6 @@
 , srcRoot ? "${fullLibName}/src"
 , instRoot ? "${fullLibName}/inst"
 
-, doAutoReconf ? false
-, autoreconfHook ? null
-
 # Build-time dependencies for the package
 , nativeBuildInputs ? []
 
@@ -70,7 +67,6 @@ let
     nativeBuildInputs = [
       octave
     ]
-    ++ (stdenv.lib.optional doAutoReconf pkgs.autoreconfHook)
     ++ nativeBuildInputs;
 
     buildInputs = buildInputs;
