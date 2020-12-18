@@ -1,12 +1,12 @@
-{ stdenv
+{ buildOctaveLibrary
+, stdenv
 , fetchurl
-, octave
-, gfortran
 , autoreconfHook
+, gfortran
 , lapack, blas
 }:
 
-stdenv.mkDerivation rec {
+buildOctaveLibrary rec {
   pname = "control";
   version = "3.2.0";
 
@@ -15,35 +15,16 @@ stdenv.mkDerivation rec {
     sha256 = "0gjyjsxs01x0nyc4cgn3d5af17l3lzs8h4hsm57nxd3as48dbwgs";
   };
 
-  buildInputs = [
-    octave
+  root = "${pname}-${version}";
+
+  nativeBuildInputs = [
     gfortran
     autoreconfHook
   ];
 
-  propagatedBuildInputs = [
+  buildInputs = [
     lapack blas
   ];
-
-  sourceRoot = "${pname}-${version}/src";
-
-  postBuild = ''
-    mkdir -p $out/
-    cp *.oct $out/
-  '';
-
-  installPhase = ''
-    # Currently in $sourceRoot. End up in root of unpack.
-    cd ..
-    # Copy all the Octave files, with the package's functions, out.
-    cp -r inst/* $out
-  '';
-
-  postInstall = ''
-    # Copy the distribution information.
-    mkdir -p $out/packinfo
-    cp COPYING DESCRIPTION INDEX NEWS $out/packinfo/
-  '';
 
   meta = {
     homepage = "https://octave.sourceforge.io/${pname}/index.html";
