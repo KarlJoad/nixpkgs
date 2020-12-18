@@ -30,6 +30,10 @@ makeScope newScope (self:
 
     control = callPackage ../development/octave-modules/control { };
 
+    general = callPackage ../development/octave-modules/general {
+      nettle = pkgs.nettle;
+    };
+
     io = callPackage ../development/octave-modules/io {
       unzip = pkgs.unzip;
     };
@@ -39,12 +43,12 @@ makeScope newScope (self:
     linear-algebra = callPackage ../development/octave-modules/linear-algebra { };
 
     ltfat = callPackage ../development/octave-modules/ltfat {
-      fftw = pkgs.fftw;
-      fftwSinglePrec = pkgs.fftwSinglePrec;
+      fftw = octave.fftw;
+      fftwSinglePrec = octave.fftwSinglePrec;
       fftwFloat = pkgs.fftwFloat;
       fftwLongDouble = pkgs.fftwLongDouble;
-      portaudio = pkgs.portaudio;
-      jre = pkgs.jre;
+      portaudio = octave.portaudio;
+      jre = octave.jdk;
     };
 
     signal = callPackage ../development/octave-modules/signal { };
