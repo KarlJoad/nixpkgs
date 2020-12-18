@@ -12,7 +12,7 @@
 , gfortran
 , autoreconfHook
 , python3
-, python38Packages
+, python3Packages
 , jdk
 , gnuplot
 , texinfo
@@ -67,9 +67,9 @@ in rec {
       buildPythonPackage = pkgs.python3Packages.buildPythonPackage;
       fetchPypi = pkgs.python3Packages.fetchPypi;
       inherit (pkgs) fetchpatch glibcLocales;
-      mpmath = python38Packages.mpmath;
+      mpmath = python3Packages.mpmath;
     };
-    mpmath = python38Packages.mpmath;
+    mpmath = python3Packages.mpmath;
   };
 
 }
