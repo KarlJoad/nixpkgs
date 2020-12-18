@@ -53,8 +53,6 @@ in rec {
   linearAlgebra = callPackage ../development/octave-modules/linear-algebra { };
 
   signal = callPackage ../development/octave-modules/signal {
-    stdenv = stdenv;
-    python = python3;
     control = control;
   };
 
