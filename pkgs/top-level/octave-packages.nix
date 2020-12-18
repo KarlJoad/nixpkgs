@@ -25,10 +25,17 @@ let
   isOctaveFull = octave.enableQt;
   isOctaveJIT = octave.enableJIT;
 
+  buildOctaveLibrary = callPackage ../development/interpreters/octave/mk-octave-derivation.nix {
+    inherit pkgs lib stdenv;
+    namePrefix = "${octave.pname}-${octave.version}";
+    inherit octave;
+  };
+
   callPackage = pkgs.newScope {
     inherit (pkgs) lib;
-    inherit pkgs fetchurl stdenv;
-    inherit octave gnuplot texinfo;
+    inherit buildOctaveLibrary;
+    inherit fetchurl;
+    inherit gnuplot texinfo;
   };
 
 in rec {
