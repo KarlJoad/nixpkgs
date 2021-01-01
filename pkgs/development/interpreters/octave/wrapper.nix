@@ -8,8 +8,8 @@
 let
   env = let
     paths = extraLibs ++ [ octave ];
-    octavePath = "${placeholder "out"}/${octave.sitePackages}";
-    octaveExecutable = "${placeholder "out"}/bin/${octave.executable}";
+    octavePath = "${octave}";
+    octaveExecutable = "${placeholder "out"}/bin/octave-cli";
   in buildEnv {
     name = "${octave.name}-env";
 
