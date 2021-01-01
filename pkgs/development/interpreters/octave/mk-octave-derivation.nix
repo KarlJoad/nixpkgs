@@ -54,14 +54,6 @@ let
 
     propagatedBuildInputs = propagatedBuildInputs;
 
-    # Some Octave libraries have easy-to-test libraries, but some don't have
-    # any such testing capabilities either. Default to false, but allow it as
-    # the end-user likes.
-    doCheck = doCheck;
-    checkInputs = checkInputs;
-    preCheck = preCheck;
-    postCheck = postCheck;
-
     # In the install phase, if we compiled anything in the buildPhase, then we
     # must copy the resulting binaries out. If not, then we skip that and move
     # onto copying the scripts out.
