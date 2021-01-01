@@ -60,5 +60,7 @@ let
     '' + postBuild;
   };
 
+  inherit (octave) meta;
+
   };
 in env
