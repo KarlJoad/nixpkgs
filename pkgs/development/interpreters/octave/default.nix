@@ -1,5 +1,6 @@
 { pkgs
 , stdenv
+, callPackage
 # Note: either stdenv.mkDerivation or, for octaveFull, the qt-5 mkDerivation
 # with wrapQtAppsHook (comes from libsForQt5.callPackage)
 , mkDerivation
@@ -169,8 +170,15 @@ in mkDerivation rec {
   '';
 
   passthru = rec {
+    buildEnv = callPackage ./wrapper.nix {
+      octave = self;
+      inherit octavePackages;
+    };
+    withPackages = import ./with-packages.nix { inherit buildEnv octavePackages; };
+    pkgs = octavePackages;
+    interpreter = "${self}/bin/octave";
+    octPkgsPath = "share/octave/octave_packages";
     sitePath = "share/octave/${version}/site";
-    self = pkgs.octave;
   };
 
   meta = {
