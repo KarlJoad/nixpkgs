@@ -54,34 +54,14 @@ let
 
     propagatedBuildInputs = propagatedBuildInputs;
 
-    # In the install phase, if we compiled anything in the buildPhase, then we
-    # must copy the resulting binaries out. If not, then we skip that and move
-    # onto copying the scripts out.
-    installPhase = let
-      copyCompiledBinaries =
-        if dontBuild || emptyBuild then
-          ""
-        else
-          ''
-            cp *.oct $out/
-            # Currently in $sourceRoot. End up in root of unpack.
-            cd ..
-          '';
-    in ''
-         mkdir -p $out
-       '' + copyCompiledBinaries + ''
-         # Copy all the Octave files, with the package's functions, out.
-            cp -r inst/* $out/
-       '';
-
-    postInstall = postInstall + ''
-      # Copy the distribution information.
-      mkdir -p $out/packinfo
-      cp COPYING DESCRIPTION INDEX NEWS $out/packinfo/
     buildPhase = ''
       mkdir -p $out
       octave-cli --eval "pkg build $out $src"
     '';
+
+    # We don't install here, because that's handled when we build the environment
+    # together with Octave.
+    dontInstall = true;
 
     meta = meta;
   };
