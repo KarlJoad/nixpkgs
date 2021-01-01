@@ -43,7 +43,7 @@ let
 
     OCTAVE_HISTFILE = "/dev/null";
 
-    sourceRoot = srcRoot;
+    dontUnpack = true;
 
     dontBuild = dontBuild;
     nativeBuildInputs = [
