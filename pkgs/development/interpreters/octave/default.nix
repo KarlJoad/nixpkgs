@@ -60,6 +60,23 @@
 assert (!blas.isILP64) && (!lapack.isILP64);
 
 let
+  self = pkgs.octave;
+
+  octavePackages = import ../../../top-level/octave-packages.nix {
+    inherit pkgs;
+    inherit (pkgs) lib stdenv fetchurl newScope;
+    octave = self;
+    lapack = pkgs.lapack;
+    blas = pkgs.blas;
+    gfortran = pkgs.gfortran;
+    autoreconfHook = pkgs.autoreconfHook;
+    python3 = pkgs.python3;
+    python3Packages = pkgs.python3Packages;
+    jdk = jdk;
+    gnuplot = pkgs.gnuplot;
+    texinfo = pkgs.texinfo;
+    nettle = pkgs.nettle;
+  };
 
 in mkDerivation rec {
   version = "6.1.0";
