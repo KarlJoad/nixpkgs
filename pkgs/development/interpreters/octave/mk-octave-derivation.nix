@@ -45,7 +45,6 @@ let
 
     dontUnpack = true;
 
-    dontBuild = dontBuild;
     nativeBuildInputs = [
       octave
     ]
@@ -87,6 +86,9 @@ let
       # Copy the distribution information.
       mkdir -p $out/packinfo
       cp COPYING DESCRIPTION INDEX NEWS $out/packinfo/
+    buildPhase = ''
+      mkdir -p $out
+      octave-cli --eval "pkg build $out $src"
     '';
 
     meta = meta;
