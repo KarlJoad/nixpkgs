@@ -19,7 +19,6 @@ buildOctaveLibrary rec {
 
   nativeBuildInputs = [
     gfortran
-    autoreconfHook
   ];
 
   buildInputs = [
