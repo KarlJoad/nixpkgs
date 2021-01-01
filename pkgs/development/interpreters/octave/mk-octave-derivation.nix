@@ -17,12 +17,6 @@
 { fullLibName ? "${attrs.pname}-${attrs.version}"
 
 , src
-# Octave libraries have 3 directories of major interest. 1) The root of the
-# library. 2) The src directory where source files (for compilation) are. 3) The
-# inst directory, which has *.m function files, which plug into Octave directly.
-, root ? fullLibName
-, srcRoot ? "${fullLibName}/src"
-, instRoot ? "${fullLibName}/inst"
 
 # Build-time dependencies for the package
 , nativeBuildInputs ? []
@@ -30,21 +24,9 @@
 # Run-time dependencies for the package
 , buildInputs ? []
 
-# Some packages don't have anything to compile.
-, dontBuild ? false
-# If we want to go through buildPhase, but take no actions
-, emptyBuild ? false
-
 # Propagate build dependencies so in case we have A -> B -> C,
 # C can import package A propagated by B
 , propagatedBuildInputs ? []
-
-, doCheck ? false
-# Dependencies needed for running the checkPhase.
-# These are added to buildInputs when doCheck = true.
-, checkInputs ? []
-, preCheck ? ""
-, postCheck ? ""
 
 , postInstall ? ""
 
