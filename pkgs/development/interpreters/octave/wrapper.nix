@@ -62,5 +62,19 @@ let
 
   inherit (octave) meta;
 
+  passthru = octave.passthru // {
+    interpreter = "${env}/bin/octave";
+    inherit octave;
+    env = stdenv.mkDerivation {
+      name = "interactive-${octave.name}-environment";
+      nativeBuildInputs = [ env ];
+
+      buildCommand = ''
+        echo >&2 ""
+        echo >&2 "*** octave 'env' attributes are intended for interactive nix-shell sessions, not for building! ***"
+        echo >&2 ""
+        exit 1
+      '';
+    };
   };
 in env
