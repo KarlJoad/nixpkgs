@@ -18,7 +18,7 @@ buildOctaveLibrary rec {
     sha256 = "1jr3kg9q6r4r4h3hiwq9fli6wsns73rqfzkrg25plha9195c97h8";
   };
 
-  buildInputs = [
+  propagatedBuildInputs = [
     python
     sympy
     mpmath
