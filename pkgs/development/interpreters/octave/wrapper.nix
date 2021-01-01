@@ -2,6 +2,7 @@
 , octavePackages
 , extraLibs ? []
 , extraOutputsToInstall ? []
+, ignoreCollisions ? false
 }:
 
 # Create an octave executable that knows about additional packages
@@ -14,6 +15,7 @@ let
     name = "${octave.name}-env";
 
     inherit paths;
+    inherit ignoreCollisions;
     extraOutputsToInstall = [ "out" ] ++ extraOutputsToInstall;
   };
 in env
