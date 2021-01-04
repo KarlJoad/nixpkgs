@@ -1,7 +1,6 @@
 { buildOctaveLibrary
 , stdenv
 , fetchurl
-, autoreconfHook
 , pkgconfig
 , nettle
 }:
@@ -15,10 +14,7 @@ buildOctaveLibrary rec {
     sha256 = "0jmvczssqz1aa665v9h8k9cchb7mg3n9af6b5kh9b2qcjl4r9l7v";
   };
 
-  root = "${pname}-${version}";
-
   nativeBuildInputs = [
-    autoreconfHook
     pkgconfig
     nettle
   ];
