@@ -1,9 +1,10 @@
-{ stdenv
+{ buildOctaveLibrary
+, stdenv
 , fetchurl
 , octave
 }:
 
-stdenv.mkDerivation rec {
+buildOctaveLibrary rec {
   pname = "linear-algebra";
   version = "2.2.3";
 
@@ -12,29 +13,9 @@ stdenv.mkDerivation rec {
     sha256 = "1wwjpxp9vjc6lszh0z3kgy4hyzpib8rvvh6b74ijh9qk9r9nmvjk";
   };
 
-  buildInputs = [
-    octave
-  ];
-
-  sourceRoot = "${pname}-${version}";
-
-  installPhase = ''
-    mkdir -p $out/
-    cp -r inst/* $out/
-  '';
-
-  postInstall = ''
-    # Copy the distribution information.
-    mkdir -p $out/packinfo
-    cp COPYING DESCRIPTION INDEX NEWS $out/packinfo/
-  '';
-
   meta = {
     homepage = "https://octave.sourceforge.io/${pname}/index.html";
-    licenses = with stdenv.lib.licenses; [ gpl3Plus
-                                           lgpl3Plus
-                                           bsd
-                                         ];
+    licenses = with stdenv.lib.licenses; [ gpl3Plus lgpl3Plus bsd ];
     maintainers = with stdenv.pkgs.maintainers; [ KarlJoad ];
     description = "Additional linear algebra code, including matrix functions";
   };
