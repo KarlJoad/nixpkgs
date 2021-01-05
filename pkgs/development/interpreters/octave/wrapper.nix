@@ -67,12 +67,16 @@ buildEnv {
 
       # Re-write the octave-wide startup file (share/octave/site/m/startup/octaverc)
       # To point to the new local_list in $out
-      unlinkDirReSymlinkContents $out/share/octave/site ${octavePath}/share/octave/site
+      ls -l $out/share/octave
+      echo "$out/share/octave/site"
+      echo "${octavePath}/share/octave/site"
+      unlinkDirReSymlinkContents "$out/share/octave/site" "${octavePath}/share/octave/site"
       # unlink $out/share/octave/site
       # mkdir -p $out/share/octave/site
       # for f in ${octavePath}/share/octave/site/*; do
       #     ln -s -t $out/share/octave/site $f
       # done
+      ls -l $out/share/octave/site
 
       unlink $out/share/octave/site/m
       mkdir -p $out/share/octave/site/m
