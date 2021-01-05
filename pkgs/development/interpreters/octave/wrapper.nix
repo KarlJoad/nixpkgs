@@ -89,6 +89,10 @@ let
           ln -s -t $out/share/octave/site/m/startup $f
       done
 
+      unlink $out/share/octave/site/m/startup/octaverc
+      cp ${octavePath}/share/octave/site/m/startup/octaverc $out/share/octave/site/m/startup/octaverc
+      chmod u+w $out/share/octave/site/m/startup/octaverc
+      echo "pkg local_list $out/.octave_packages" >> $out/share/octave/site/m/startup/octaverc
      '' + postBuild;
 
     inherit (octave) meta;
