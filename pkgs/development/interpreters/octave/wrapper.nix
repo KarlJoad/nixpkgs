@@ -1,4 +1,5 @@
 { stdenv, octave, buildEnv
+, makeWrapper, texinfo
 , octavePackages
 , extraLibs ? []
 , extraOutputsToInstall ? []
@@ -12,7 +13,7 @@ let
     paths = extraLibs ++ [ octave ];
     octavePath = "${octave}";
     octaveExecutable = "${placeholder "out"}/bin/octave-cli";
-  in buildEnv {
+  in (buildEnv {
     name = "${octave.name}-env";
 
     inherit paths;
@@ -76,5 +77,8 @@ let
         exit 1
       '';
     };
-  };
+  }).overrideAttrs (_: {
+    # Add extra package dependencies needed for postBuild hook.
+    nativeBuildInputs = [ makeWrapper texinfo ];
+  });
 in env
