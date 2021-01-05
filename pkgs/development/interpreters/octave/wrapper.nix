@@ -25,6 +25,18 @@ let
     # in env/share/octave, re-symlink everything from octave/share/octave and then
     # perform the pkg install.
     postBuild = ''
+      if [ -L "$out/bin" ]; then
+         unlink $out/bin
+         mkdir -p "$out/bin"
+         cd "${octavePath}/bin"
+         for prg in *; do
+             if [ -x $prg ]; then
+                makeWrapper "${octavePath}/bin/$prg" "$out/bin/$prg" --set OCTAVE_SITE_INITFILE "$out/share/octave/site/m/startup/octaverc"
+             fi
+         done
+         cd $out
+      fi
+
       if [ -L "$out/share" ]; then
           unlink "$out/share"
       fi
