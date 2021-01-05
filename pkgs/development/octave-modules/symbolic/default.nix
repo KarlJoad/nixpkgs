@@ -18,13 +18,6 @@ buildOctaveLibrary rec {
 
   buildInputs = [ pythonEnv ];
 
-  doCheck = true;
-  checkTarget = "test";
-  checkInputs = [
-    gnuplot
-    texinfo
-  ];
-
   meta = {
     homepage = "https://octave.sourceforge.io/${pname}/index.html";
     license = stdenv.lib.licenses.gpl3Plus;
