@@ -7,7 +7,7 @@
 , texinfo
 }:
 
-buildOctaveLibrary rec {
+(buildOctaveLibrary rec {
   pname = "symbolic";
   version = "2.9.0";
 
@@ -24,17 +24,16 @@ buildOctaveLibrary rec {
     maintainers = with stdenv.pkgs.maintainers; [ KarlJoad ];
     description = "Adds symbolic calculation features to GNU Octave";
   };
-}.overrideAttrs (oldAttrs: rec {
+}).overrideAttrs (oldAttrs: rec {
   dontUnpack = false;
   buildPhase = ''
       substituteInPlace inst/private/defaultpython.m --replace python3 ${pythonEnv}/bin/python
     '';
   dontInstall = false;
   installPhase = ''
-      cat inst/private/defaultpython.m
       mkdir -p $out
       # This trickery is needed because Octave expects a single directory inside
       # at the top-most level of the tarball.
-      tar --transform 's,^,${oldAttrs.pname}-${oldAttrs.version}/,' -cz * -f $out/${oldAttrs.pname}-${oldAttrs.version}.tar.gz
+      tar --transform 's,^,${oldAttrs.packageName}/,' -cz * -f $out/${oldAttrs.packageName}.tar.gz
     '';
 })
