@@ -68,9 +68,28 @@ let
                                          pkg install -nodeps -local $path/*.tar.gz"
           fi
       done
-    '' + postBuild;
-  };
 
+      # Re-write the octave-wide startup file (share/octave/site/m/startup/octaverc)
+      # To point to the new local_list in $out
+      unlink $out/share/octave/site
+      mkdir -p $out/share/octave/site
+      for f in ${octavePath}/share/octave/site/*; do
+          ln -s -t $out/share/octave/site $f
+      done
+
+      unlink $out/share/octave/site/m
+      mkdir -p $out/share/octave/site/m
+      for f in ${octavePath}/share/octave/site/m/*; do
+          ln -s -t $out/share/octave/site/m $f
+      done
+
+      unlink $out/share/octave/site/m/startup
+      mkdir -p $out/share/octave/site/m/startup
+      for f in ${octavePath}/share/octave/site/m/startup/*; do
+          ln -s -t $out/share/octave/site/m/startup $f
+      done
+
+     '' + postBuild;
 
     inherit (octave) meta;
 
