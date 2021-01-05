@@ -67,18 +67,14 @@ in rec {
     pythonEnv = (let
       overridenPython = let
         packageOverrides = self: super: {
-          sympy = pkgs.python2Packages.sympy;
+          sympy = super.sympy.overridePythonAttrs (old: rec {
+            version = pkgs.python2Packages.sympy.version;
+            src = pkgs.python2Packages.sympy.src;
+          });
         };
       in python3.override {inherit packageOverrides; self = overridenPython; };
     in overridenPython.withPackages (ps: [
       ps.sympy
-      # import ../development/python-modules/sympy/1_5.nix {
-      #   inherit lib;
-      #   buildPythonPackage = ps.buildPythonPackage;
-      #   fetchPypi = ps.fetchPypi;
-      #   inherit (pkgs) fetchpatch glibcLocales;
-      #   mpmath = ps.mpmath;
-      # }
       ps.mpmath
     ]));
   };
