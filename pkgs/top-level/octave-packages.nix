@@ -62,17 +62,18 @@ in rec {
   };
 
   symbolic = callPackage ../development/octave-modules/symbolic {
-    python = python3;
-    # Need to use sympy 1.5.1 for https://github.com/cbm755/octsympy/issues/1023
-    # It has been addressed, but not merged yet.
-    sympy = import ../development/python-modules/sympy/1_5.nix {
-      inherit lib;
-      buildPythonPackage = pkgs.python3Packages.buildPythonPackage;
-      fetchPypi = pkgs.python3Packages.fetchPypi;
-      inherit (pkgs) fetchpatch glibcLocales;
-      mpmath = python3Packages.mpmath;
-    };
-    mpmath = python3Packages.mpmath;
+    pythonEnv = python3.withPackages (ps: [
+      # Need to use sympy 1.5.1 for https://github.com/cbm755/octsympy/issues/1023
+      # It has been addressed, but not merged yet.
+      import ../development/python-modules/sympy/1_5.nix {
+        inherit lib;
+        buildPythonPackage = ps.buildPythonPackage;
+        fetchPypi = ps.fetchPypi;
+        inherit (pkgs) fetchpatch glibcLocales;
+        mpmath = ps.mpmath;
+      }
+      ps.mpmath
+    ]);
   };
 
 }
