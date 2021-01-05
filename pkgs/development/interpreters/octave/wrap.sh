@@ -4,7 +4,7 @@ unlinkDirReSymlinkContents() {
 
     unlink $dirToUnlink
     mkdir -p $dirToUnlink
-    for f in "$whereToLinkFrom/*"; do
-	ln -s -t $dirToUnlink $f
+    for f in $contentsLocation/*; do
+        ln -s -t "$dirToUnlink" "$f"
     done
 }
