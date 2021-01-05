@@ -1,6 +1,7 @@
 { stdenv, octave, buildEnv
 , makeWrapper, texinfo
 , octavePackages
+, wrapOctave
 , extraLibs ? []
 , extraOutputsToInstall ? []
 , postBuild ? ""
@@ -71,11 +72,12 @@ let
 
       # Re-write the octave-wide startup file (share/octave/site/m/startup/octaverc)
       # To point to the new local_list in $out
-      unlink $out/share/octave/site
-      mkdir -p $out/share/octave/site
-      for f in ${octavePath}/share/octave/site/*; do
-          ln -s -t $out/share/octave/site $f
-      done
+      unlinkDirReSymlinkContents $out/share/octave/site ${octavePath}/share/octave/site
+      # unlink $out/share/octave/site
+      # mkdir -p $out/share/octave/site
+      # for f in ${octavePath}/share/octave/site/*; do
+      #     ln -s -t $out/share/octave/site $f
+      # done
 
       unlink $out/share/octave/site/m
       mkdir -p $out/share/octave/site/m
@@ -114,6 +116,6 @@ let
     };
   }).overrideAttrs (_: {
     # Add extra package dependencies needed for postBuild hook.
-    nativeBuildInputs = [ makeWrapper texinfo ];
+    nativeBuildInputs = [ makeWrapper texinfo wrapOctave ];
   });
 in env
