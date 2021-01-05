@@ -25,36 +25,25 @@ let
     # in env/share/octave, re-symlink everything from octave/share/octave and then
     # perform the pkg install.
     postBuild = ''
-      echo "Unlinking $out/share"
       if [ -L "$out/share" ]; then
           unlink "$out/share"
       fi
-      echo "Making $out/share directory"
       mkdir -p "$out/share"
       unlink $out/*.tar.gz
 
-      echo "Octave's Share is at: ${octavePath}/share"
-      echo "Re-symlinking contents of ${octavePath}/share"
       for f in ${octavePath}/share/*; do
-          echo "ln -s $f"
           ln -s -t $out/share $f
       done
-      echo "Unlinking $out/share/octave and re-symlinking with contents of ${octavePath}/share/octave"
       if [ -L "$out/share/octave" ]; then
          unlink "$out/share/octave"
          mkdir -p $out/share/octave
-         echo "Unlinked!"
          for f in ${octavePath}/share/octave/*; do
-             echo "ln -s $f"
              ln -s -t $out/share/octave $f
          done
       fi
 
       for path in ${stdenv.lib.concatStringsSep " " extraLibs}; do
           if [ -e $path/*.tar.gz ]; then
-             echo $path
-             echo "${octaveExecutable} --eval 'pkg local_list $out/.octave_packages; pkg prefix $out/${octave.octPkgsPath}; pfx = pkg (\"prefix\"); pfx'"
-             echo "${octaveExecutable} --eval 'pkg install -nodeps -local $path/*.tar.gz'"
              ${octaveExecutable} --eval "pkg local_list $out/.octave_packages; pkg prefix $out/${octave.octPkgsPath}; pfx = pkg (\"prefix\"); pfx; pkg install -nodeps -local $path/*.tar.gz"
           fi
       done
