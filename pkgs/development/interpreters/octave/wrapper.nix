@@ -44,12 +44,13 @@ let
 
       if [ -L "$out/share" ]; then
           unlink "$out/share"
+          mkdir -p "$out/share"
       fi
-      mkdir -p "$out/share"
 
       for f in ${octavePath}/share/*; do
           ln -s -t $out/share $f
       done
+
       if [ -L "$out/share/octave" ]; then
          unlink "$out/share/octave"
          mkdir -p $out/share/octave
