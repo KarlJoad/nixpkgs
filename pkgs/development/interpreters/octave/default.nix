@@ -104,6 +104,11 @@ let
     octave = self;
   };
 
+  wrapOctave = callPackage ./wrap-octave.nix {
+    octave = self;
+    inherit (pkgs) makeSetupHook makeWrapper;
+  };
+
 in mkDerivation rec {
   version = "6.1.0";
   pname = "octave";
@@ -213,10 +218,7 @@ in mkDerivation rec {
     buildEnv = callPackage ./wrapper.nix {
       octave = self;
       inherit octavePackages;
-      wrapOctave = callPackage ../octave/wrap-octave.nix {
-        octave = self;
-        inherit (pkgs) makeSetupHook makeWrapper;
-      };
+      wrapOctave = wrapOctave;
     };
     withPackages = import ./with-packages.nix { inherit buildEnv octavePackages; };
     pkgs = octavePackages;
