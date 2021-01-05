@@ -36,6 +36,7 @@
 
 let
   self = stdenv.mkDerivation {
+    packageName = "${fullLibName}";
     name = "${namePrefix}-${fullLibName}";
     src = src;
 
