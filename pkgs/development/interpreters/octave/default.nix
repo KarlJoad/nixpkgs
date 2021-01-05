@@ -173,6 +173,10 @@ in mkDerivation rec {
     buildEnv = callPackage ./wrapper.nix {
       octave = self;
       inherit octavePackages;
+      wrapOctave = callPackage ../octave/wrap-octave.nix {
+        octave = self;
+        inherit (pkgs) makeSetupHook makeWrapper;
+      };
     };
     withPackages = import ./with-packages.nix { inherit buildEnv octavePackages; };
     pkgs = octavePackages;
