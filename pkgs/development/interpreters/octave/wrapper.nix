@@ -37,11 +37,15 @@ let
          cd $out
       fi
 
+      # Remove symlinks to the input tarballs, they aren't needed.
+      for tarball in $out/*.tar.gz; do
+          unlink $tarball
+      done
+
       if [ -L "$out/share" ]; then
           unlink "$out/share"
       fi
       mkdir -p "$out/share"
-      unlink $out/*.tar.gz
 
       for f in ${octavePath}/share/*; do
           ln -s -t $out/share $f
