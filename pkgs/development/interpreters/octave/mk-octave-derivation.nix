@@ -28,8 +28,6 @@
 # C can import package A propagated by B
 , propagatedBuildInputs ? []
 
-, postInstall ? ""
-
 , meta ? {}
 
 , passthru ? {}
