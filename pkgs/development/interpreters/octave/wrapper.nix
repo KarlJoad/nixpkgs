@@ -71,21 +71,23 @@ let
     '' + postBuild;
   };
 
-  inherit (octave) meta;
 
-  passthru = octave.passthru // {
-    interpreter = "${env}/bin/octave";
-    inherit octave;
-    env = stdenv.mkDerivation {
-      name = "interactive-${octave.name}-environment";
-      nativeBuildInputs = [ env ];
+    inherit (octave) meta;
 
-      buildCommand = ''
+    passthru = octave.passthru // {
+      interpreter = "${env}/bin/octave";
+      inherit octave;
+      env = stdenv.mkDerivation {
+        name = "interactive-${octave.name}-environment";
+        nativeBuildInputs = [ env ];
+
+        buildCommand = ''
         echo >&2 ""
         echo >&2 "*** octave 'env' attributes are intended for interactive nix-shell sessions, not for building! ***"
         echo >&2 ""
         exit 1
       '';
+      };
     };
   }).overrideAttrs (_: {
     # Add extra package dependencies needed for postBuild hook.
