@@ -59,9 +59,13 @@ let
          done
       fi
 
+      mkdir -p $out/share/octave/octave_packages
       for path in ${stdenv.lib.concatStringsSep " " extraLibs}; do
           if [ -e $path/*.tar.gz ]; then
-             ${octaveExecutable} --eval "pkg local_list $out/.octave_packages; pkg prefix $out/${octave.octPkgsPath}; pfx = pkg (\"prefix\"); pfx; pkg install -nodeps -local $path/*.tar.gz"
+             ${octaveExecutable} --eval "pkg local_list $out/.octave_packages; \
+                                         pkg prefix $out/${octave.octPkgsPath} $out/${octave.octPkgsPath}; \
+                                         pfx = pkg (\"prefix\"); \
+                                         pkg install -nodeps -local $path/*.tar.gz"
           fi
       done
     '' + postBuild;
