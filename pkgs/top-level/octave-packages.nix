@@ -181,6 +181,8 @@ makeScope newScope (self:
 
     signal = callPackage ../development/octave-modules/signal { };
 
+    struct = callPackage ../development/octave-modules/struct { };
+
     symbolic = callPackage ../development/octave-modules/symbolic {
       # Need to use sympy 1.5.1 for https://github.com/cbm755/octsympy/issues/1023
       # It has been addressed, but not merged yet.
