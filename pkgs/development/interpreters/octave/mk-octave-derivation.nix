@@ -38,7 +38,7 @@ let
   self = stdenv.mkDerivation {
     packageName = "${fullLibName}";
     name = "${namePrefix}-${fullLibName}";
-    src = src;
+    inherit src;
 
     OCTAVE_HISTFILE = "/dev/null";
 
@@ -49,7 +49,7 @@ let
     ]
     ++ nativeBuildInputs;
 
-    buildInputs = buildInputs;
+    inherit buildInputs;
 
     propagatedBuildInputs = propagatedBuildInputs;
 
