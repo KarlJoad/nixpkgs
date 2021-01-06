@@ -1,0 +1,22 @@
+{ buildOctaveLibrary
+, stdenv
+, fetchurl
+, io
+}:
+
+buildOctaveLibrary rec {
+  pname = "statistics";
+  version = "1.4.2";
+
+  src = fetchurl {
+    url = "https://octave.sourceforge.io/download.php?package=${pname}-${version}.tar.gz";
+    sha256 = "0iv2hw3zp7h69n8ncfjfgm29xaihdl5gp2slcw1yf23mhd7q2xkr";
+  };
+
+  meta = with stdenv.lib; {
+    homepage = "https://octave.sourceforge.io/${pname}/index.html";
+    license = with licenses; [ gpl3Plus publicDomain ];
+    maintainers = with maintainers; [ KarlJoad ];
+    description = "Additional statistics functions for Octave";
+  };
+}
