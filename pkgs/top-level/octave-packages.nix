@@ -73,6 +73,8 @@ makeScope newScope (self:
       pkg-config = pkgs.pkg-config;
     };
 
+    financial = callPackage ../development/octave-modules/financial { };
+
     general = callPackage ../development/octave-modules/general {
       nettle = pkgs.nettle;
     };
