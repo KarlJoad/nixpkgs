@@ -203,6 +203,8 @@ makeScope newScope (self:
 
     splines = callPackage ../development/octave-modules/splines { };
 
+    statistics = callPackage ../development/octave-modules/statistics { };
+
     struct = callPackage ../development/octave-modules/struct { };
 
     symbolic = callPackage ../development/octave-modules/symbolic {
