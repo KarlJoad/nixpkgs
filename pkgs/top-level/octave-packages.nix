@@ -93,6 +93,10 @@ makeScope newScope (self:
 
     geometry = callPackage ../development/octave-modules/geometry { };
 
+    gsl = callPackage ../development/octave-modules/gsl {
+      gslPackage = pkgs.gsl;
+    };
+
     io = callPackage ../development/octave-modules/io {
       unzip = pkgs.unzip;
     };
