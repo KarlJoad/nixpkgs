@@ -185,6 +185,8 @@ makeScope newScope (self:
 
     secs1d = callPackage ../development/octave-modules/secs1d { };
 
+    secs2d = callPackage ../development/octave-modules/secs2d { };
+
     signal = callPackage ../development/octave-modules/signal { };
 
     struct = callPackage ../development/octave-modules/struct { };
