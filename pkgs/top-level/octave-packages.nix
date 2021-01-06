@@ -51,9 +51,10 @@ in rec {
     jdk = jdk;
   };
 
-  general = callPackage ../development/octave-modules/general {
-    nettle = nettle;
+  level-set = callPackage ../development/octave-modules/level-set { };
+
   linear-algebra = callPackage ../development/octave-modules/linear-algebra { };
+
   ltfat = callPackage ../development/octave-modules/ltfat {
     fftw = pkgs.fftw;
     fftwSinglePrec = pkgs.fftwSinglePrec;
