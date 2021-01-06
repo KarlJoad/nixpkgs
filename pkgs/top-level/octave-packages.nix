@@ -158,6 +158,8 @@ makeScope newScope (self:
 
     nurbs = callPackage ../development/octave-modules/nurbs { };
 
+    ocl = callPackage ../development/octave-modules/ocl { };
+
     signal = callPackage ../development/octave-modules/signal { };
 
     symbolic = callPackage ../development/octave-modules/symbolic {
