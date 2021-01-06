@@ -168,6 +168,8 @@ makeScope newScope (self:
       proj = pkgs.proj;
     };
 
+    optics = callPackage ../development/octave-modules/optics { };
+
     signal = callPackage ../development/octave-modules/signal { };
 
     symbolic = callPackage ../development/octave-modules/symbolic {
