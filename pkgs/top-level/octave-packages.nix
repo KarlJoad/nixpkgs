@@ -150,6 +150,8 @@ makeScope newScope (self:
 
     nan = callPackage ../development/octave-modules/nan { };
 
+    ncarray = callPackage ../development/octave-modules/ncarray { };
+
     signal = callPackage ../development/octave-modules/signal { };
 
     symbolic = callPackage ../development/octave-modules/symbolic {
