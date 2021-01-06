@@ -1,4 +1,5 @@
-{ stdenv
+{ pkgs
+, stdenv
 # Note: either stdenv.mkDerivation or, for octaveFull, the qt-5 mkDerivation
 # with wrapQtAppsHook (comes from libsForQt5.callPackage)
 , mkDerivation
@@ -59,6 +60,8 @@
 }:
 
 let
+  self = pkgs.octave;
+
   # Not always evaluated
   blas' = if use64BitIdx then
     blas.override {
@@ -93,6 +96,25 @@ let
   else
     null
   ;
+
+  octavePackages = import ../../../top-level/octave-packages.nix {
+    inherit pkgs;
+    inherit (pkgs) lib stdenv fetchurl newScope;
+    octave = self;
+    lapack = pkgs.lapack;
+    blas = pkgs.blas;
+    gfortran = pkgs.gfortran;
+    autoreconfHook = pkgs.autoreconfHook;
+    python27 = pkgs.python27;
+    python27Packages = pkgs.python27Packages;
+    python3 = pkgs.python3;
+    python3Packages = pkgs.python3Packages;
+    jdk = jdk;
+    gnuplot = pkgs.gnuplot;
+    texinfo = pkgs.texinfo;
+    nettle = pkgs.nettle;
+  };
+
 in mkDerivation rec {
   version = "6.1.0";
   pname = "octave";
@@ -186,12 +208,16 @@ in mkDerivation rec {
   '';
 
   passthru = {
+    self = pkgs.octave;
     sitePath = "share/octave/${version}/site";
+    sitePackages = "share/octave/octave_packages";
     blas = blas';
     lapack = lapack';
     qrupdate = qrupdate';
     arpack = arpack';
     suitesparse = suitesparse';
+    buildEnv = pkgs.callPackage ./wrapper.nix { octave = self; inherit (octavePackages); };
+    pkgs = octavePackages;
     inherit python;
     inherit enableQt enableJIT enableReadline enableJava;
   };
