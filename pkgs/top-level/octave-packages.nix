@@ -140,6 +140,12 @@ makeScope newScope (self:
       units = pkgs.units;
     };
 
+    msh = callPackage ../development/octave-modules/msh {
+      gmsh = pkgs.gmsh;
+      awk = pkgs.awk;
+      dolfin = python.pkgs.fenics;
+    };
+
     signal = callPackage ../development/octave-modules/signal { };
 
     symbolic = callPackage ../development/octave-modules/symbolic {
