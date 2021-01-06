@@ -207,7 +207,7 @@ in mkDerivation rec {
     cp test/fntests.log $out/share/octave/${pname}-${version}-fntests.log || true
   '';
 
-  passthru = {
+  passthru = rec {
     self = pkgs.octave;
     sitePath = "share/octave/${version}/site";
     sitePackages = "share/octave/octave_packages";
