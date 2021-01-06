@@ -104,6 +104,8 @@ makeScope newScope (self:
       libfltk = pkgs.fltk;
     };
 
+    instrument-control = callPackage ../development/octave-modules/instrument-control { };
+
     io = callPackage ../development/octave-modules/io {
       unzip = pkgs.unzip;
     };
