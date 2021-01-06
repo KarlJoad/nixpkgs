@@ -54,6 +54,8 @@ makeScope newScope (self:
       postgresql = pkgs.postgresql;
     };
 
+    dataframe = callPackage ../development/octave-modules/dataframe { };
+
     general = callPackage ../development/octave-modules/general {
       nettle = pkgs.nettle;
     };
