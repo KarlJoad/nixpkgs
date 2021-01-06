@@ -130,6 +130,8 @@ makeScope newScope (self:
       jre = octave.jdk;
     };
 
+    mapping = callPackage ../development/octave-modules/mapping { };
+
     signal = callPackage ../development/octave-modules/signal { };
 
     symbolic = callPackage ../development/octave-modules/symbolic {
