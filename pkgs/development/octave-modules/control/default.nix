@@ -27,6 +27,6 @@ buildOctaveLibrary rec {
     homepage = "https://octave.sourceforge.io/${pname}/index.html";
     license = stdenv.lib.licenses.gpl3Plus;
     maintainers = with stdenv.pkgs.maintainers; [ KarlJoad ];
-    description = "Signal processing tools, including filtering, windowing and display functions";
+    description = "Computer-Aided Control System Design (CACSD) Tools for GNU Octave, based on the proven SLICOT Library";
   };
 }
