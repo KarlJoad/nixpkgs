@@ -119,6 +119,8 @@ makeScope newScope (self:
 
     linear-algebra = callPackage ../development/octave-modules/linear-algebra { };
 
+    lssa = callPackage ../development/octave-modules/lssa { };
+
     ltfat = callPackage ../development/octave-modules/ltfat {
       fftw = octave.fftw;
       fftwSinglePrec = octave.fftwSinglePrec;
