@@ -183,6 +183,8 @@ makeScope newScope (self:
 
     queueing = callPackage ../development/octave-modules/queueing { };
 
+    secs1d = callPackage ../development/octave-modules/secs1d { };
+
     signal = callPackage ../development/octave-modules/signal { };
 
     struct = callPackage ../development/octave-modules/struct { };
