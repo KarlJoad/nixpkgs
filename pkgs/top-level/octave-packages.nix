@@ -34,6 +34,10 @@ makeScope newScope (self:
       # Needs arduinoIDE as a runtime dependency.
     };
 
+    audio = callPackage ../development/octave-modules/audio {
+      rtmidi = pkgs.rtmidi;
+    };
+
     control = callPackage ../development/octave-modules/control { };
 
     general = callPackage ../development/octave-modules/general {
