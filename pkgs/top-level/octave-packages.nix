@@ -237,4 +237,6 @@ makeScope newScope (self:
       freewrl = null;
     };
 
+    windows = callPackage ../development/octave-modules/windows { };
+
   })
