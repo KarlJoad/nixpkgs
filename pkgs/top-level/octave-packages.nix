@@ -156,6 +156,8 @@ makeScope newScope (self:
       netcdfPackage = pkgs.netcdf;
     };
 
+    nurbs = callPackage ../development/octave-modules/nurbs { };
+
     signal = callPackage ../development/octave-modules/signal { };
 
     symbolic = callPackage ../development/octave-modules/symbolic {
