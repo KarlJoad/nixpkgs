@@ -209,4 +209,6 @@ makeScope newScope (self:
       python2Packages = pkgs.python2Packages;
     };
 
+    tisean = callPackage ../development/octave-modules/tisean { };
+
   })

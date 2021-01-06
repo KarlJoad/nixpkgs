@@ -1,0 +1,30 @@
+{ buildOctaveLibrary
+, stdenv
+, fetchurl
+# Octave dependencies
+, signal # >= 1.3.0
+# Build dependencies
+, gfortran
+}:
+
+buildOctaveLibrary rec {
+  pname = "tisean";
+  version = "0.2.3";
+
+  src = fetchurl {
+    url = "https://octave.sourceforge.io/download.php?package=${pname}-${version}.tar.gz";
+    sha256 = "0nc2d9h91glxzmpizxdrc2dablw4bqhqhzs37a394c36myk4xjdv";
+  };
+
+  buildInputs = [
+    signal
+    gfortran
+  ];
+
+  meta = with stdenv.lib; {
+    homepage = "https://octave.sourceforge.io/${pname}/index.html";
+    license = licenses.gpl3Plus;
+    maintainers = with maintainers; [ KarlJoad ];
+    description = "Port of TISEAN 3.0.1";
+  };
+}
