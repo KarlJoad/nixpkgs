@@ -28,6 +28,6 @@ buildOctaveLibrary rec {
     homepage = "https://octave.sourceforge.io/${pname}/index.html";
     license = with stdenv.lib.licenses; [ gpl3Plus bsd2 ];
     maintainers = with stdenv.pkgs.maintainers; [ KarlJoad ];
-    description = "Adds symbolic calculation features to GNU Octave";
+    description = "Input/Output in external formats";
   };
 }
