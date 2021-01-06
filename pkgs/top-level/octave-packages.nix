@@ -219,4 +219,10 @@ makeScope newScope (self:
       # https://github.com/ENSTABretagneRobotics/VIBES
     };
 
+    video = callPackage ../development/octave-modules/video {
+      # Only need ffmpeg OR libav, but both defined for right now.
+      ffmpeg = pkgs.ffmpeg;
+      libav = pkgs.libav;
+    };
+
   })
