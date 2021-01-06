@@ -177,6 +177,8 @@ makeScope newScope (self:
       pkg-config = pkgs.pkg-config;
     };
 
+    quaternion = callPackage ../development/octave-modules/quaternion { };
+
     signal = callPackage ../development/octave-modules/signal { };
 
     struct = callPackage ../development/octave-modules/struct { };
