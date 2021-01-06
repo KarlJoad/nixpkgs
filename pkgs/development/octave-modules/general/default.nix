@@ -1,7 +1,7 @@
 { buildOctaveLibrary
 , stdenv
 , fetchurl
-, pkgconfig
+, pkg-config
 , nettle
 }:
 
@@ -15,7 +15,7 @@ buildOctaveLibrary rec {
   };
 
   nativeBuildInputs = [
-    pkgconfig
+    pkg-config
     nettle
   ];
 
