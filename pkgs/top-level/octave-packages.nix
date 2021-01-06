@@ -211,4 +211,6 @@ makeScope newScope (self:
 
     tisean = callPackage ../development/octave-modules/tisean { };
 
+    tsa = callPackage ../development/octave-modules/tsa { };
+
   })
