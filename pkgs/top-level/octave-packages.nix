@@ -97,6 +97,8 @@ makeScope newScope (self:
       gslPackage = pkgs.gsl;
     };
 
+    image = callPackage ../development/octave-modules/image { };
+
     io = callPackage ../development/octave-modules/io {
       unzip = pkgs.unzip;
     };
