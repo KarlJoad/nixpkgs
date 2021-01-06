@@ -60,6 +60,8 @@ makeScope newScope (self:
       libgdcm = pkgs.gdcm;
     };
 
+    divand = callPackage ../development/octave-modules/divand { };
+
     general = callPackage ../development/octave-modules/general {
       nettle = pkgs.nettle;
     };
