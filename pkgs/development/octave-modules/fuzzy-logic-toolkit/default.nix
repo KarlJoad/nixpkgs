@@ -1,0 +1,21 @@
+{ buildOctaveLibrary
+, stdenv
+, fetchurl
+}:
+
+buildOctaveLibrary rec {
+  pname = "fuzzy-logic-toolkit";
+  version = "0.4.5";
+
+  src = fetchurl {
+    url = "https://octave.sourceforge.io/download.php?package=${pname}-${version}.tar.gz";
+    sha256 = "0cs1xh594h1psdinicxrsvm27gzax5jja7bjk4sl3kk2hv24mhml";
+  };
+
+  meta = with stdenv.lib; {
+    homepage = "https://octave.sourceforge.io/${pname}/index.html";
+    license = licenses.gpl3Plus;
+    maintainers = with maintainers; [ KarlJoad ];
+    description = "A mostly MATLAB-compatible fuzzy logic toolkit for Octave";
+  };
+}
