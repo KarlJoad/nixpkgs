@@ -105,8 +105,6 @@ let
     blas = pkgs.blas;
     gfortran = pkgs.gfortran;
     autoreconfHook = pkgs.autoreconfHook;
-    python27 = pkgs.python27;
-    python27Packages = pkgs.python27Packages;
     python3 = pkgs.python3;
     python3Packages = pkgs.python3Packages;
     jdk = jdk;
