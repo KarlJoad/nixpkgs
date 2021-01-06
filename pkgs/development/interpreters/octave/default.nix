@@ -1,5 +1,6 @@
 { pkgs
 , stdenv
+, callPackage
 # Note: either stdenv.mkDerivation or, for octaveFull, the qt-5 mkDerivation
 # with wrapQtAppsHook (comes from libsForQt5.callPackage)
 , mkDerivation
@@ -214,10 +215,16 @@ in mkDerivation rec {
     qrupdate = qrupdate';
     arpack = arpack';
     suitesparse = suitesparse';
-    buildEnv = pkgs.callPackage ./wrapper.nix { octave = self; inherit (octavePackages); };
-    pkgs = octavePackages;
     inherit python;
     inherit enableQt enableJIT enableReadline enableJava;
+    buildEnv = callPackage ./wrapper.nix {
+      octave = self;
+      inherit octavePackages;
+    };
+    withPackages = import ./with-packages.nix { inherit buildEnv octavePackages; };
+    pkgs = octavePackages;
+    interpreter = "${self}/bin/octave";
+    octPkgsPath = "share/octave/octave_packages";
   };
 
   meta = {
