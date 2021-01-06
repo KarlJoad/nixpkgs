@@ -24,10 +24,10 @@ buildOctaveLibrary rec {
     cp -r doc $out/
   '';
 
-  meta = {
+  meta = with stdenv.lib; {
     homepage = "https://octave.sourceforge.io/${pname}/index.html";
-    license = with stdenv.lib.licenses; [ gpl3Plus bsd2 ];
-    maintainers = with stdenv.pkgs.maintainers; [ KarlJoad ];
+    license = with licenses; [ gpl3Plus bsd2 ];
+    maintainers = with maintainers; [ KarlJoad ];
     description = "Input/Output in external formats";
   };
 }

@@ -13,10 +13,10 @@ buildOctaveLibrary rec {
     sha256 = "1wwjpxp9vjc6lszh0z3kgy4hyzpib8rvvh6b74ijh9qk9r9nmvjk";
   };
 
-  meta = {
+  meta = with stdenv.lib; {
     homepage = "https://octave.sourceforge.io/${pname}/index.html";
-    licenses = with stdenv.lib.licenses; [ gpl3Plus lgpl3Plus bsd ];
-    maintainers = with stdenv.pkgs.maintainers; [ KarlJoad ];
+    licenses = with licenses; [ gpl3Plus lgpl3Plus bsd ];
+    maintainers = with maintainers; [ KarlJoad ];
     description = "Additional linear algebra code, including matrix functions";
   };
 }

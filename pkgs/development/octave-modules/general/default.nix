@@ -19,10 +19,10 @@ buildOctaveLibrary rec {
     nettle
   ];
 
-  meta = {
+  meta = with stdenv.lib; {
     homepage = "https://octave.sourceforge.io/${pname}/index.html";
-    license = stdenv.lib.licenses.gpl3Plus;
-    maintainers = with stdenv.pkgs.maintainers; [ KarlJoad ];
+    license = licenses.gpl3Plus;
+    maintainers = with maintainers; [ KarlJoad ];
     description = "General tools for Octave";
   };
 }
