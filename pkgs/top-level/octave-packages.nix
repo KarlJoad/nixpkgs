@@ -53,9 +53,9 @@ in rec {
 
   general = callPackage ../development/octave-modules/general {
     nettle = nettle;
+  linear-algebra = callPackage ../development/octave-modules/linear-algebra { };
   };
 
-  linearAlgebra = callPackage ../development/octave-modules/linear-algebra { };
 
   signal = callPackage ../development/octave-modules/signal {
     control = control;
