@@ -225,4 +225,8 @@ makeScope newScope (self:
       libav = pkgs.libav;
     };
 
+    vrml = callPackage ../development/octave-modules/vrml {
+      freewrl = null;
+    };
+
   })
