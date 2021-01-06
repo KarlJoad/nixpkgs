@@ -197,6 +197,10 @@ makeScope newScope (self:
 
     statistics = callPackage ../development/octave-modules/statistics { };
 
+    strings = callPackage ../development/octave-modules/strings {
+      pcre = pkgs.pcre;
+    };
+
     struct = callPackage ../development/octave-modules/struct { };
 
     symbolic = callPackage ../development/octave-modules/symbolic {
