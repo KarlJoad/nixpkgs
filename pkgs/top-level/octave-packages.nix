@@ -91,6 +91,8 @@ makeScope newScope (self:
 
     generate_html = callPackage ../development/octave-modules/generate_html { };
 
+    geometry = callPackage ../development/octave-modules/geometry { };
+
     io = callPackage ../development/octave-modules/io {
       unzip = pkgs.unzip;
     };
