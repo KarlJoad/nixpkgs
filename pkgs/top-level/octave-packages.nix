@@ -56,6 +56,10 @@ makeScope newScope (self:
 
     dataframe = callPackage ../development/octave-modules/dataframe { };
 
+    dicom = callPackage ../development/octave-modules/dicom {
+      libgdcm = pkgs.gdcm;
+    };
+
     general = callPackage ../development/octave-modules/general {
       nettle = pkgs.nettle;
     };
