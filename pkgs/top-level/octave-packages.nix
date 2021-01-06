@@ -38,6 +38,8 @@ makeScope newScope (self:
       rtmidi = pkgs.rtmidi;
     };
 
+    bim = callPackage ../development/octave-modules/bim { };
+
     control = callPackage ../development/octave-modules/control { };
 
     general = callPackage ../development/octave-modules/general {
