@@ -28,6 +28,12 @@ makeScope newScope (self:
 
     inherit callPackage buildOctaveLibrary;
 
+    arduino = callPackage ../development/octave-modules/arduino {
+      arduino = pkgs.arduino;
+      # Full arduino right now. Might be able to use pkgs.arduino-core
+      # Needs arduinoIDE as a runtime dependency.
+    };
+
     control = callPackage ../development/octave-modules/control { };
 
     general = callPackage ../development/octave-modules/general {
