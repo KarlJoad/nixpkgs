@@ -160,6 +160,8 @@ makeScope newScope (self:
 
     ocl = callPackage ../development/octave-modules/ocl { };
 
+    ocs = callPackage ../development/octave-modules/ocs { };
+
     signal = callPackage ../development/octave-modules/signal { };
 
     symbolic = callPackage ../development/octave-modules/symbolic {
