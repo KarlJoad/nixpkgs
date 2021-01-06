@@ -1,0 +1,21 @@
+{ buildOctaveLibrary
+, stdenv
+, fetchurl
+}:
+
+buildOctaveLibrary rec {
+  pname = "mvn";
+  version = "1.1.0";
+
+  src = fetchurl {
+    url = "https://octave.sourceforge.io/download.php?package=${pname}-${version}.tar.gz";
+    sha256 = "00w69hxqnqdm3744z6p7gvzci44a3gy228x6bgq3xf5n3jwicnmg";
+  };
+
+  meta = with stdenv.lib; {
+    homepage = "https://octave.sourceforge.io/${pname}/index.html";
+    license = licenses.gpl3Plus;
+    maintainers = with maintainers; [ KarlJoad ];
+    description = "Multivariate normal distribution clustering and utility functions";
+  };
+}
