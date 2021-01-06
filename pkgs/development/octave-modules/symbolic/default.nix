@@ -18,10 +18,10 @@
 
   buildInputs = [ pythonEnv ];
 
-  meta = {
+  meta = with stdenv.lib; {
     homepage = "https://octave.sourceforge.io/${pname}/index.html";
-    license = stdenv.lib.licenses.gpl3Plus;
-    maintainers = with stdenv.pkgs.maintainers; [ KarlJoad ];
+    license = licenses.gpl3Plus;
+    maintainers = with maintainers; [ KarlJoad ];
     description = "Adds symbolic calculation features to GNU Octave";
   };
 }).overrideAttrs (oldAttrs: rec {
