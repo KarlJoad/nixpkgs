@@ -15,8 +15,6 @@ buildOctaveLibrary rec {
     sha256 = "0gjyjsxs01x0nyc4cgn3d5af17l3lzs8h4hsm57nxd3as48dbwgs";
   };
 
-  root = "${pname}-${version}";
-
   nativeBuildInputs = [
     gfortran
   ];
