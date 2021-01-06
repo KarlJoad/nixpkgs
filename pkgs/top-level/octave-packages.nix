@@ -66,6 +66,13 @@ makeScope newScope (self:
 
     econometrics = callPackage ../development/octave-modules/econometrics { };
 
+    fem-fenics = callPackage ../development/octave-modules/fem-fenics {
+      # I am still not super sure about this
+      dolfin = python.pkgs.fenics;
+      fenics = python.pkgs.fenics;
+      pkg-config = pkgs.pkg-config;
+    };
+
     general = callPackage ../development/octave-modules/general {
       nettle = pkgs.nettle;
     };
