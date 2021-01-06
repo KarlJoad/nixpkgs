@@ -40,6 +40,8 @@ makeScope newScope (self:
 
     bim = callPackage ../development/octave-modules/bim { };
 
+    bsltl = callPackage ../development/octave-modules/bsltl { };
+
     control = callPackage ../development/octave-modules/control { };
 
     general = callPackage ../development/octave-modules/general {

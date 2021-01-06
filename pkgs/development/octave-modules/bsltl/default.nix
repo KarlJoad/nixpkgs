@@ -1,0 +1,21 @@
+{ buildOctaveLibrary
+, stdenv
+, fetchurl
+}:
+
+buildOctaveLibrary rec {
+  pname = "bsltl";
+  version = "1.3.1";
+
+  src = fetchurl {
+    url = "https://octave.sourceforge.io/download.php?package=${pname}-${version}.tar.gz";
+    sha256 = "0i8ry347y5f5db3702nhpsmfys9v18ks2fsmpdqpy3fcvrwaxdsb";
+  };
+
+  meta = with stdenv.lib; {
+    homepage = "https://octave.sourceforge.io/${pname}/index.html";
+    license = licenses.gpl3Plus;
+    maintainers = with maintainers; [ KarlJoad ];
+    description = "Free collection of OCTAVE/MATLAB routines for working with the biospeckle laser technique";
+  };
+}
