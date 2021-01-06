@@ -134,6 +134,12 @@ makeScope newScope (self:
 
     matgeom = callPackage ../development/octave-modules/matgeom { };
 
+    miscellaneous = callPackage ../development/octave-modules/miscellaneous {
+      termcap = pkgs.mlterm;
+      libncurses = pkgs.ncurses;
+      units = pkgs.units;
+    };
+
     signal = callPackage ../development/octave-modules/signal { };
 
     symbolic = callPackage ../development/octave-modules/symbolic {
