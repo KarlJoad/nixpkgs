@@ -110,6 +110,11 @@ makeScope newScope (self:
       unzip = pkgs.unzip;
     };
 
+    interval = callPackage ../development/octave-modules/interval {
+      mpfr = pkgs.mpfr;
+      libmpfr = pkgs.mpfr;
+    };
+
     level-set = callPackage ../development/octave-modules/level-set { };
 
     linear-algebra = callPackage ../development/octave-modules/linear-algebra { };
