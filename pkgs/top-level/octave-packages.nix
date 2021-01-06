@@ -42,6 +42,8 @@ makeScope newScope (self:
 
     bsltl = callPackage ../development/octave-modules/bsltl { };
 
+    cgi = callPackage ../development/octave-modules/cgi { };
+
     control = callPackage ../development/octave-modules/control { };
 
     general = callPackage ../development/octave-modules/general {
