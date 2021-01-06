@@ -27,6 +27,6 @@ buildOctaveLibrary rec {
     homepage = "https://octave.sourceforge.io/${pname}/index.html";
     license = stdenv.lib.licenses.gpl3Plus;
     maintainers = with stdenv.pkgs.maintainers; [ KarlJoad ];
-    description = "Signal processing tools, including filtering, windowing and display functions";
+    description = "General tools for Octave";
   };
 }
