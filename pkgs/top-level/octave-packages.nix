@@ -73,6 +73,10 @@ makeScope newScope (self:
       pkg-config = pkgs.pkg-config;
     };
 
+    fits = callPackage ../development/octave-modules/fits {
+      cfitsio = pkgs.cfitsio;
+    };
+
     financial = callPackage ../development/octave-modules/financial { };
 
     general = callPackage ../development/octave-modules/general {
