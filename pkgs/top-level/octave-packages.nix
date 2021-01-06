@@ -99,6 +99,11 @@ makeScope newScope (self:
 
     image = callPackage ../development/octave-modules/image { };
 
+    image-acquisition = callPackage ../development/octave-modules/image-acquisition {
+      libv4l = pkgs.libv4l;
+      libfltk = pkgs.fltk;
+    };
+
     io = callPackage ../development/octave-modules/io {
       unzip = pkgs.unzip;
     };
