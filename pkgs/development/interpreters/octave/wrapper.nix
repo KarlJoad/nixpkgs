@@ -9,14 +9,10 @@
 
 # Create an octave executable that knows about additional packages
 let
-  env = let
-    paths = extraLibs ++ [ octave ];
-    octavePath = "${octave}";
-    octaveExecutable = "${placeholder "out"}/bin/octave-cli";
-  in (buildEnv {
+  env = (buildEnv {
     name = "${octave.name}-env";
+    paths = extraLibs ++ [ octave ];
 
-    inherit paths;
     inherit ignoreCollisions;
     extraOutputsToInstall = [ "out" ] ++ extraOutputsToInstall;
 
@@ -28,10 +24,10 @@ let
       if [ -L "$out/bin" ]; then
          unlink $out/bin
          mkdir -p "$out/bin"
-         cd "${octavePath}/bin"
+         cd "${octave}/bin"
          for prg in *; do
              if [ -x $prg ]; then
-                makeWrapper "${octavePath}/bin/$prg" "$out/bin/$prg" --set OCTAVE_SITE_INITFILE "$out/share/octave/site/m/startup/octaverc"
+                makeWrapper "${octave}/bin/$prg" "$out/bin/$prg" --set OCTAVE_SITE_INITFILE "$out/share/octave/site/m/startup/octaverc"
              fi
          done
          cd $out
@@ -47,14 +43,14 @@ let
           mkdir -p "$out/share"
       fi
 
-      for f in ${octavePath}/share/*; do
+      for f in ${octave}/share/*; do
           ln -s -t $out/share $f
       done
 
       if [ -L "$out/share/octave" ]; then
          unlink "$out/share/octave"
          mkdir -p $out/share/octave
-         for f in ${octavePath}/share/octave/*; do
+         for f in ${octave}/share/octave/*; do
              ln -s -t $out/share/octave $f
          done
       fi
@@ -62,7 +58,7 @@ let
       mkdir -p $out/share/octave/octave_packages
       for path in ${stdenv.lib.concatStringsSep " " extraLibs}; do
           if [ -e $path/*.tar.gz ]; then
-             ${octaveExecutable} --eval "pkg local_list $out/.octave_packages; \
+             $out/bin/octave-cli --eval "pkg local_list $out/.octave_packages; \
                                          pkg prefix $out/${octave.octPkgsPath} $out/${octave.octPkgsPath}; \
                                          pfx = pkg (\"prefix\"); \
                                          pkg install -nodeps -local $path/*.tar.gz"
@@ -73,24 +69,24 @@ let
       # To point to the new local_list in $out
       unlink $out/share/octave/site
       mkdir -p $out/share/octave/site
-      for f in ${octavePath}/share/octave/site/*; do
+      for f in ${octave}/share/octave/site/*; do
           ln -s -t $out/share/octave/site $f
       done
 
       unlink $out/share/octave/site/m
       mkdir -p $out/share/octave/site/m
-      for f in ${octavePath}/share/octave/site/m/*; do
+      for f in ${octave}/share/octave/site/m/*; do
           ln -s -t $out/share/octave/site/m $f
       done
 
       unlink $out/share/octave/site/m/startup
       mkdir -p $out/share/octave/site/m/startup
-      for f in ${octavePath}/share/octave/site/m/startup/*; do
+      for f in ${octave}/share/octave/site/m/startup/*; do
           ln -s -t $out/share/octave/site/m/startup $f
       done
 
       unlink $out/share/octave/site/m/startup/octaverc
-      cp ${octavePath}/share/octave/site/m/startup/octaverc $out/share/octave/site/m/startup/octaverc
+      cp ${octave}/share/octave/site/m/startup/octaverc $out/share/octave/site/m/startup/octaverc
       chmod u+w $out/share/octave/site/m/startup/octaverc
       echo "pkg local_list $out/.octave_packages" >> $out/share/octave/site/m/startup/octaverc
      '' + postBuild;
