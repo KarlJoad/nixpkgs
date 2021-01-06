@@ -54,6 +54,15 @@ in rec {
   general = callPackage ../development/octave-modules/general {
     nettle = nettle;
   linear-algebra = callPackage ../development/octave-modules/linear-algebra { };
+  ltfat = callPackage ../development/octave-modules/ltfat {
+    fftw = pkgs.fftw;
+    fftwSinglePrec = pkgs.fftwSinglePrec;
+    fftwFloat = pkgs.fftwFloat;
+    fftwLongDouble = pkgs.fftwLongDouble;
+    lapack = lapack;
+    blas = blas;
+    portaudio = pkgs.portaudio;
+    jre = pkgs.jre;
   };
 
 
