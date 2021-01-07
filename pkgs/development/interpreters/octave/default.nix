@@ -105,7 +105,7 @@ let
     inherit blas lapack gfortran texinfo gnuplot;
     python3 = pkgs.python3;
     python3Packages = pkgs.python3Packages;
-    jdk = jdk;
+    inherit enableJava jdk;
     nettle = pkgs.nettle;
   };
 
