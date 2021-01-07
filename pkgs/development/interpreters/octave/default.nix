@@ -102,9 +102,7 @@ let
     inherit pkgs;
     inherit (pkgs) lib stdenv fetchurl newScope;
     octave = self;
-    inherit blas lapack gfortran texinfo gnuplot;
-    python3 = pkgs.python3;
-    python3Packages = pkgs.python3Packages;
+    inherit blas lapack gfortran python texinfo gnuplot;
     inherit enableJava jdk;
     nettle = pkgs.nettle;
   };

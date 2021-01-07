@@ -10,8 +10,8 @@
 , octave
 , lapack, blas
 , gfortran
-, python3
-, python3Packages
+# Use the same python that octave is using
+, python
 # Use the same Java that octave is using
 , enableJava
 , jdk
@@ -81,7 +81,7 @@ in rec {
             src = pkgs.python2Packages.sympy.src;
           });
         };
-      in python3.override {inherit packageOverrides; self = overridenPython; };
+      in python.override {inherit packageOverrides; self = overridenPython; };
     in overridenPython.withPackages (ps: [
       ps.sympy
       ps.mpmath
