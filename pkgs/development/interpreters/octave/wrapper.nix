@@ -8,13 +8,14 @@
 }:
 
 # Create an octave executable that knows about additional packages
-let
-  env = (buildEnv {
+buildEnv {
     name = "${octave.name}-env";
     paths = extraLibs ++ [ octave ];
 
     inherit ignoreCollisions;
     extraOutputsToInstall = [ "out" ] ++ extraOutputsToInstall;
+
+    buildInputs = [ makeWrapper texinfo ];
 
     # During "build" we must first unlink the /share symlink to octave's /share
     # Then, we can re-symlink the all of octave/share, except for /share/octave
@@ -92,11 +93,10 @@ let
     inherit (octave) meta;
 
     passthru = octave.passthru // {
-      interpreter = "${env}/bin/octave";
+      interpreter = "$out/bin/octave";
       inherit octave;
       env = stdenv.mkDerivation {
         name = "interactive-${octave.name}-environment";
-        nativeBuildInputs = [ env ];
 
         buildCommand = ''
         echo >&2 ""
@@ -106,8 +106,4 @@ let
       '';
       };
     };
-  }).overrideAttrs (_: {
-    # Add extra package dependencies needed for postBuild hook.
-    nativeBuildInputs = [ makeWrapper texinfo ];
-  });
-in env
+}
