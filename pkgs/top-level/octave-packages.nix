@@ -36,52 +36,43 @@ makeScope newScope (self:
 
     inherit callPackage buildOctaveLibrary;
 
-  control = callPackage ../development/octave-modules/control {
-    gfortran = gfortran;
-    lapack = lapack;
-    blas = blas;
-  };
+    control = callPackage ../development/octave-modules/control { };
 
-  io = callPackage ../development/octave-modules/io {
-    enableJava = true;
-    jdk = jdk;
-  };
+    io = callPackage ../development/octave-modules/io {
+      unzip = pkgs.unzip;
+    };
 
-  level-set = callPackage ../development/octave-modules/level-set { };
+    level-set = callPackage ../development/octave-modules/level-set { };
 
-  linear-algebra = callPackage ../development/octave-modules/linear-algebra { };
+    linear-algebra = callPackage ../development/octave-modules/linear-algebra { };
 
-  ltfat = callPackage ../development/octave-modules/ltfat {
-    fftw = pkgs.fftw;
-    fftwSinglePrec = pkgs.fftwSinglePrec;
-    fftwFloat = pkgs.fftwFloat;
-    fftwLongDouble = pkgs.fftwLongDouble;
-    lapack = lapack;
-    blas = blas;
-    portaudio = pkgs.portaudio;
-    jre = pkgs.jre;
-  };
+    ltfat = callPackage ../development/octave-modules/ltfat {
+      fftw = pkgs.fftw;
+      fftwSinglePrec = pkgs.fftwSinglePrec;
+      fftwFloat = pkgs.fftwFloat;
+      fftwLongDouble = pkgs.fftwLongDouble;
+      portaudio = pkgs.portaudio;
+      jre = pkgs.jre;
+    };
 
-  signal = callPackage ../development/octave-modules/signal {
-    control = control;
-  };
+    signal = callPackage ../development/octave-modules/signal { };
 
-  symbolic = callPackage ../development/octave-modules/symbolic {
-    # Need to use sympy 1.5.1 for https://github.com/cbm755/octsympy/issues/1023
-    # It has been addressed, but not merged yet.
-    pythonEnv = (let
-      overridenPython = let
-        packageOverrides = self: super: {
-          sympy = super.sympy.overridePythonAttrs (old: rec {
-            version = pkgs.python2Packages.sympy.version;
-            src = pkgs.python2Packages.sympy.src;
-          });
-        };
-      in python.override {inherit packageOverrides; self = overridenPython; };
-    in overridenPython.withPackages (ps: [
-      ps.sympy
-      ps.mpmath
-    ]));
-  };
+    symbolic = callPackage ../development/octave-modules/symbolic {
+      # Need to use sympy 1.5.1 for https://github.com/cbm755/octsympy/issues/1023
+      # It has been addressed, but not merged yet.
+      pythonEnv = (let
+        overridenPython = let
+          packageOverrides = self: super: {
+            sympy = super.sympy.overridePythonAttrs (old: rec {
+              version = pkgs.python2Packages.sympy.version;
+              src = pkgs.python2Packages.sympy.src;
+            });
+          };
+        in python.override {inherit packageOverrides; self = overridenPython; };
+      in overridenPython.withPackages (ps: [
+        ps.sympy
+        ps.mpmath
+      ]));
+    };
 
   })
