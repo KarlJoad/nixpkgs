@@ -20,25 +20,21 @@
 , nettle
 }:
 
-let
+with lib;
 
-  isOctaveFull = octave.enableQt;
-  isOctaveJIT = octave.enableJIT;
+makeScope newScope (self:
+  let
+    callPackage = self.callPackage;
 
-  buildOctaveLibrary = callPackage ../development/interpreters/octave/mk-octave-derivation.nix {
-    inherit pkgs lib stdenv;
-    namePrefix = "${octave.pname}-${octave.version}";
-    inherit octave;
-  };
+    buildOctaveLibrary = callPackage ../development/interpreters/octave/mk-octave-derivation.nix {
+      inherit pkgs lib stdenv;
+      namePrefix = "${octave.pname}-${octave.version}";
+      inherit octave;
+    };
 
-  callPackage = pkgs.newScope {
-    inherit (pkgs) lib stdenv;
-    inherit buildOctaveLibrary;
-    inherit fetchurl;
-    inherit gnuplot texinfo;
-  };
+  in {
 
-in rec {
+    inherit callPackage buildOctaveLibrary;
 
   control = callPackage ../development/octave-modules/control {
     gfortran = gfortran;
@@ -88,4 +84,4 @@ in rec {
     ]));
   };
 
-}
+  })
