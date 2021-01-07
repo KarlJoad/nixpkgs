@@ -10735,11 +10735,7 @@ in
     overridePlatforms = ["x86_64-linux" "x86_64-darwin"];
   };
 
-  octavePackages = callPackage ./octave-packages.nix {
-    lapack = lapack;
-    blas = blas;
-    jdk = jdk8;
-  };
+  octavePackages = recurseIntoAttrs octave.pkgs;
 
   ocropus = callPackage ../applications/misc/ocropus { };
 
