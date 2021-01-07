@@ -202,7 +202,7 @@ in mkDerivation rec {
   '';
 
   passthru = rec {
-    self = pkgs.octave;
+    octave = self;
     sitePath = "share/octave/${version}/site";
     sitePackages = "share/octave/octave_packages";
     blas = blas';
