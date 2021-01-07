@@ -10,7 +10,6 @@
 , octave
 , lapack, blas
 , gfortran
-, autoreconfHook
 , python3
 , python3Packages
 , jdk
@@ -41,7 +40,6 @@ in rec {
 
   control = callPackage ../development/octave-modules/control {
     gfortran = gfortran;
-    autoreconfHook = autoreconfHook;
     lapack = lapack;
     blas = blas;
   };
@@ -65,7 +63,6 @@ in rec {
     portaudio = pkgs.portaudio;
     jre = pkgs.jre;
   };
-
 
   signal = callPackage ../development/octave-modules/signal {
     control = control;
