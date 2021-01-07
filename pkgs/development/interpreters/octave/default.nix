@@ -103,7 +103,6 @@ let
     inherit (pkgs) lib stdenv fetchurl newScope;
     octave = self;
     inherit blas lapack gfortran texinfo gnuplot;
-    autoreconfHook = pkgs.autoreconfHook;
     python3 = pkgs.python3;
     python3Packages = pkgs.python3Packages;
     jdk = jdk;
