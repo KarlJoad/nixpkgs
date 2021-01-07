@@ -8,15 +8,6 @@
 , fetchurl
 , newScope
 , octave
-, lapack, blas
-, gfortran
-# Use the same python that octave is using
-, python
-# Use the same Java that octave is using
-, enableJava
-, jdk
-, gnuplot
-, texinfo
 , nettle
 }:
 
@@ -24,6 +15,8 @@ with lib;
 
 makeScope newScope (self:
   let
+    inherit (octave) blas lapack gfortran python texinfo gnuplot;
+
     callPackage = self.callPackage;
 
     buildOctaveLibrary = callPackage ../development/interpreters/octave/mk-octave-derivation.nix {
