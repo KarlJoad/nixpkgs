@@ -14,15 +14,7 @@ buildOctaveLibrary rec {
     sha256 = "044y8lfp93fx0592mv6x2ss0nvjkjgvlci3c3ahav76pk1j3rikb";
   };
 
-
-  root = "${pname}-${version}";
-
   buildInputs = stdenv.lib.optional enableJava jdk;
-
-  postInstall = ''
-    # Copy the documentation
-    cp -r doc $out/
-  '';
 
   meta = with stdenv.lib; {
     homepage = "https://octave.sourceforge.io/${pname}/index.html";
