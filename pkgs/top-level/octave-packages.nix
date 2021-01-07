@@ -12,6 +12,8 @@
 , gfortran
 , python3
 , python3Packages
+# Use the same Java that octave is using
+, enableJava
 , jdk
 , gnuplot
 , texinfo
