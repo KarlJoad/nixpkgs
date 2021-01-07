@@ -54,8 +54,12 @@ let
     propagatedBuildInputs = propagatedBuildInputs;
 
     buildPhase = ''
+      runHook preBuild
+
       mkdir -p $out
       octave-cli --eval "pkg build $out $src"
+
+      runHook postBuild
     '';
 
     # We don't install here, because that's handled when we build the environment
