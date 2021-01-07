@@ -8,7 +8,6 @@
 , fetchurl
 , newScope
 , octave
-, nettle
 }:
 
 with lib;
