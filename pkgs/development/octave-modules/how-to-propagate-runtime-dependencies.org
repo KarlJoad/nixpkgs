@@ -1,0 +1,10 @@
+* Put run-time dependencies in ~propagatedBuildInputs~.
+* DONE Have ~buildOctaveLibrary~ add those to its ~propagatedBuildInputs~. (DONE)
+* TODO Add the run-time dependency to ~PATH~ when building
+  1) In ~wrapper.nix~ (or a ~wrap.sh~), when reading each package to add's ~$out~ directory for package installation:
+     1. Look for ~$path/nix-support/propagated-build-inputs~
+     2. If it exists, ~cat~ it through a ~for~ loop.
+     3. Recurse onto that path, and see if we need to add anything from that package to ~PATH~.
+     4. See ~python/wrap.sh:_addToPythonPath()~ for greater clarity.
+     5. ~addToSearchPath~ is defined in ~stdenv/generic/setup.sh~ and is available for us to use.
+* TODO To make things easier, find a way to get a ~wrap.sh~ to be present in the build system.
