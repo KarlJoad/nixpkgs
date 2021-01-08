@@ -3,6 +3,8 @@
 , fetchurl
 , struct
 , statistics
+, lapack
+, blas
 }:
 
 buildOctaveLibrary rec {
@@ -17,6 +19,8 @@ buildOctaveLibrary rec {
   buildInputs = [
     struct
     statistics
+    lapack
+    blas
   ];
 
   meta = with stdenv.lib; {
