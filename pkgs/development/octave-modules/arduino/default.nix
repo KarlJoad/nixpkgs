@@ -18,12 +18,16 @@ buildOctaveLibrary rec {
     instrument-control
   ];
 
+  propagatedBuildInputs = [
+    arduino
+  ];
+
   meta = with stdenv.lib; {
     name = "Octave Arduino Toolkit";
     homepage = "https://octave.sourceforge.io/${pname}/index.html";
     license = licenses.gpl3Plus;
     maintainers = with maintainers; [ KarlJoad ];
-    description = " Basic Octave implementation of the matlab arduino extension, allowing communication to a programmed arduino board to control its hardware";
+    description = "Basic Octave implementation of the matlab arduino extension, allowing communication to a programmed arduino board to control its hardware";
     # Marked this way until KarlJoad gets an arduino IDE as a runtime dependency.
     broken = true;
   };
