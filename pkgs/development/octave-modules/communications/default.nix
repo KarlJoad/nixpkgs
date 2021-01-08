@@ -2,6 +2,7 @@
 , stdenv
 , fetchurl
 , signal
+, hdf5
 }:
 
 buildOctaveLibrary rec {
@@ -15,6 +16,7 @@ buildOctaveLibrary rec {
 
   buildInputs = [
     signal
+    hdf5
   ];
 
   meta = with stdenv.lib; {
