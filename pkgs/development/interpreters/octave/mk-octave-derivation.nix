@@ -51,7 +51,7 @@ let
 
     inherit buildInputs;
 
-    propagatedBuildInputs = propagatedBuildInputs;
+    propagatedBuildInputs = propagatedBuildInputs ++ [ octave ];
 
     buildPhase = ''
       runHook preBuild
