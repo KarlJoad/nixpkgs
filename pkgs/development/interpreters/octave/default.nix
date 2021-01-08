@@ -205,6 +205,9 @@ in mkDerivation rec {
     qrupdate = qrupdate';
     arpack = arpack';
     suitesparse = suitesparse';
+    inherit fftw fftwSinglePrec;
+    inherit portaudio;
+    inherit jdk;
     inherit python;
     inherit enableQt enableJIT enableReadline enableJava;
     buildEnv = callPackage ./wrapper.nix {
