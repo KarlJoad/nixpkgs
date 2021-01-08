@@ -2,6 +2,12 @@
 # Each attribute is an Octave library.
 # Expressions for the Octave libraries are supposed to be in `pkgs/development/octave-modules/<name>/default.nix`.
 
+# When contributing a new package, if that package has a dependency on another
+# octave package, then you DO NOT need to explicitly list it as such when
+# performing the callPackage. It will be passed implicitly.
+# In addition, try to use the same dependencies as the ones octave needs, which
+# should ensure greater compatibility between Octave itself and its packages.
+
 { pkgs
 , lib
 , stdenv
