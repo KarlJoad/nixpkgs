@@ -4,8 +4,7 @@
 # additional configuration provided, and the namePrefix to use (based on the
 # pname and version of Octave), the octave package, etc.
 
-{ pkgs
-, lib
+{ lib
 , stdenv
 , config
 , octave
@@ -38,7 +37,7 @@ let
     packageName = "${fullLibName}";
     # The name of the octave package ends up being
     # "octave-version-package-version"
-    name = "${octave.name}-${fullLibName}";
+    name = "${octave.pname}-${octave.version}-${fullLibName}";
     inherit src;
 
     OCTAVE_HISTFILE = "/dev/null";
