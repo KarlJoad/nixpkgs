@@ -9,6 +9,10 @@
 }:
 
 let
+  # Need to use sympy 1.5.1 for https://github.com/cbm755/octsympy/issues/1023
+  # It has been addressed, but not merged yet.
+  # In the meantime, we create a Python environment with Python 3, its mpmath
+  # version and sympy 1.5 from python2Packages.
   pythonEnv = (let
       overridenPython = let
         packageOverrides = self: super: {
