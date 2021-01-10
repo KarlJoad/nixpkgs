@@ -114,7 +114,7 @@ makeScope newScope (self:
     instrument-control = callPackage ../development/octave-modules/instrument-control { };
 
     io = callPackage ../development/octave-modules/io {
-      unzip = pkgs.unzip;
+      inherit (pkgs) unzip;
     };
 
     interval = callPackage ../development/octave-modules/interval {
