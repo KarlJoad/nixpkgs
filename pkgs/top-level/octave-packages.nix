@@ -25,7 +25,7 @@ makeScope newScope (self:
     callPackage = self.callPackage;
 
     buildOctaveLibrary = callPackage ../development/interpreters/octave/mk-octave-derivation.nix {
-      inherit pkgs lib stdenv;
+      inherit lib stdenv;
       inherit octave;
     };
 
