@@ -26,7 +26,6 @@ makeScope newScope (self:
 
     buildOctaveLibrary = callPackage ../development/interpreters/octave/mk-octave-derivation.nix {
       inherit pkgs lib stdenv;
-      namePrefix = "${octave.pname}-${octave.version}";
       inherit octave;
     };
 

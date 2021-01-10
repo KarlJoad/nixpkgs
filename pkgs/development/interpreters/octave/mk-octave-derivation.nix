@@ -8,7 +8,6 @@
 , lib
 , stdenv
 , config
-, namePrefix
 , octave
 }:
 
@@ -37,7 +36,9 @@
 let
   self = stdenv.mkDerivation {
     packageName = "${fullLibName}";
-    name = "${namePrefix}-${fullLibName}";
+    # The name of the octave package ends up being
+    # "octave-version-package-version"
+    name = "${octave.name}-${fullLibName}";
     inherit src;
 
     OCTAVE_HISTFILE = "/dev/null";
