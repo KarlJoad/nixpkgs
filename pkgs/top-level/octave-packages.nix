@@ -8,8 +8,7 @@
 # In addition, try to use the same dependencies as the ones octave needs, which
 # should ensure greater compatibility between Octave itself and its packages.
 
-{ pkgs
-, lib
+{ lib
 , stdenv
 , fetchurl
 , newScope
