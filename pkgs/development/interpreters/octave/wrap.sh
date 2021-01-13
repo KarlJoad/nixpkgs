@@ -87,3 +87,25 @@ buildOctavePath() {
 	_addToOctavePath $path
     done
 }
+
+# Adds the bin directories to the PATH variable.
+# Recurses on any paths declared in `propagated-build-inputs`, while avoiding
+# duplicating paths by flagging the directires it has seen in `octavePathsSeen`.
+_addToOctavePath() {
+    local dir="$1"
+    # Stop if we've already visited this path.
+    if [ -n "${octavePathsSeen[$dir]}" ]; then return; fi
+    octavePathsSeen[$dir]=1
+    # addToSearchPath is defined in stdenv/generic/setup.sh. It has the effect
+    # of calling `export program_X=$dir/...:$program_X`.
+    addToSearchPath program_PATH $dir/bin
+    echo "PATH to change to is: $program_PATH"
+
+    # Inspect the propagated inputs (if they exist) and recur on them.
+    local prop="$dir/nix-support/propagated-build-inputs"
+    if [ -e $prop ]; then
+	for new_path in $(cat $prop); do
+	    _addToOctavePath $new_path
+	done
+    fi
+}
