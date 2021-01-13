@@ -224,7 +224,8 @@ makeScope newScope (self:
     struct = callPackage ../development/octave-modules/struct { };
 
     symbolic = callPackage ../development/octave-modules/symbolic {
-      python2Packages = pkgs.python2Packages;
+      inherit (octave) python;
+      inherit (pkgs) python2Packages;
     };
 
     tisean = callPackage ../development/octave-modules/tisean { };
