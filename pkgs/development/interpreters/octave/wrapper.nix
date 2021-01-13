@@ -16,13 +16,17 @@ buildEnv {
     inherit ignoreCollisions;
     extraOutputsToInstall = [ "out" ] ++ extraOutputsToInstall;
 
-    buildInputs = [ makeWrapper texinfo ];
+    buildInputs = [ makeWrapper texinfo wrapOctave ];
 
     # During "build" we must first unlink the /share symlink to octave's /share
     # Then, we can re-symlink the all of octave/share, except for /share/octave
     # in env/share/octave, re-symlink everything from octave/share/octave and then
     # perform the pkg install.
     postBuild = ''
+      . "${makeWrapper}/nix-support/setup-hook"
+      # The `makeWrapper` used here is the one defined in
+      # ${makeWrapper}/nix-support/setup-hook
+
       if [ -L "$out/bin" ]; then
          unlink $out/bin
          mkdir -p "$out/bin"
