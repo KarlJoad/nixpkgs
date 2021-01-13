@@ -67,3 +67,23 @@ wrapOctaveProgramsIn() {
 	done
     fi
 }
+
+# Build the PATH environment variable by walking through the closure of
+# dependencies.
+buildOctavePath() {
+    local octavePath="$1"
+    local packages="$2"
+
+    local pathsToSearch="$octavePath $packages"
+
+    # Create an empty table of Octave paths.
+    declare -A octavePathsSeen=()
+    program_PATH=
+    octavePathsSeen["@octave@"]=1
+    addToSearchPath program_PATH "@octave@/bin"
+    echo "program_PATH to change to is: $program_PATH"
+    for path in $pathsToSearch; do
+	echo "Recurse to propagated-build-input: $path"
+	_addToOctavePath $path
+    done
+}
