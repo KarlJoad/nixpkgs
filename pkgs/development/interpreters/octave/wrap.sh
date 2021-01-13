@@ -1,13 +1,12 @@
 unlinkDirReSymlinkContents() {
     local dirToUnlink="$1"
-    local contentsLocation="$2"
-    echo "Unlink = $dirToUnlink"
-    echo "Contents = $contentsLocation"
+    local origin="$2"
+    local contentsLocation="$3"
 
-    unlink $dirToUnlink
-    mkdir -p $dirToUnlink
-    for f in $contentsLocation/*; do
-        echo "ln -s -t $dirToUnlink $f"
-        ln -s -t "$dirToUnlink" "$f"
+    unlink $dirToUnlink/$contentsLocation
+    mkdir -p $dirToUnlink/$contentsLocation
+    for f in $origin/$contentsLocation/*; do
+        ln -s -t "$dirToUnlink/$contentsLocation" "$f"
     done
 }
+
