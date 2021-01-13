@@ -8,7 +8,8 @@
 # In addition, try to use the same dependencies as the ones octave needs, which
 # should ensure greater compatibility between Octave itself and its packages.
 
-{ lib
+{ pkgs
+, lib
 , stdenv
 , fetchurl
 , newScope
@@ -26,6 +27,11 @@ makeScope newScope (self:
     buildOctaveLibrary = callPackage ../development/interpreters/octave/mk-octave-derivation.nix {
       inherit lib stdenv;
       inherit octave;
+    };
+
+    wrapOctave = callPackage ../development/interpreters/octave/wrap-octave.nix {
+      inherit octave;
+      inherit (pkgs) makeSetupHook makeWrapper;
     };
 
   in {
