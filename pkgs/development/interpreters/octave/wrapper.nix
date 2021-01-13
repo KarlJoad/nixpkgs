@@ -42,24 +42,8 @@ buildEnv {
       # Remove symlinks to the input tarballs, they aren't needed.
       rm $out/*.tar.gz
 
-      if [ -L "$out/share" ]; then
-          unlink "$out/share"
-          mkdir -p "$out/share"
-      fi
+      createOctavePackagesPath $out ${octave}
 
-      for f in ${octave}/share/*; do
-          ln -s -t $out/share $f
-      done
-
-      if [ -L "$out/share/octave" ]; then
-         unlink "$out/share/octave"
-         mkdir -p $out/share/octave
-         for f in ${octave}/share/octave/*; do
-             ln -s -t $out/share/octave $f
-         done
-      fi
-
-      mkdir -p $out/share/octave/octave_packages
       for path in ${stdenv.lib.concatStringsSep " " extraLibs}; do
           if [ -e $path/*.tar.gz ]; then
              $out/bin/octave-cli --eval "pkg local_list $out/.octave_packages; \
