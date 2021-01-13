@@ -44,3 +44,22 @@ addPkgLocalList() {
     echo "pkg local_list $out/.octave_packages" >> "$desiredOut/$siteOctavercStartup"
 }
 
+wrapOctaveProgramsIn() {
+    local dir="$1"
+    local octavePath="$2"
+    local f
+
+    buildOctavePath "$octavePath"
+
+    # Find all regular files in the output directory that are executable.
+    if [ -d "$dir" ]; then
+	find "$dir" -type f -perm -0100 -print0 | while read -d "" f; do
+	    echo "wrapping \`$f'..."
+	    local -a wrap_args=("$f"
+				--prefix PATH ':' "$program_PATH"
+			       )
+	    local -a wrapProgramArgs=("${wrap_args[@]}")
+	    wrapProgram "${wrapProgramArgs[@]}"
+	done
+    fi
+}
