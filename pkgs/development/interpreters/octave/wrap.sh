@@ -44,6 +44,10 @@ addPkgLocalList() {
     echo "pkg local_list $out/.octave_packages" >> "$desiredOut/$siteOctavercStartup"
 }
 
+wrapOctavePrograms() {
+    wrapOctaveProgramsIn "$out/bin" "$out $octavePath"
+}
+
 wrapOctaveProgramsIn() {
     local dir="$1"
     local octavePath="$2"
