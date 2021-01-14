@@ -27,7 +27,7 @@ let
       ps.mpmath
     ]));
 
-in (buildOctavePackage rec {
+in buildOctavePackage rec {
   pname = "symbolic";
   version = "2.9.0";
 
@@ -46,17 +46,4 @@ in (buildOctavePackage rec {
     maintainers = with maintainers; [ KarlJoad ];
     description = "Adds symbolic calculation features to GNU Octave";
   };
-})
-  # .overrideAttrs (oldAttrs: rec {
-#   dontUnpack = false;
-#   buildPhase = ''
-#       substituteInPlace inst/private/defaultpython.m --replace python3 ${pythonEnv}/bin/python
-#     '';
-#   dontInstall = false;
-#   installPhase = ''
-#       mkdir -p $out
-#       # This trickery is needed because Octave expects a single directory inside
-#       # at the top-most level of the tarball.
-#       tar --transform 's,^,${oldAttrs.packageName}/,' -cz * -f $out/${oldAttrs.packageName}.tar.gz
-#     '';
-# })
+}
