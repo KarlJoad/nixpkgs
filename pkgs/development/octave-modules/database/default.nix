@@ -14,6 +14,10 @@ buildOctavePackage rec {
     sha256 = "1c0n76adi0jw6bx62s04vjyda6kb6ca8lzz2vam43vdy10prcq9p";
   };
 
+  propagatedBuildInputs = [
+    postgresql
+  ];
+
   meta = with stdenv.lib; {
     homepage = "https://octave.sourceforge.io/${pname}/index.html";
     license = licenses.gpl3Plus;
