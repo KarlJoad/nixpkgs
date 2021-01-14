@@ -1,9 +1,9 @@
-{ buildOctaveLibrary
+{ buildOctavePackage
 , stdenv
 , fetchurl
 }:
 
-buildOctaveLibrary rec {
+buildOctavePackage rec {
   pname = "struct";
   version = "1.0.16";
 

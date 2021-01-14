@@ -1,10 +1,10 @@
-{ buildOctaveLibrary
+{ buildOctavePackage
 , stdenv
 , fetchurl
 , librsb
 }:
 
-buildOctaveLibrary rec {
+buildOctavePackage rec {
   pname = "sparsersb";
   version = "1.0.8";
 

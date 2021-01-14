@@ -1,9 +1,9 @@
-{ buildOctaveLibrary
+{ buildOctavePackage
 , stdenv
 , fetchurl
 }:
 
-buildOctaveLibrary rec {
+buildOctavePackage rec {
   pname = "fpl";
   version = "1.3.5";
 

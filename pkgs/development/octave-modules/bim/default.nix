@@ -1,11 +1,11 @@
-{ buildOctaveLibrary
+{ buildOctavePackage
 , stdenv
 , fetchurl
 , fpl
 , msh
 }:
 
-buildOctaveLibrary rec {
+buildOctavePackage rec {
   pname = "bim";
   version = "1.1.5";
 

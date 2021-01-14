@@ -1,11 +1,11 @@
-{ buildOctaveLibrary
+{ buildOctavePackage
 , stdenv
 , fetchurl
 , io # >= 2.2.7
 , geometry # >= 4.0.0
 }:
 
-buildOctaveLibrary rec {
+buildOctavePackage rec {
   pname = "mapping";
   version = "1.4.1";
 

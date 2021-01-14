@@ -1,4 +1,4 @@
-{ buildOctaveLibrary
+{ buildOctavePackage
 , stdenv
 , fetchurl
 , octave
@@ -27,7 +27,7 @@ let
       ps.mpmath
     ]));
 
-in (buildOctaveLibrary rec {
+in (buildOctavePackage rec {
   pname = "symbolic";
   version = "2.9.0";
 

@@ -1,9 +1,9 @@
-{ buildOctaveLibrary
+{ buildOctavePackage
 , stdenv
 , fetchurl
 }:
 
-buildOctaveLibrary rec {
+buildOctavePackage rec {
   pname = "image";
   version = "2.12.0";
 

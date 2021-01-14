@@ -1,10 +1,10 @@
-{ buildOctaveLibrary
+{ buildOctavePackage
 , stdenv
 , fetchurl
 , gslPackage
 }:
 
-buildOctaveLibrary rec {
+buildOctavePackage rec {
   pname = "gsl";
   version = "2.1.1";
 

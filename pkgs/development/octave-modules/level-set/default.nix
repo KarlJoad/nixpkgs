@@ -1,9 +1,9 @@
-{ buildOctaveLibrary
+{ buildOctavePackage
 , stdenv
 , fetchurl
 }:
 
-buildOctaveLibrary rec {
+buildOctavePackage rec {
   pname = "level-set";
   version = "0.3.0";
 

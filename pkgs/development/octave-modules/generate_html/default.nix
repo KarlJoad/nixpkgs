@@ -1,10 +1,10 @@
-{ buildOctaveLibrary
+{ buildOctavePackage
 , stdenv
 , fetchurl
 , texinfo
 }:
 
-buildOctaveLibrary rec {
+buildOctavePackage rec {
   pname = "generate_html";
   version = "0.3.2";
 

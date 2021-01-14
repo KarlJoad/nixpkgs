@@ -1,11 +1,11 @@
-{ buildOctaveLibrary
+{ buildOctavePackage
 , stdenv
 , fetchurl
 , signal
 , hdf5
 }:
 
-buildOctaveLibrary rec {
+buildOctavePackage rec {
   pname = "communications";
   version = "1.2.2";
 

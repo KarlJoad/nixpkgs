@@ -1,11 +1,11 @@
-{ buildOctaveLibrary
+{ buildOctavePackage
 , stdenv
 , fetchurl
 , ffmpeg
 , libav
 }:
 
-buildOctaveLibrary rec {
+buildOctavePackage rec {
   pname = "video";
   version = "2.0.0";
 

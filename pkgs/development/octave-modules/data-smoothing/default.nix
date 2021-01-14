@@ -1,10 +1,10 @@
-{ buildOctaveLibrary
+{ buildOctavePackage
 , stdenv
 , fetchurl
 , optim
 }:
 
-buildOctaveLibrary rec {
+buildOctavePackage rec {
   pname = "data-smoothing";
   version = "1.3.0";
 

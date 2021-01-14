@@ -1,4 +1,4 @@
-{ buildOctaveLibrary
+{ buildOctavePackage
 , stdenv
 , fetchurl
 , enableJava ? true
@@ -6,7 +6,7 @@
 , unzip
 }:
 
-buildOctaveLibrary rec {
+buildOctavePackage rec {
   pname = "io";
   version = "2.6.3";
 

@@ -1,10 +1,10 @@
-{ buildOctaveLibrary
+{ buildOctavePackage
 , stdenv
 , fetchurl
 , netcdfPackage
 }:
 
-buildOctaveLibrary rec {
+buildOctavePackage rec {
   pname = "netcdf";
   version = "1.0.14";
 

@@ -1,10 +1,10 @@
-{ buildOctaveLibrary
+{ buildOctavePackage
 , stdenv
 , fetchurl
 , rtmidi
 }:
 
-buildOctaveLibrary rec {
+buildOctavePackage rec {
   pname = "audio";
   version = "2.0.2";
 

@@ -1,11 +1,11 @@
-{ buildOctaveLibrary
+{ buildOctavePackage
 , stdenv
 , fetchurl
 , pkg-config
 , nettle
 }:
 
-buildOctaveLibrary rec {
+buildOctavePackage rec {
   pname = "general";
   version = "2.1.1";
 

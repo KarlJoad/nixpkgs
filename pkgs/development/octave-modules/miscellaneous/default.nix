@@ -1,4 +1,4 @@
-{ buildOctaveLibrary
+{ buildOctavePackage
 , stdenv
 , fetchurl
 # Build-time dependencies
@@ -7,7 +7,7 @@
 , units
 }:
 
-buildOctaveLibrary rec {
+buildOctavePackage rec {
   pname = "miscellaneous";
   version = "1.3.0";
 

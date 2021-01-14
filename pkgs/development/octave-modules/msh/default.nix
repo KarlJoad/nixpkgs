@@ -1,4 +1,4 @@
-{ buildOctaveLibrary
+{ buildOctavePackage
 , stdenv
 , fetchurl
 # Octave Dependencies
@@ -9,7 +9,7 @@
 , dolfin
 }:
 
-buildOctaveLibrary rec {
+buildOctavePackage rec {
   pname = "msh";
   version = "1.0.10";
 

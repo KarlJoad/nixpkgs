@@ -1,10 +1,10 @@
-{ buildOctaveLibrary
+{ buildOctavePackage
 , stdenv
 , fetchurl
 , nan # > 3.0.0
 }:
 
-buildOctaveLibrary rec {
+buildOctavePackage rec {
   pname = "tsa";
   version = "4.6.2";
 

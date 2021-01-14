@@ -1,4 +1,4 @@
-{ buildOctaveLibrary
+{ buildOctavePackage
 , stdenv
 , fetchurl
 , struct
@@ -7,7 +7,7 @@
 , blas
 }:
 
-buildOctaveLibrary rec {
+buildOctavePackage rec {
   pname = "optim";
   version = "1.6.0";
 

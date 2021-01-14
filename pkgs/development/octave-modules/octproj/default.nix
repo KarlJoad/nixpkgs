@@ -1,10 +1,10 @@
-{ buildOctaveLibrary
+{ buildOctavePackage
 , stdenv
 , fetchurl
 , proj # >= 6.3.0
 }:
 
-buildOctaveLibrary rec {
+buildOctavePackage rec {
   pname = "octproj";
   version = "2.0.1";
 

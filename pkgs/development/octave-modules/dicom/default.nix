@@ -1,10 +1,10 @@
-{ buildOctaveLibrary
+{ buildOctavePackage
 , stdenv
 , fetchurl
 , libgdcm
 }:
 
-buildOctaveLibrary rec {
+buildOctavePackage rec {
   pname = "dicom";
   version = "0.4.0";
 

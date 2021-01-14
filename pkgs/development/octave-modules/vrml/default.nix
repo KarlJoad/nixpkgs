@@ -1,4 +1,4 @@
-{ buildOctaveLibrary
+{ buildOctavePackage
 , stdenv
 , fetchurl
 # Octave dependencies
@@ -10,7 +10,7 @@
 , freewrl
 }:
 
-buildOctaveLibrary rec {
+buildOctavePackage rec {
   pname = "vrml";
   version = "1.0.13";
 

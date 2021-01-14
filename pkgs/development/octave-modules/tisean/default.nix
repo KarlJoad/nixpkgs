@@ -1,4 +1,4 @@
-{ buildOctaveLibrary
+{ buildOctavePackage
 , stdenv
 , fetchurl
 # Octave dependencies
@@ -7,7 +7,7 @@
 , gfortran
 }:
 
-buildOctaveLibrary rec {
+buildOctavePackage rec {
   pname = "tisean";
   version = "0.2.3";
 

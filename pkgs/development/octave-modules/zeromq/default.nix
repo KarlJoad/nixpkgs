@@ -1,10 +1,10 @@
-{ buildOctaveLibrary
+{ buildOctavePackage
 , stdenv
 , fetchurl
 , zeromq
 }:
 
-buildOctaveLibrary rec {
+buildOctavePackage rec {
   pname = "zeromq";
   version = "1.5.2";
 

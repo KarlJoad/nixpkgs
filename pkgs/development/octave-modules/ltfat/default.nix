@@ -1,4 +1,4 @@
-{ buildOctaveLibrary
+{ buildOctavePackage
 , stdenv
 , fetchurl
 , fftw
@@ -11,7 +11,7 @@
 , jre
 }:
 
-buildOctaveLibrary rec {
+buildOctavePackage rec {
   pname = "ltfat";
   version = "2.3.1";
 

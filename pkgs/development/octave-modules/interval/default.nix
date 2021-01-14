@@ -1,11 +1,11 @@
-{ buildOctaveLibrary
+{ buildOctavePackage
 , stdenv
 , fetchurl
 , mpfr
 , libmpfr
 }:
 
-buildOctaveLibrary rec {
+buildOctavePackage rec {
   pname = "interval";
   version = "3.2.0";
 

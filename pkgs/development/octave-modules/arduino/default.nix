@@ -1,11 +1,11 @@
-{ buildOctaveLibrary
+{ buildOctavePackage
 , stdenv
 , fetchurl
 , instrument-control
 , arduino
 }:
 
-buildOctaveLibrary rec {
+buildOctavePackage rec {
   pname = "arduino";
   version = "0.6.0";
 

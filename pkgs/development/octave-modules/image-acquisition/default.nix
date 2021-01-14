@@ -1,11 +1,11 @@
-{ buildOctaveLibrary
+{ buildOctavePackage
 , stdenv
 , fetchurl
 , libv4l
 , libfltk
 }:
 
-buildOctaveLibrary rec {
+buildOctavePackage rec {
   pname = "image-acquisition";
   version = "0.2.2";
 

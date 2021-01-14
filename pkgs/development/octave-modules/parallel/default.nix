@@ -1,4 +1,4 @@
-{ buildOctaveLibrary
+{ buildOctavePackage
 , stdenv
 , fetchurl
 , struct
@@ -6,7 +6,7 @@
 , pkg-config
 }:
 
-buildOctaveLibrary rec {
+buildOctavePackage rec {
   pname = "parallel";
   version = "4.0.0";
 

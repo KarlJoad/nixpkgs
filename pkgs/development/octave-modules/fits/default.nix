@@ -1,10 +1,10 @@
-{ buildOctaveLibrary
+{ buildOctavePackage
 , stdenv
 , fetchurl
 , cfitsio
 }:
 
-buildOctaveLibrary rec {
+buildOctavePackage rec {
   pname = "fits";
   version = "1.0.7";
 

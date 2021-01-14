@@ -1,11 +1,11 @@
-{ buildOctaveLibrary
+{ buildOctavePackage
 , stdenv
 , fetchurl
 , struct
 , postgresql
 }:
 
-buildOctaveLibrary rec {
+buildOctavePackage rec {
   pname = "database";
   version = "2.4.4";
 

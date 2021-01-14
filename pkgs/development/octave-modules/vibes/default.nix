@@ -1,10 +1,10 @@
-{ buildOctaveLibrary
+{ buildOctavePackage
 , stdenv
 , fetchurl
 , vibes
 }:
 
-buildOctaveLibrary rec {
+buildOctavePackage rec {
   pname = "vibes";
   version = "0.2.0";
 

@@ -1,10 +1,10 @@
-{ buildOctaveLibrary
+{ buildOctavePackage
 , stdenv
 , fetchurl
 , matgeom
 }:
 
-buildOctaveLibrary rec {
+buildOctavePackage rec {
   pname = "geometry";
   version = "4.0.0";
 

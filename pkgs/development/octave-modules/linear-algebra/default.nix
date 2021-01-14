@@ -1,10 +1,10 @@
-{ buildOctaveLibrary
+{ buildOctavePackage
 , stdenv
 , fetchurl
 , octave
 }:
 
-buildOctaveLibrary rec {
+buildOctavePackage rec {
   pname = "linear-algebra";
   version = "2.2.3";
 

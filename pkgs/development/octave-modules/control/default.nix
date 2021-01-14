@@ -1,4 +1,4 @@
-{ buildOctaveLibrary
+{ buildOctavePackage
 , stdenv
 , fetchurl
 , autoreconfHook
@@ -6,7 +6,7 @@
 , lapack, blas
 }:
 
-buildOctaveLibrary rec {
+buildOctavePackage rec {
   pname = "control";
   version = "3.2.0";
 

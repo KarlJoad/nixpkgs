@@ -1,4 +1,4 @@
-{ buildOctaveLibrary
+{ buildOctavePackage
 , stdenv
 , fetchurl
 , dolfin
@@ -6,7 +6,7 @@
 , pkg-config
 }:
 
-buildOctaveLibrary rec {
+buildOctavePackage rec {
   pname = "fem-fenics";
   version = "0.0.5";
 

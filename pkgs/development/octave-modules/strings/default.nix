@@ -1,10 +1,10 @@
-{ buildOctaveLibrary
+{ buildOctavePackage
 , stdenv
 , fetchurl
 , pcre
 }:
 
-buildOctaveLibrary rec {
+buildOctavePackage rec {
   pname = "strings";
   version = "1.2.0";
 

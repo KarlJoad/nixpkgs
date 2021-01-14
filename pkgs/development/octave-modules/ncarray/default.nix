@@ -1,11 +1,11 @@
-{ buildOctaveLibrary
+{ buildOctavePackage
 , stdenv
 , fetchurl
 , netcdf
 , statistics
 }:
 
-buildOctaveLibrary rec {
+buildOctavePackage rec {
   pname = "ncarray";
   version = "1.0.4";
 

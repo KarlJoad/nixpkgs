@@ -1,10 +1,10 @@
-{ buildOctaveLibrary
+{ buildOctavePackage
 , stdenv
 , fetchurl
 , optim
 }:
 
-buildOctaveLibrary rec {
+buildOctavePackage rec {
   pname = "econometrics";
   version = "1.1.2";
 
