@@ -27,7 +27,7 @@ makeScope newScope (self:
 
     callPackage = self.callPackage;
 
-    buildOctaveLibrary = callPackage ../development/interpreters/octave/mk-octave-derivation.nix {
+    buildOctavePackage = callPackage ../development/interpreters/octave/build-octave-package.nix {
       inherit lib stdenv;
       inherit octave;
     };
@@ -39,7 +39,7 @@ makeScope newScope (self:
 
   in {
 
-    inherit callPackage buildOctaveLibrary;
+    inherit callPackage buildOctavePackage;
 
     arduino = callPackage ../development/octave-modules/arduino {
       arduino = pkgs.arduino;
