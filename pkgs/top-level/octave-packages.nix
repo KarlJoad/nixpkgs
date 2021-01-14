@@ -32,6 +32,11 @@ makeScope newScope (self:
       inherit octave;
     };
 
+    wrapOctave = callPackage ../development/interpreters/octave/wrap-octave.nix {
+      inherit octave;
+      inherit (pkgs) makeSetupHook makeWrapper;
+    };
+
   in {
 
     inherit callPackage buildOctaveLibrary;
