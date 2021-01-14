@@ -8,6 +8,7 @@
 , stdenv
 , config
 , octave
+, texinfo
 }:
 
 # The inner function contains information required to build the individual
@@ -51,7 +52,7 @@ let
 
     inherit buildInputs;
 
-    propagatedBuildInputs = propagatedBuildInputs;
+    propagatedBuildInputs = propagatedBuildInputs ++ [ texinfo ];
 
     buildPhase = ''
       runHook preBuild
