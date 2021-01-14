@@ -23,7 +23,7 @@ with lib;
 
 makeScope newScope (self:
   let
-    inherit (octave) blas lapack gfortran python texinfo gnuplot;
+    inherit (octave) blas lapack gfortran python texinfo gnuplot jdk;
 
     callPackage = self.callPackage;
 
