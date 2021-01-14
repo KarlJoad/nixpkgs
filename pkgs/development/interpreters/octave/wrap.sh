@@ -54,7 +54,7 @@ wrapOctaveProgramsIn() {
     local pkgs="$3"
     local f
 
-    buildOctavePath "$octavePath"
+    buildOctavePath "$octavePath" "$pkgs"
 
     # Find all regular files in the output directory that are executable.
     if [ -d "$dir" ]; then
