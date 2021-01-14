@@ -51,6 +51,7 @@ wrapOctavePrograms() {
 wrapOctaveProgramsIn() {
     local dir="$1"
     local octavePath="$2"
+    local pkgs="$3"
     local f
 
     buildOctavePath "$octavePath"
