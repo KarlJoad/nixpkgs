@@ -45,7 +45,7 @@ addPkgLocalList() {
 }
 
 wrapOctavePrograms() {
-    wrapOctaveProgramsIn "$out/bin" "$out $octavePath"
+    wrapOctaveProgramsIn "$out/bin" "$out" "$@"
 }
 
 wrapOctaveProgramsIn() {
