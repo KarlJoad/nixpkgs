@@ -80,7 +80,9 @@ buildOctavePath() {
     # Create an empty table of Octave paths.
     declare -A octavePathsSeen=()
     program_PATH=
+    octavePathsSeen["$out"]=1
     octavePathsSeen["@octave@"]=1
+    addToSearchPath program_PATH "$out/bin"
     addToSearchPath program_PATH "@octave@/bin"
     echo "program_PATH to change to is: $program_PATH"
     for path in $pathsToSearch; do
