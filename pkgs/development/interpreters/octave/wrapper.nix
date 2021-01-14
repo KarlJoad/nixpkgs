@@ -57,7 +57,7 @@ buildEnv {
       # To point to the new local_list in $out
       addPkgLocalList $out ${octave}
 
-      wrapOctavePrograms
+      wrapOctavePrograms "${stdenv.lib.concatStringsSep " " extraLibs}"
      '' + postBuild;
 
     inherit (octave) meta;
