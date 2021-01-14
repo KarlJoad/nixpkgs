@@ -204,7 +204,7 @@ in mkDerivation rec {
   passthru = rec {
     octave = self;
     sitePath = "share/octave/${version}/site";
-    sitePackages = "share/octave/octave_packages";
+    octPkgsPath = "share/octave/octave_packages";
     blas = blas';
     lapack = lapack';
     qrupdate = qrupdate';
@@ -223,7 +223,6 @@ in mkDerivation rec {
     withPackages = import ./with-packages.nix { inherit buildEnv octavePackages; };
     pkgs = octavePackages;
     interpreter = "${self}/bin/octave";
-    octPkgsPath = "share/octave/octave_packages";
   };
 
   meta = {
