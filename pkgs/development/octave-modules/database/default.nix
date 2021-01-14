@@ -23,7 +23,5 @@ buildOctavePackage rec {
     license = licenses.gpl3Plus;
     maintainers = with maintainers; [ KarlJoad ];
     description = "Interface to SQL databases, currently only postgresql using libpq";
-    # Marked this way until KarlJoad gets postgresql as a runtime dependency.
-    broken = true;
   };
 }
