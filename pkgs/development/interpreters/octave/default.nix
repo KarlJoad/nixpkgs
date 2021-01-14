@@ -213,7 +213,7 @@ let
       inherit jdk;
       inherit python;
       inherit enableQt enableJIT enableReadline enableJava;
-      buildEnv = callPackage ./wrapper.nix {
+      buildEnv = callPackage ./build-env.nix {
         octave = self;
         inherit octavePackages wrapOctave;
       };
