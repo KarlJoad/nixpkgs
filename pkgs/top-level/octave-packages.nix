@@ -137,11 +137,8 @@ makeScope newScope (self:
     lssa = callPackage ../development/octave-modules/lssa { };
 
     ltfat = callPackage ../development/octave-modules/ltfat {
-      fftw = octave.fftw;
-      fftwSinglePrec = octave.fftwSinglePrec;
-      fftwFloat = pkgs.fftwFloat;
-      fftwLongDouble = pkgs.fftwLongDouble;
-      portaudio = octave.portaudio;
+      inherit (octave) fftw fftwSinglePrec portaudio;
+      inherit (pkgs) fftwFloat fftwLongDouble;
       jre = octave.jdk;
     };
 
