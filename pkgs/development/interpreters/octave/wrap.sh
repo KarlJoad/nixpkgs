@@ -1,3 +1,7 @@
+# Unlinks a directory (given as the first argument), and re-creates that
+# directory as an actual directory. Then descends into the directory of
+# the same name in the origin (arg_2/arg_3) and symlinks the contents of
+# that directory into the passed end-location.
 unlinkDirReSymlinkContents() {
     local dirToUnlink="$1"
     local origin="$2"
@@ -10,6 +14,8 @@ unlinkDirReSymlinkContents() {
     done
 }
 
+# Using unlinkDirReSymlinkContents, un-symlinks directories down to
+# $out/share/octave, and then creates the octave_packages directory.
 createOctavePackagesPath() {
     local desiredOut=$1
     local origin=$2
@@ -26,6 +32,10 @@ createOctavePackagesPath() {
     mkdir -p "$desiredOut/share/octave/octave_packages"
 }
 
+# First, descends down to $out/share/octave/site/m/startup/octaverc, and
+# copies that start-up file. Once done, it performs a `chmod` to allow
+# writing. Lastly, it `echo`s the location of the locally installed packages
+# to the startup file, allowing octave to discover installed packages.
 addPkgLocalList() {
     local desiredOut=$1
     local origin=$2
@@ -44,10 +54,16 @@ addPkgLocalList() {
     echo "pkg local_list $out/.octave_packages" >> "$desiredOut/$siteOctavercStartup"
 }
 
+# Wrapper function for wrapOctaveProgramsIn. Takes one argument, a
+# space-delimited string of packages' paths that will be installed.
 wrapOctavePrograms() {
     wrapOctaveProgramsIn "$out/bin" "$out" "$@"
 }
 
+# Wraps all octave programs in $out/bin with all the propagated inputs that
+# a particular package requires. $1 is the directory to look for binaries in
+# to wrap. $2 is the path to the octave ENVIRONMENT. $3 is the space-delimited
+# string of packages.
 wrapOctaveProgramsIn() {
     local dir="$1"
     local octavePath="$2"
@@ -70,7 +86,9 @@ wrapOctaveProgramsIn() {
 }
 
 # Build the PATH environment variable by walking through the closure of
-# dependencies.
+# dependencies. Starts by constructing the `program_PATH` variable with the
+# environment's path, then adding the original octave's location, and marking
+# them in `octavePathsSeen`.
 buildOctavePath() {
     local octavePath="$1"
     local packages="$2"
@@ -90,7 +108,7 @@ buildOctavePath() {
     done
 }
 
-# Adds the bin directories to the PATH variable.
+# Adds the bin directories to the program_PATH variable.
 # Recurses on any paths declared in `propagated-build-inputs`, while avoiding
 # duplicating paths by flagging the directires it has seen in `octavePathsSeen`.
 _addToOctavePath() {
@@ -99,7 +117,7 @@ _addToOctavePath() {
     if [ -n "${octavePathsSeen[$dir]}" ]; then return; fi
     octavePathsSeen[$dir]=1
     # addToSearchPath is defined in stdenv/generic/setup.sh. It has the effect
-    # of calling `export program_X=$dir/...:$program_X`.
+    # of calling `export X=$dir/...:$X`.
     addToSearchPath program_PATH $dir/bin
 
     # Inspect the propagated inputs (if they exist) and recur on them.
