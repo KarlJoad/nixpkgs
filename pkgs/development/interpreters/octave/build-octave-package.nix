@@ -9,6 +9,8 @@
 , config
 , octave
 , texinfo
+, computeRequiredOctavePackages
+, octaveWriteRequiredOctavePackagesHook
 }:
 
 # The inner function contains information required to build the individual
