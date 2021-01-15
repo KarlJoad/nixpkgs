@@ -10,7 +10,10 @@
 }:
 
 # Create an octave executable that knows about additional packages
-buildEnv {
+let
+  packages = computeRequiredOctavePackages extraLibs;
+
+in buildEnv {
     name = "${octave.name}-env";
     paths = extraLibs ++ [ octave ];
 
