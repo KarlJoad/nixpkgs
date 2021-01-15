@@ -1,7 +1,6 @@
 { buildOctavePackage
 , stdenv
 , fetchurl
-, octave
 }:
 
 buildOctavePackage rec {

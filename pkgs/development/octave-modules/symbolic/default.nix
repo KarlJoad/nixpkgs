@@ -1,11 +1,9 @@
 { buildOctavePackage
 , stdenv
 , fetchurl
-, octave
 , gnuplot
 , python
 , python2Packages
-, texinfo
 }:
 
 let

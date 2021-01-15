@@ -1,7 +1,6 @@
 { buildOctavePackage
 , stdenv
 , fetchurl
-, texinfo
 }:
 
 buildOctavePackage rec {
