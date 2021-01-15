@@ -2,6 +2,7 @@
 , makeWrapper, texinfo
 , octavePackages
 , wrapOctave
+, computeRequiredOctavePackages
 , extraLibs ? []
 , extraOutputsToInstall ? []
 , postBuild ? ""
