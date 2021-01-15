@@ -50,6 +50,9 @@ makeScope newScope (self:
 
     inherit callPackage buildOctavePackage computeRequiredOctavePackages;
 
+    inherit (callPackage ../development/interpreters/octave/hooks { })
+      octaveWriteRequiredOctavePackagesHook;
+
     arduino = callPackage ../development/octave-modules/arduino {
       inherit (pkgs) arduino;
       # Full arduino right now. Might be able to use pkgs.arduino-core
