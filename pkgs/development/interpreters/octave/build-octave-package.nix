@@ -43,6 +43,11 @@ let
 
     OCTAVE_HISTFILE = "/dev/null";
 
+    # This states that any package built with the function that this returns
+    # will be an octave package. This is used for ensuring other octave
+    # packages are installed into octave during the environment building phase.
+    isOctavePackage = true;
+
     dontUnpack = true;
 
     nativeBuildInputs = [
