@@ -29,6 +29,14 @@
 # C can import package A propagated by B
 , propagatedBuildInputs ? []
 
+# Octave packages that are required at runtime for this one.
+# These behave similarly to propagatedBuildInputs, where if
+# package A is needed by B, and C needs B, then C also requires A.
+# The main difference between these and propagatedBuildInputs is
+# during the package's installation into octave, where all
+# requiredOctavePackages are ALSO installed into octave.
+, requiredOctavePackages ? []
+
 , meta ? {}
 
 , passthru ? {}
@@ -36,6 +44,8 @@
 , ... } @ attrs:
 
 let
+  requiredOctavePackages' = computeRequiredOctavePackages requiredOctavePackages;
+
   self = stdenv.mkDerivation {
     packageName = "${fullLibName}";
     # The name of the octave package ends up being
@@ -52,13 +62,15 @@ let
 
     dontUnpack = true;
 
+    requiredOctavePackages = requiredOctavePackages';
+
     nativeBuildInputs = [
       octave
       octaveWriteRequiredOctavePackagesHook
     ]
     ++ nativeBuildInputs;
 
-    inherit buildInputs;
+    buildInputs = buildInputs ++ requiredOctavePackages';
 
     propagatedBuildInputs = propagatedBuildInputs ++ [ texinfo ];
 
