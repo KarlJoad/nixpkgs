@@ -23,7 +23,5 @@ buildOctavePackage rec {
       general as possible, but also contains convenience functions for generating
       a set of pages for entire packages.
     '';
-    # Marked this way until KarlJoad gets makeinfo/texinfo as a runtime dependency.
-    broken = true;
   };
 }
