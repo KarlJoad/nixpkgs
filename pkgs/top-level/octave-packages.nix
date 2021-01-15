@@ -37,6 +37,14 @@ makeScope newScope (self:
       inherit (pkgs) makeSetupHook makeWrapper;
     };
 
+    # Given a list of required Octave package derivations, get a list of
+    # ALL required Octave packages needed for the ones specified to run.
+    computeRequiredOctavePackages = drvs: let
+      # Check whether a derivation is an octave package
+      hasOctavePackage = drv: drv?isOctavePackage;
+      packages = filter hasOctavePackage drvs;
+    in unique (packages ++ concatLists (catAttrs "requiredOctavePackages" packages));
+
   in {
 
     inherit callPackage buildOctavePackage;
