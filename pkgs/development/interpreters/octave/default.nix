@@ -196,8 +196,8 @@ let
     # Keep a copy of the octave tests detailed results in the output
     # derivation, because someone may care
     postInstall = ''
-    cp test/fntests.log $out/share/octave/${pname}-${version}-fntests.log || true
-  '';
+      cp test/fntests.log $out/share/octave/${pname}-${version}-fntests.log || true
+    '';
 
     passthru = rec {
       octave = self;
