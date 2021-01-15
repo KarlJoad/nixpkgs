@@ -54,6 +54,7 @@ let
 
     nativeBuildInputs = [
       octave
+      octaveWriteRequiredOctavePackagesHook
     ]
     ++ nativeBuildInputs;
 
