@@ -75,13 +75,13 @@ wrapOctaveProgramsIn() {
 
     # Find all regular files in the output directory that are executable.
     if [ -d "$dir" ]; then
-    find "$dir" -type f -perm -0100 -print0 | while read -d "" f; do
-        echo "wrapping \`$f'..."
-        local -a wrap_args=("$f"
+        find "$dir" -type f -perm -0100 -print0 | while read -d "" f; do
+            echo "wrapping \`$f'..."
+            local -a wrap_args=("$f"
                 --prefix PATH ':' "$program_PATH"
                    )
-        local -a wrapProgramArgs=("${wrap_args[@]}")
-        wrapProgram "${wrapProgramArgs[@]}"
+            local -a wrapProgramArgs=("${wrap_args[@]}")
+            wrapProgram "${wrapProgramArgs[@]}"
     done
     fi
 }
@@ -116,14 +116,14 @@ _addToOctavePath() {
     local dir="$1"
     # Stop if we've already visited this path.
     if [ -n "${octavePathsSeen[$dir]}" ]; then return; fi
-        octavePathsSeen[$dir]=1
-        # addToSearchPath is defined in stdenv/generic/setup.sh. It has the effect
-        # of calling `export X=$dir/...:$X`.
-        addToSearchPath program_PATH $dir/bin
+    octavePathsSeen[$dir]=1
+    # addToSearchPath is defined in stdenv/generic/setup.sh. It has the effect
+    # of calling `export X=$dir/...:$X`.
+    addToSearchPath program_PATH $dir/bin
 
-        # Inspect the propagated inputs (if they exist) and recur on them.
-        local prop="$dir/nix-support/propagated-build-inputs"
-        if [ -e $prop ]; then
+    # Inspect the propagated inputs (if they exist) and recur on them.
+    local prop="$dir/nix-support/propagated-build-inputs"
+    if [ -e $prop ]; then
         for new_path in $(cat $prop); do
             _addToOctavePath $new_path
         done
