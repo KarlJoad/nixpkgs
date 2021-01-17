@@ -13,7 +13,13 @@ buildOctavePackage rec {
     sha256 = "1mb8gb0r8kky47ap85h9qqdvs40mjp3ya0nkh45gqhy67ml06paq";
   };
 
-  buildInputs = [
+  # The sed changes below allow for the package to be compiled.
+  patchPhase = ''
+    sed -i s/"error(errorText)"/"error(\"%s\", errorText)"/g src/*.cc
+    sed -i s/"warning(errorText)"/"warning(\"%s\", errorText)"/g src/*.cc
+  '';
+
+  propagatedBuildInputs = [
     proj
   ];
 
@@ -22,8 +28,5 @@ buildOctavePackage rec {
     license = licenses.gpl3Plus;
     maintainers = with maintainers; [ KarlJoad ];
     description = "GNU Octave bindings to PROJ library for cartographic projections and CRS transformations";
-    # Marked this way until KarlJoad gets proj as a runtime dependency.
-    # Marked this way because of build error "_op_fwd.cc:139:23: error: format not a string literal and no format arguments [-Werror=format-security]"
-    broken = true;
   };
 }
