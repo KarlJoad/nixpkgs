@@ -1,8 +1,9 @@
 { buildOctavePackage
 , lib
 , fetchurl
-, termcap
-, libncurses # >= 5
+# Build-time dependencies
+, mlterm
+, ncurses # >= 5
 , units
 }:
 
@@ -16,8 +17,11 @@ buildOctavePackage rec {
   };
 
   buildInputs = [
-    termcap
-    libncurses
+    mlterm
+    ncurses
+  ];
+
+  propagatedBuildInputs = [
     units
   ];
 
@@ -26,7 +30,5 @@ buildOctavePackage rec {
     license = licenses.gpl3Plus;
     maintainers = with maintainers; [ KarlJoad ];
     description = "Miscellaneous tools that don't fit somewhere else";
-    # Marked this way until units is a runtime dependency.
-    broken = true;
   };
 }
