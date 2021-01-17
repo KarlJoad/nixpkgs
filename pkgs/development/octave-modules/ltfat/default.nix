@@ -20,6 +20,11 @@ buildOctavePackage rec {
     sha256 = "0gghh5a4w649ff776wvidfvqas87m0n7rqs960pid1d11bnyqqrh";
   };
 
+  patches = [
+    # Fixes a syntax error with performing multiplication.
+    ./syntax-error.patch
+  ];
+
   buildInputs = [
     fftw
     fftwSinglePrec
@@ -45,10 +50,5 @@ buildOctavePackage rec {
       Gabor and wavelet transforms along with routines for constructing windows
       (filter prototypes) and routines for manipulating coefficients.
     '';
-    broken = true;
-    # During a simple build, I received the following error while building documentation.
-    # error: parse error near line 153 of file /nix/store/hash-octave-6.1.0-env/share/octave/octave_packages/ltfat-2.3.1/nonstatgab/nsdgt.m
-    # syntax error times,f(win_range,:),g{ii}(idx));
-    # Marking as broken until I resolve it.
   };
 }
