@@ -101,7 +101,7 @@ makeScope newScope (self:
     };
 
     fits = callPackage ../development/octave-modules/fits {
-      cfitsio = pkgs.cfitsio;
+      inherit (pkgs) cfitsio pkg-config;
     };
 
     financial = callPackage ../development/octave-modules/financial { };
