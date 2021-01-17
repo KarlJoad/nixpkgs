@@ -77,8 +77,12 @@ let
     buildPhase = ''
       runHook preBuild
 
+      # This trickery is needed because Octave expects a single directory inside
+      # at the top-most level of the tarball.
+      tar --transform 's,^,${fullLibName}/,' -cz * -f ${fullLibName}.tar.gz
+
       mkdir -p $out
-      octave-cli --eval "pkg build $out $src"
+      octave-cli --eval "pkg build $out ${fullLibName}.tar.gz"
 
       runHook postBuild
     '';
