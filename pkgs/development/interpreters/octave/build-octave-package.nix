@@ -61,7 +61,6 @@ let
     # packages are installed into octave during the environment building phase.
     isOctavePackage = true;
 
-    dontUnpack = true;
 
     requiredOctavePackages = requiredOctavePackages';
 
