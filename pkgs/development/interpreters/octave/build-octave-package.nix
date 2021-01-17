@@ -19,14 +19,15 @@
 
 , src
 
-# Build-time dependencies for the package
+# Build-time dependencies for the package, which were compiled for the system compiling this.
 , nativeBuildInputs ? []
 
-# Run-time dependencies for the package
+# Build-time dependencies for the package, which may not have been compiled for the system compiling this.
 , buildInputs ? []
 
 # Propagate build dependencies so in case we have A -> B -> C,
 # C can import package A propagated by B
+# Run-time dependencies for the package.
 , propagatedBuildInputs ? []
 
 # Octave packages that are required at runtime for this one.
