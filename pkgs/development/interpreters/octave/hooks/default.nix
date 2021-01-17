@@ -6,8 +6,8 @@
 }:
 
 rec {
-  octaveWriteRequiredOctavePackagesHook = callPackage ({ }:
+  writeRequiredOctavePackagesHook = callPackage ({ }:
     makeSetupHook {
-      name = "octave-write-required-octave-packages-hook";
-    } ./octave-write-required-octave-packages-hook.sh) {};
+      name = "write-required-octave-packages-hook";
+    } ./write-required-octave-packages-hook.sh) {};
 }
