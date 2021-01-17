@@ -14,7 +14,7 @@ buildOctavePackage rec {
   };
 
   meta = with lib; {
-    homepage = "https://octave.sourceforge.io/${pname}/index.html";
+    homepage = "https://octave.sourceforge.io/dicom/index.html";
     license = licenses.gpl3Plus;
     maintainers = with maintainers; [ KarlJoad ];
     description = "Digital communications in medicine (DICOM) file io";

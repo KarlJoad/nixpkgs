@@ -18,7 +18,7 @@ buildOctavePackage rec {
   ];
 
   meta = with lib; {
-    homepage = "https://octave.sourceforge.io/${pname}/index.html";
+    homepage = "https://octave.sourceforge.io/nan/index.html";
     license = licenses.gpl3Plus;
     maintainers = with maintainers; [ KarlJoad ];
     description = "A statistics and machine learning toolbox for data with and w/o missing values";

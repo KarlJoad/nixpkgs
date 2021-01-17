@@ -13,7 +13,7 @@ buildOctavePackage rec {
   };
 
   meta = with lib; {
-    homepage = "https://octave.sourceforge.io/${pname}/index.html";
+    homepage = "https://octave.sourceforge.io/splines/index.html";
     license = with licenses; [ gpl3Plus publicDomain ];
     maintainers = with maintainers; [ KarlJoad ];
     description = "Additional spline functions";

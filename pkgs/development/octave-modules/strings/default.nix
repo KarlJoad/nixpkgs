@@ -18,7 +18,7 @@ buildOctavePackage rec {
   ];
 
   meta = with lib; {
-    homepage = "https://octave.sourceforge.io/${pname}/index.html";
+    homepage = "https://octave.sourceforge.io/strings/index.html";
     license = licenses.gpl3Plus;
     # Claims to have a freebsd license, but I found none.
     maintainers = with maintainers; [ KarlJoad ];

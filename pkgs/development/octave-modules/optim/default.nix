@@ -27,7 +27,7 @@ buildOctavePackage rec {
   ];
 
   meta = with lib; {
-    homepage = "https://octave.sourceforge.io/${pname}/index.html";
+    homepage = "https://octave.sourceforge.io/optim/index.html";
     license = with licenses; [ gpl3Plus publicDomain ];
     # Modified BSD code seems removed
     maintainers = with maintainers; [ KarlJoad ];

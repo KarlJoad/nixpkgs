@@ -23,7 +23,7 @@ buildOctavePackage rec {
   ];
 
   meta = with lib; {
-    homepage = "https://octave.sourceforge.io/${pname}/index.html";
+    homepage = "https://octave.sourceforge.io/msh/index.html";
     license = licenses.gpl2Plus;
     maintainers = with maintainers; [ KarlJoad ];
     description = "Create and manage triangular and tetrahedral meshes for Finite Element or Finite Volume PDE solvers";

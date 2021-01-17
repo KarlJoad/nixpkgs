@@ -21,7 +21,7 @@ buildOctavePackage rec {
   ];
 
   meta = with lib; {
-    homepage = "https://octave.sourceforge.io/${pname}/index.html";
+    homepage = "https://octave.sourceforge.io/io/index.html";
     license = with licenses; [ gpl3Plus bsd2 ];
     maintainers = with maintainers; [ KarlJoad ];
     description = "Input/Output in external formats";

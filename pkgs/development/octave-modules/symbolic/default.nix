@@ -37,7 +37,7 @@ in buildOctavePackage rec {
   propagatedBuildInputs = [ pythonEnv ];
 
   meta = with lib; {
-    homepage = "https://octave.sourceforge.io/${pname}/index.html";
+    homepage = "https://octave.sourceforge.io/symbolic/index.html";
     license = licenses.gpl3Plus;
     maintainers = with maintainers; [ KarlJoad ];
     description = "Adds symbolic calculation features to GNU Octave";

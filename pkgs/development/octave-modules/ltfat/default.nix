@@ -33,7 +33,7 @@ buildOctavePackage rec {
 
   meta = with lib; {
     name = "The Large Time-Frequency Analysis Toolbox";
-    homepage = "https://octave.sourceforge.io/${pname}/index.html";
+    homepage = "https://octave.sourceforge.io/ltfat/index.html";
     license = licenses.gpl3Plus;
     maintainers = with maintainers; [ KarlJoad ];
     description = "Toolbox for working with time-frequency analysis, wavelets and signal processing";

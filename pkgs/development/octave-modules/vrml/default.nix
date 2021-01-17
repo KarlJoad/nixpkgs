@@ -31,7 +31,7 @@ buildOctavePackage rec {
   ];
 
   meta = with lib; {
-    homepage = "https://octave.sourceforge.io/${pname}/index.html";
+    homepage = "https://octave.sourceforge.io/vrml/index.html";
     license = with licenses; [ gpl3Plus fdl12Plus ];
     maintainers = with maintainers; [ KarlJoad ];
     description = "3D graphics using VRML";

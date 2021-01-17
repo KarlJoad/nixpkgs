@@ -13,7 +13,7 @@ buildOctavePackage rec {
   };
 
   meta = with lib; {
-    homepage = "https://octave.sourceforge.io/${pname}/index.html";
+    homepage = "https://octave.sourceforge.io/doctest/index.html";
     license = licenses.bsd3;
     maintainers = with maintainers; [ KarlJoad ];
     description = "Find and run example code within documentation";

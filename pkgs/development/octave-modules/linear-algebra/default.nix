@@ -13,7 +13,7 @@ buildOctavePackage rec {
   };
 
   meta = with lib; {
-    homepage = "https://octave.sourceforge.io/${pname}/index.html";
+    homepage = "https://octave.sourceforge.io/linear-algebra/index.html";
     license = with licenses; [ gpl3Plus lgpl3Plus ];
     # They claim to have a FreeBSD license, but none of their code seems to have it.
     maintainers = with maintainers; [ KarlJoad ];
