@@ -13,7 +13,7 @@ buildOctavePackage rec {
     sha256 = "18h1039ri7dr37jv20cvj5vhw7b57frrda0hhbvlgixinbqmn9j7";
   };
 
-  buildInputs = [
+  propagatedBuildInputs = [
     zeromq
   ];
 
@@ -22,7 +22,5 @@ buildOctavePackage rec {
     license = licenses.gpl3Plus;
     maintainers = with maintainers; [ KarlJoad ];
     description = "ZeroMQ bindings for GNU Octave";
-    # Marked this way until KarlJoad gets zeromq as a runtime dependency.
-    broken = true;
   };
 }
