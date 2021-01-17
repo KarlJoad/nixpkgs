@@ -1,7 +1,6 @@
 { buildOctavePackage
 , lib
 , fetchurl
-, autoreconfHook
 , gfortran
 , lapack, blas
 }:
