@@ -139,8 +139,7 @@ makeScope newScope (self:
     };
 
     interval = callPackage ../development/octave-modules/interval {
-      mpfr = pkgs.mpfr;
-      libmpfr = pkgs.mpfr;
+      inherit (pkgs) mpfr;
     };
 
     level-set = callPackage ../development/octave-modules/level-set { };

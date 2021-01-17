@@ -2,7 +2,6 @@
 , lib
 , fetchurl
 , mpfr
-, libmpfr
 }:
 
 buildOctavePackage rec {
@@ -14,9 +13,8 @@ buildOctavePackage rec {
     sha256 = "0a0sz7b4y53qgk1xr4pannn4w7xiin2pf74x7r54hrr1wf4abp20";
   };
 
-  buildInputs = [
+  propagatedBuildInputs = [
     mpfr
-    libmpfr
   ];
 
   meta = with lib; {
@@ -37,8 +35,5 @@ buildOctavePackage rec {
        binary64 numbers and is conforming to IEEE Std 1788-2015, IEEE standard
        for interval arithmetic.
     '';
-
-    # Marked this way until KarlJoad gets mpfr and libmpfr as runtime dependencies.
-    broken = true;
   };
 }
