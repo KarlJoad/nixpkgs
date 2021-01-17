@@ -200,7 +200,6 @@ let
     '';
 
     passthru = rec {
-      octave = self;
       sitePath = "share/octave/${version}/site";
       octPkgsPath = "share/octave/octave_packages";
       blas = blas';
