@@ -1,5 +1,5 @@
 { buildOctavePackage
-, stdenv
+, lib
 , fetchurl
 }:
 
@@ -12,7 +12,7 @@ buildOctavePackage rec {
     sha256 = "1wwjpxp9vjc6lszh0z3kgy4hyzpib8rvvh6b74ijh9qk9r9nmvjk";
   };
 
-  meta = with stdenv.lib; {
+  meta = with lib; {
     homepage = "https://octave.sourceforge.io/${pname}/index.html";
     license = with licenses; [ gpl3Plus lgpl3Plus ];
     # They claim to have a FreeBSD license, but none of their code seems to have it.

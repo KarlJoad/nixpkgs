@@ -1,5 +1,5 @@
 { buildOctavePackage
-, stdenv
+, lib
 , fetchurl
 , fpl
 , msh
@@ -19,7 +19,7 @@ buildOctavePackage rec {
     msh
   ];
 
-  meta = with stdenv.lib; {
+  meta = with lib; {
     homepage = "https://octave.sourceforge.io/${pname}/index.html";
     license = licenses.gpl2Plus;
     maintainers = with maintainers; [ KarlJoad ];

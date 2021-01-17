@@ -1,5 +1,5 @@
 { buildOctavePackage
-, stdenv
+, lib
 , fetchurl
 , enableJava ? true
 , jdk ? null
@@ -16,11 +16,11 @@ buildOctavePackage rec {
   };
 
   buildInputs = [
-    (stdenv.lib.optional enableJava jdk)
+    (lib.optional enableJava jdk)
     unzip
   ];
 
-  meta = with stdenv.lib; {
+  meta = with lib; {
     homepage = "https://octave.sourceforge.io/${pname}/index.html";
     license = with licenses; [ gpl3Plus bsd2 ];
     maintainers = with maintainers; [ KarlJoad ];

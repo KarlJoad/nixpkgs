@@ -1,5 +1,5 @@
 { buildOctavePackage
-, stdenv
+, lib
 , fetchurl
 , ffmpeg
 , libav
@@ -19,7 +19,7 @@ buildOctavePackage rec {
     libav
   ];
 
-  meta = with stdenv.lib; {
+  meta = with lib; {
     homepage = "https://octave.sourceforge.io/${pname}/index.html";
     license = with licenses; [ gpl3Plus bsd3 ];
     maintainers = with maintainers; [ KarlJoad ];

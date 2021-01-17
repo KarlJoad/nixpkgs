@@ -1,5 +1,5 @@
 { buildOctavePackage
-, stdenv
+, lib
 , fetchurl
 , struct
 , postgresql
@@ -22,7 +22,7 @@ buildOctavePackage rec {
     struct
   ];
 
-  meta = with stdenv.lib; {
+  meta = with lib; {
     homepage = "https://octave.sourceforge.io/${pname}/index.html";
     license = licenses.gpl3Plus;
     maintainers = with maintainers; [ KarlJoad ];

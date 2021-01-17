@@ -1,5 +1,5 @@
 { buildOctavePackage
-, stdenv
+, lib
 , fetchurl
 , io # >= 2.2.7
 , geometry # >= 4.0.0
@@ -19,7 +19,7 @@ buildOctavePackage rec {
     geometry
   ];
 
-  meta = with stdenv.lib; {
+  meta = with lib; {
     homepage = "https://octave.sourceforge.io/${pname}/index.html";
     license = licenses.gpl3Plus;
     maintainers = with maintainers; [ KarlJoad ];

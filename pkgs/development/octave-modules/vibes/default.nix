@@ -1,5 +1,5 @@
 { buildOctavePackage
-, stdenv
+, lib
 , fetchurl
 , vibes
 }:
@@ -17,7 +17,7 @@ buildOctavePackage rec {
     vibes
   ];
 
-  meta = with stdenv.lib; {
+  meta = with lib; {
     homepage = "https://octave.sourceforge.io/${pname}/index.html";
     license = with licenses; [ gpl3Plus mit ];
     maintainers = with maintainers; [ KarlJoad ];

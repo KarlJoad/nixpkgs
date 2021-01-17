@@ -1,5 +1,5 @@
 { buildOctavePackage
-, stdenv
+, lib
 , fetchurl
 , fftw
 , fftwSinglePrec
@@ -31,7 +31,7 @@ buildOctavePackage rec {
     jre
   ];
 
-  meta = with stdenv.lib; {
+  meta = with lib; {
     name = "The Large Time-Frequency Analysis Toolbox";
     homepage = "https://octave.sourceforge.io/${pname}/index.html";
     license = licenses.gpl3Plus;

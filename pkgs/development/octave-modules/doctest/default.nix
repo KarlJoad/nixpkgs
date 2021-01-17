@@ -1,5 +1,5 @@
 { buildOctavePackage
-, stdenv
+, lib
 , fetchurl
 }:
 
@@ -12,7 +12,7 @@ buildOctavePackage rec {
     sha256 = "0hh9izj9ds69bmrvmmj16fd1c4z7733h50c7isl8f714srw26kf4";
   };
 
-  meta = with stdenv.lib; {
+  meta = with lib; {
     homepage = "https://octave.sourceforge.io/${pname}/index.html";
     license = licenses.bsd3;
     maintainers = with maintainers; [ KarlJoad ];

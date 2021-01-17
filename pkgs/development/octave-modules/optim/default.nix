@@ -1,5 +1,5 @@
 { buildOctavePackage
-, stdenv
+, lib
 , fetchurl
 , struct
 , statistics
@@ -26,7 +26,7 @@ buildOctavePackage rec {
     statistics
   ];
 
-  meta = with stdenv.lib; {
+  meta = with lib; {
     homepage = "https://octave.sourceforge.io/${pname}/index.html";
     license = with licenses; [ gpl3Plus publicDomain ];
     # Modified BSD code seems removed

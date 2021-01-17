@@ -1,5 +1,5 @@
 { buildOctavePackage
-, stdenv
+, lib
 , fetchurl
 , instrument-control
 , arduino
@@ -22,7 +22,7 @@ buildOctavePackage rec {
     arduino
   ];
 
-  meta = with stdenv.lib; {
+  meta = with lib; {
     name = "Octave Arduino Toolkit";
     homepage = "https://octave.sourceforge.io/${pname}/index.html";
     license = licenses.gpl3Plus;

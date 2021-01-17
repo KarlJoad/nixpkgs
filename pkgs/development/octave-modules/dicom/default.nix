@@ -1,5 +1,5 @@
 { buildOctavePackage
-, stdenv
+, lib
 , fetchurl
 , libgdcm
 }:
@@ -13,7 +13,7 @@ buildOctavePackage rec {
     sha256 = "131wn6mrv20np10plirvqia8dlpz3g0aqi3mmn2wyl7r95p3dnza";
   };
 
-  meta = with stdenv.lib; {
+  meta = with lib; {
     homepage = "https://octave.sourceforge.io/${pname}/index.html";
     license = licenses.gpl3Plus;
     maintainers = with maintainers; [ KarlJoad ];

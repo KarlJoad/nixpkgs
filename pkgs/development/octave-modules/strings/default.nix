@@ -1,5 +1,5 @@
 { buildOctavePackage
-, stdenv
+, lib
 , fetchurl
 , pcre
 }:
@@ -17,7 +17,7 @@ buildOctavePackage rec {
     pcre
   ];
 
-  meta = with stdenv.lib; {
+  meta = with lib; {
     homepage = "https://octave.sourceforge.io/${pname}/index.html";
     license = licenses.gpl3Plus;
     # Claims to have a freebsd license, but I found none.

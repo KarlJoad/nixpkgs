@@ -1,5 +1,5 @@
 { buildOctavePackage
-, stdenv
+, lib
 , fetchurl
 # Octave Dependencies
 , splines
@@ -22,7 +22,7 @@ buildOctavePackage rec {
     splines
   ];
 
-  meta = with stdenv.lib; {
+  meta = with lib; {
     homepage = "https://octave.sourceforge.io/${pname}/index.html";
     license = licenses.gpl2Plus;
     maintainers = with maintainers; [ KarlJoad ];

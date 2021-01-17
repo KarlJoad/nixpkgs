@@ -1,5 +1,5 @@
 { buildOctavePackage
-, stdenv
+, lib
 , fetchurl
 }:
 
@@ -12,7 +12,7 @@ buildOctavePackage rec {
     sha256 = "05ijh3izgfaan84n6zp690nap9vnz0zicjd0cgvd1c6askm7vxql";
   };
 
-  meta = with stdenv.lib; {
+  meta = with lib; {
     name = "GNU Octave Clipping Polygons Tool";
     homepage = "https://octave.sourceforge.io/${pname}/index.html";
     license = with licenses; [ gpl3Plus ]; # modified BSD?

@@ -1,5 +1,5 @@
 { buildOctavePackage
-, stdenv
+, lib
 , fetchurl
 # Octave dependencies
 , linear-algebra
@@ -30,7 +30,7 @@ buildOctavePackage rec {
     statistics
   ];
 
-  meta = with stdenv.lib; {
+  meta = with lib; {
     homepage = "https://octave.sourceforge.io/${pname}/index.html";
     license = with licenses; [ gpl3Plus fdl12Plus ];
     maintainers = with maintainers; [ KarlJoad ];

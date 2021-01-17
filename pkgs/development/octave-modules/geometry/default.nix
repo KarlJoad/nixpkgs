@@ -1,5 +1,5 @@
 { buildOctavePackage
-, stdenv
+, lib
 , fetchurl
 , matgeom
 }:
@@ -17,7 +17,7 @@ buildOctavePackage rec {
     matgeom
   ];
 
-  meta = with stdenv.lib; {
+  meta = with lib; {
     homepage = "https://octave.sourceforge.io/${pname}/index.html";
     license = with licenses; [ gpl3Plus boost ];
     maintainers = with maintainers; [ KarlJoad ];
