@@ -32043,4 +32043,7 @@ in
   zthrottle = callPackage ../tools/misc/zthrottle { };
 
   zktree = callPackage ../applications/misc/zktree {};
+
+  freewrl = callPackage ../applications/misc/freewrl { };
+
 }
