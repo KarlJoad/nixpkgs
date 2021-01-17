@@ -1,6 +1,7 @@
 { buildOctavePackage
 , lib
 , fetchurl
+, gfortran
 }:
 
 buildOctavePackage rec {
@@ -12,6 +13,10 @@ buildOctavePackage rec {
     sha256 = "05nzj2jmrczbnsr64w2a7kww19s6yialdqnsbg797v11ii7aiylc";
   };
 
+  nativeBuildInputs = [
+    gfortran
+  ];
+
   meta = with lib; {
     homepage = "https://octave.sourceforge.io/optiminterp/index.html";
     license = licenses.gpl3Plus;
@@ -22,8 +27,5 @@ buildOctavePackage rec {
        functions to perform a n-dimensional optimal interpolations of
        arbitrarily distributed data points.
     '';
-    # Marked this way because of configure error
-    # configure: error: mkoctfile does not accept files with the extention .F90. Support for this file extension has been added to version 2.9.9 of octave.
-    broken = true;
   };
 }
