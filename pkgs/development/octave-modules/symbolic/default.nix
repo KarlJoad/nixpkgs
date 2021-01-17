@@ -3,11 +3,27 @@
 , fetchurl
 , octave
 , gnuplot
-, pythonEnv
+, python
+, python2Packages
 , texinfo
 }:
 
-(buildOctaveLibrary rec {
+let
+  pythonEnv = (let
+      overridenPython = let
+        packageOverrides = self: super: {
+          sympy = super.sympy.overridePythonAttrs (old: rec {
+            version = python2Packages.sympy.version;
+            src = python2Packages.sympy.src;
+          });
+        };
+      in python.override {inherit packageOverrides; self = overridenPython; };
+    in overridenPython.withPackages (ps: [
+      ps.sympy
+      ps.mpmath
+    ]));
+
+in (buildOctaveLibrary rec {
   pname = "symbolic";
   version = "2.9.0";
 
