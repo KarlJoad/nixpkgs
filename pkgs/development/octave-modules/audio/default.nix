@@ -1,7 +1,10 @@
 { buildOctavePackage
 , lib
 , fetchurl
+, jack2
+, alsaLib
 , rtmidi
+, pkg-config
 }:
 
 buildOctavePackage rec {
@@ -14,6 +17,12 @@ buildOctavePackage rec {
   };
 
   nativeBuildInputs = [
+    pkg-config
+  ];
+
+  propagatedBuildInputs = [
+    jack2
+    alsaLib
     rtmidi
   ];
 
@@ -22,10 +31,6 @@ buildOctavePackage rec {
     license = licenses.gpl3Plus;
     maintainers = with maintainers; [ KarlJoad ];
     description = "Audio and MIDI Toolbox for GNU Octave";
-    # Marked this way until KarlJoad gets rtmidi as a runtime dependency.
-    broken = true;
-    # Also refuses to build right now.
-    # configure: error: RTMIDI required to install octave midi package
-    # error: structure has no member 'dir'
+    platforms = platforms.linux; # Because of run-time dependency on jack2 and alsaLib
   };
 }

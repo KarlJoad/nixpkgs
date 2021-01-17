@@ -60,7 +60,7 @@ makeScope newScope (self:
     };
 
     audio = callPackage ../development/octave-modules/audio {
-      rtmidi = pkgs.rtmidi;
+      inherit (pkgs) jack2 alsaLib rtmidi;
     };
 
     bim = callPackage ../development/octave-modules/bim { };
