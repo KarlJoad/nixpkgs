@@ -1,8 +1,8 @@
 { buildOctavePackage
 , lib
 , fetchurl
-, enableJava ? true
-, jdk ? null
+, enableJava
+, jdk
 , unzip
 }:
 
@@ -17,6 +17,9 @@ buildOctavePackage rec {
 
   buildInputs = [
     (lib.optional enableJava jdk)
+  ];
+
+  propagatedBuildInputs = [
     unzip
   ];
 
@@ -25,7 +28,5 @@ buildOctavePackage rec {
     license = with licenses; [ gpl3Plus bsd2 ];
     maintainers = with maintainers; [ KarlJoad ];
     description = "Input/Output in external formats";
-    # Marked this way until KarlJoad makes unzip a run-time dependency
-    broken = true;
   };
 }

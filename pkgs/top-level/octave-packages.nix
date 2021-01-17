@@ -134,6 +134,7 @@ makeScope newScope (self:
     instrument-control = callPackage ../development/octave-modules/instrument-control { };
 
     io = callPackage ../development/octave-modules/io {
+      inherit (octave) enableJava jdk;
       inherit (pkgs) unzip;
     };
 
