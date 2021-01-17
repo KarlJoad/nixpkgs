@@ -1,7 +1,7 @@
 { buildOctavePackage
 , lib
 , fetchurl
-, netcdfPackage
+, netcdf
 }:
 
 buildOctavePackage rec {
@@ -14,7 +14,7 @@ buildOctavePackage rec {
   };
 
   buildInputs = [
-    netcdfPackage
+    netcdf
   ];
 
   meta = with lib; {

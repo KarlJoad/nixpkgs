@@ -1,7 +1,7 @@
 { buildOctavePackage
 , lib
 , fetchurl
-, gslPackage
+, gsl
 }:
 
 buildOctavePackage rec {
@@ -14,7 +14,7 @@ buildOctavePackage rec {
   };
 
   buildInputs = [
-    gslPackage
+    gsl
   ];
 
   meta = with lib; {

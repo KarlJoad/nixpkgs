@@ -15,10 +15,13 @@ buildOctavePackage rec {
     sha256 = "1xd80nnkschldvrqx0wvrg3fzbf8sck8bvq24phr5x49xs7b8x78";
   };
 
+  nativeBuildInputs = [
+    pkg-config
+  ];
+
   buildInputs = [
     dolfin
     fenics
-    pkg-config
   ];
 
   meta = with lib; {

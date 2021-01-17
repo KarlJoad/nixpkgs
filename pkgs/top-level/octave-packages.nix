@@ -121,7 +121,7 @@ makeScope newScope (self:
     geometry = callPackage ../development/octave-modules/geometry { };
 
     gsl = callPackage ../development/octave-modules/gsl {
-      gslPackage = pkgs.gsl;
+      inherit (pkgs) gsl;
     };
 
     image = callPackage ../development/octave-modules/image { };
@@ -177,7 +177,7 @@ makeScope newScope (self:
     ncarray = callPackage ../development/octave-modules/ncarray { };
 
     netcdf = callPackage ../development/octave-modules/netcdf {
-      netcdfPackage = pkgs.netcdf;
+      inherit (pkgs) netcdf;
     };
 
     nurbs = callPackage ../development/octave-modules/nurbs { };

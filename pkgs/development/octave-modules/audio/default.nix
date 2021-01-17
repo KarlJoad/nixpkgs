@@ -13,7 +13,7 @@ buildOctavePackage rec {
     sha256 = "18lyvwmdy4b9pcv5sm7g17n3is32q23daw8fcsalkf4rj6cc6qdk";
   };
 
-  buildInputs = [
+  nativeBuildInputs = [
     rtmidi
   ];
 

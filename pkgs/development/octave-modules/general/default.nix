@@ -16,6 +16,9 @@ buildOctavePackage rec {
 
   nativeBuildInputs = [
     pkg-config
+  ];
+
+  buildInputs = [
     nettle
   ];
 

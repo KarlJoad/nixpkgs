@@ -15,9 +15,12 @@ buildOctavePackage rec {
     sha256 = "0wmpak01rsccrnb8is7fsjdlxw15157sqyf9s2fabr16yykfmvi8";
   };
 
+  nativeBuildInputs = [
+    pkg-config
+  ];
+
   buildInputs = [
     gnutls
-    pkg-config
   ];
 
   requiredOctavePackages = [

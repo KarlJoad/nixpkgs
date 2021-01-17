@@ -16,7 +16,7 @@ buildOctavePackage rec {
     sha256 = "0nc2d9h91glxzmpizxdrc2dablw4bqhqhzs37a394c36myk4xjdv";
   };
 
-  buildInputs = [
+  nativeBuildInputs = [
     gfortran
   ];
 
