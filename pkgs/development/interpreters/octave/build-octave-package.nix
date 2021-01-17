@@ -19,6 +19,10 @@
 
 , src
 
+, dontPatch ? false
+, patches ? []
+, patchPhase ? ""
+
 # Build-time dependencies for the package, which were compiled for the system compiling this.
 , nativeBuildInputs ? []
 
@@ -63,6 +67,8 @@ in stdenv.mkDerivation {
   # packages are installed into octave during the environment building phase.
   isOctavePackage = true;
 
+  inherit dontPatch patches patchPhase;
+
   requiredOctavePackages = requiredOctavePackages';
 
   nativeBuildInputs = [
@@ -97,5 +103,5 @@ in stdenv.mkDerivation {
   # together with Octave.
   dontInstall = true;
 
-  meta = meta;
+  inherit meta;
 }
