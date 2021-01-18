@@ -8,7 +8,7 @@ buildOctavePackage rec {
   version = "1.2.7";
 
   src = fetchurl {
-    url = "https://octave.sourceforge.io/download.php?package=${pname}-${version}.tar.gz";
+    url = "mirror://sourceforge/octave/${pname}-${version}.tar.gz";
     sha256 = "1yhw277i1qgmddf6wbfb6a4zrfhvplkmfr20q1l15z4xi8afnm6d";
   };
 
