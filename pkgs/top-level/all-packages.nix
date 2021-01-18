@@ -32043,4 +32043,8 @@ in
   zthrottle = callPackage ../tools/misc/zthrottle { };
 
   zktree = callPackage ../applications/misc/zktree {};
+
+  vibes = callPackage ../applications/misc/vibes {
+    inherit (qt5) qtbase qtsvg wrapQtAppsHook;
+  };
 }
