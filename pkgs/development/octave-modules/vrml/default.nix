@@ -19,7 +19,11 @@ buildOctavePackage rec {
     sha256 = "1mx93k150agd27mbzvds13v9z0x36j68hwpdvlvjmcl2fga5fly4";
   };
 
-  buildInputs = [
+  propagatedBuildInputs = [
+    freewrl
+  ];
+
+  requiredOctavePackages = [
     linear-algebra
     miscellaneous
     struct

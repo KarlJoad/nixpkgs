@@ -14,7 +14,7 @@ buildOctavePackage rec {
     sha256 = "0fnfk206n31s7diijaylmqhxnr88z6l3l3vsxq4z8gcp9ylm9nkj";
   };
 
-  buildInputs = [
+  requiredOctavePackages = [
     instrument-control
   ];
 

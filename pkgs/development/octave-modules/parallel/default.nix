@@ -16,9 +16,12 @@ buildOctavePackage rec {
   };
 
   buildInputs = [
-    struct
     gnutls
     pkg-config
+  ];
+
+  requiredOctavePackages = [
+    struct
   ];
 
   meta = with stdenv.lib; {

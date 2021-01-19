@@ -16,6 +16,9 @@ buildOctavePackage rec {
 
   buildInputs = [
     netcdf
+  ];
+
+  requiredOctavePackages = [
     statistics
   ];
 

@@ -17,8 +17,11 @@ buildOctavePackage rec {
   };
 
   buildInputs = [
-    signal
     gfortran
+  ];
+
+  requiredOctavePackages = [
+    signal
   ];
 
   meta = with stdenv.lib; {

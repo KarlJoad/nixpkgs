@@ -15,8 +15,11 @@ buildOctavePackage rec {
   };
 
   buildInputs = [
-    signal
     hdf5
+  ];
+
+  requiredOctavePackages = [
+    signal
   ];
 
   meta = with stdenv.lib; {

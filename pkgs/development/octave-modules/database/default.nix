@@ -18,6 +18,10 @@ buildOctavePackage rec {
     postgresql
   ];
 
+  requiredOctavePackages = [
+    struct
+  ];
+
   meta = with stdenv.lib; {
     homepage = "https://octave.sourceforge.io/${pname}/index.html";
     license = licenses.gpl3Plus;

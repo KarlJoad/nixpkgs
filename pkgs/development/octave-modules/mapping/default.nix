@@ -14,7 +14,7 @@ buildOctavePackage rec {
     sha256 = "0wj0q1rkrqs4qgpjh4vn9kcpdh94pzr6v4jc1vcrjwkp87yjv8c0";
   };
 
-  buildInputs = [
+  requiredOctavePackages = [
     io
     geometry
   ];

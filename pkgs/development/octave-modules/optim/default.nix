@@ -17,10 +17,13 @@ buildOctavePackage rec {
   };
 
   buildInputs = [
-    struct
-    statistics
     lapack
     blas
+  ];
+
+  requiredOctavePackages = [
+    struct
+    statistics
   ];
 
   meta = with stdenv.lib; {

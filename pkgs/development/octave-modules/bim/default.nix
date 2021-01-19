@@ -14,7 +14,7 @@ buildOctavePackage rec {
     sha256 = "0y70w8mj80c5yns1j7nwngwwrxp1pa87kyz2n2yvmc3zdigcd6g8";
   };
 
-  buildInputs = [
+  requiredOctavePackages = [
     fpl
     msh
   ];

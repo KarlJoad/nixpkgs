@@ -13,6 +13,10 @@ buildOctavePackage rec {
     sha256 = "0p2cjszzjwhp4ih3q3r67qnikgxc0fwxc12p3727jbdvzq2h10mn";
   };
 
+  requiredOctavePackages = [
+    nan
+  ];
+
   meta = with stdenv.lib; {
     homepage = "https://octave.sourceforge.io/${pname}/index.html";
     license = licenses.gpl3Plus;

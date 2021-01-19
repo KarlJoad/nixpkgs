@@ -13,7 +13,7 @@ buildOctavePackage rec {
     sha256 = "1zmd97xir62fr5v57xifh2cvna5fg67h9yb7bp2vm3ll04y41lhs";
   };
 
-  buildInputs = [
+  requiredOctavePackages = [
     matgeom
   ];
 
