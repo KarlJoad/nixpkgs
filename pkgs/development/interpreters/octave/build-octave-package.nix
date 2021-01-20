@@ -49,57 +49,53 @@
 let
   requiredOctavePackages' = computeRequiredOctavePackages requiredOctavePackages;
 
-  self = stdenv.mkDerivation {
-    packageName = "${fullLibName}";
-    # The name of the octave package ends up being
-    # "octave-version-package-version"
-    name = "${octave.pname}-${octave.version}-${fullLibName}";
-    inherit src;
+in stdenv.mkDerivation {
+  packageName = "${fullLibName}";
+  # The name of the octave package ends up being
+  # "octave-version-package-version"
+  name = "${octave.pname}-${octave.version}-${fullLibName}";
+  inherit src;
 
-    OCTAVE_HISTFILE = "/dev/null";
+  OCTAVE_HISTFILE = "/dev/null";
 
-    # This states that any package built with the function that this returns
-    # will be an octave package. This is used for ensuring other octave
-    # packages are installed into octave during the environment building phase.
-    isOctavePackage = true;
+  # This states that any package built with the function that this returns
+  # will be an octave package. This is used for ensuring other octave
+  # packages are installed into octave during the environment building phase.
+  isOctavePackage = true;
 
+  requiredOctavePackages = requiredOctavePackages';
 
-    requiredOctavePackages = requiredOctavePackages';
+  nativeBuildInputs = [
+    octave
+    writeRequiredOctavePackagesHook
+  ]
+  ++ nativeBuildInputs;
 
-    nativeBuildInputs = [
-      octave
-      octaveWriteRequiredOctavePackagesHook
-    ]
-    ++ nativeBuildInputs;
+  buildInputs = buildInputs ++ requiredOctavePackages';
 
-    buildInputs = buildInputs ++ requiredOctavePackages';
+  propagatedBuildInputs = propagatedBuildInputs ++ [ texinfo ];
 
-    propagatedBuildInputs = propagatedBuildInputs ++ [ texinfo ];
+  preBuild = if preBuild == "" then
+    ''
+      # This trickery is needed because Octave expects a single directory inside
+      # at the top-most level of the tarball.
+      tar --transform 's,^,${fullLibName}/,' -cz * -f ${fullLibName}.tar.gz
+    ''
+             else
+               preBuild;
 
-    preBuild = if preBuild == "" then
-      ''
-        # This trickery is needed because Octave expects a single directory inside
-        # at the top-most level of the tarball.
-        tar --transform 's,^,${fullLibName}/,' -cz * -f ${fullLibName}.tar.gz
-      ''
-               else
-                 preBuild;
-
-    buildPhase = ''
+  buildPhase = ''
     runHook preBuild
 
     mkdir -p $out
     octave-cli --eval "pkg build $out ${fullLibName}.tar.gz"
 
-      runHook postBuild
-    '';
+    runHook postBuild
+  '';
 
-    # We don't install here, because that's handled when we build the environment
-    # together with Octave.
-    dontInstall = true;
+  # We don't install here, because that's handled when we build the environment
+  # together with Octave.
+  dontInstall = true;
 
-    meta = meta;
-  };
-in lib.extendDerivation true passthru self
-  # Always extend the derivation, passthru is extras, self is derivation to eval
-  # https://github.com/NixOS/nixpkgs/blob/66acfa3d16eb599f5aa85bda153a24742f683383/lib/customisation.nix#L144
+  meta = meta;
+}
