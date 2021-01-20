@@ -84,7 +84,7 @@ makeScope newScope (self:
     dataframe = callPackage ../development/octave-modules/dataframe { };
 
     dicom = callPackage ../development/octave-modules/dicom {
-      libgdcm = pkgs.gdcm;
+      inherit (pkgs) gdcm;
     };
 
     divand = callPackage ../development/octave-modules/divand { };
