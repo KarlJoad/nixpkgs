@@ -14,19 +14,19 @@ let
   packages = computeRequiredOctavePackages extraLibs;
 
 in buildEnv {
-    name = "${octave.name}-env";
-    paths = extraLibs ++ [ octave ];
+  name = "${octave.name}-env";
+  paths = extraLibs ++ [ octave ];
 
-    inherit ignoreCollisions;
-    extraOutputsToInstall = [ "out" ] ++ extraOutputsToInstall;
+  inherit ignoreCollisions;
+  extraOutputsToInstall = [ "out" ] ++ extraOutputsToInstall;
 
-    buildInputs = [ makeWrapper texinfo wrapOctave ];
+  buildInputs = [ makeWrapper texinfo wrapOctave ];
 
-    # During "build" we must first unlink the /share symlink to octave's /share
-    # Then, we can re-symlink the all of octave/share, except for /share/octave
-    # in env/share/octave, re-symlink everything from octave/share/octave and then
-    # perform the pkg install.
-    postBuild = ''
+  # During "build" we must first unlink the /share symlink to octave's /share
+  # Then, we can re-symlink the all of octave/share, except for /share/octave
+  # in env/share/octave, re-symlink everything from octave/share/octave and then
+  # perform the pkg install.
+  postBuild = ''
       . "${makeWrapper}/nix-support/setup-hook"
       # The `makeWrapper` used here is the one defined in
       # ${makeWrapper}/nix-support/setup-hook
@@ -64,20 +64,20 @@ in buildEnv {
       wrapOctavePrograms "${stdenv.lib.concatStringsSep " " packages}"
      '' + postBuild;
 
-    inherit (octave) meta;
+  inherit (octave) meta;
 
-    passthru = octave.passthru // {
-      interpreter = "$out/bin/octave";
-      inherit octave;
-      env = stdenv.mkDerivation {
-        name = "interactive-${octave.name}-environment";
+  passthru = octave.passthru // {
+    interpreter = "$out/bin/octave";
+    inherit octave;
+    env = stdenv.mkDerivation {
+      name = "interactive-${octave.name}-environment";
 
-        buildCommand = ''
+      buildCommand = ''
         echo >&2 ""
         echo >&2 "*** octave 'env' attributes are intended for interactive nix-shell sessions, not for building! ***"
         echo >&2 ""
         exit 1
       '';
-      };
     };
+  };
 }
