@@ -69,6 +69,8 @@ in stdenv.mkDerivation {
 
   inherit dontPatch patches patchPhase;
 
+  dontConfigure = true;
+
   requiredOctavePackages = requiredOctavePackages';
 
   nativeBuildInputs = [
