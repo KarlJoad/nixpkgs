@@ -38,6 +38,8 @@
 # requiredOctavePackages are ALSO installed into octave.
 , requiredOctavePackages ? []
 
+, preBuild ? ""
+
 , meta ? {}
 
 , passthru ? {}
@@ -74,15 +76,20 @@ let
 
     propagatedBuildInputs = propagatedBuildInputs ++ [ texinfo ];
 
+    preBuild = if preBuild == "" then
+      ''
+        # This trickery is needed because Octave expects a single directory inside
+        # at the top-most level of the tarball.
+        tar --transform 's,^,${fullLibName}/,' -cz * -f ${fullLibName}.tar.gz
+      ''
+               else
+                 preBuild;
+
     buildPhase = ''
-      runHook preBuild
+    runHook preBuild
 
-      # This trickery is needed because Octave expects a single directory inside
-      # at the top-most level of the tarball.
-      tar --transform 's,^,${fullLibName}/,' -cz * -f ${fullLibName}.tar.gz
-
-      mkdir -p $out
-      octave-cli --eval "pkg build $out ${fullLibName}.tar.gz"
+    mkdir -p $out
+    octave-cli --eval "pkg build $out ${fullLibName}.tar.gz"
 
       runHook postBuild
     '';
@@ -94,5 +101,5 @@ let
     meta = meta;
   };
 in lib.extendDerivation true passthru self
-# Always extend the derivation, passthru is extras, self is derivation to eval
-# https://github.com/NixOS/nixpkgs/blob/66acfa3d16eb599f5aa85bda153a24742f683383/lib/customisation.nix#L144
+  # Always extend the derivation, passthru is extras, self is derivation to eval
+  # https://github.com/NixOS/nixpkgs/blob/66acfa3d16eb599f5aa85bda153a24742f683383/lib/customisation.nix#L144
