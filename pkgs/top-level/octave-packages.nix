@@ -241,9 +241,7 @@ makeScope newScope (self:
     };
 
     video = callPackage ../development/octave-modules/video {
-      # Only need ffmpeg OR libav, but both defined for right now.
-      ffmpeg = pkgs.ffmpeg;
-      libav = pkgs.libav;
+      inherit (pkgs) ffmpeg;
     };
 
     vrml = callPackage ../development/octave-modules/vrml {

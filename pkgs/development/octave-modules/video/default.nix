@@ -1,8 +1,8 @@
 { buildOctavePackage
 , lib
 , fetchurl
+, pkg-config
 , ffmpeg
-, libav
 }:
 
 buildOctavePackage rec {
@@ -14,9 +14,12 @@ buildOctavePackage rec {
     sha256 = "0s6j3c4dh5nsbh84s7vnd2ajcayy1gn07b4fcyrcynch3wl28mrv";
   };
 
-  buildInputs = [
+  nativeBuildInputs = [
+    pkg-config
+  ];
+
+  propagatedBuildInputs = [
     ffmpeg
-    libav
   ];
 
   meta = with lib; {
@@ -24,7 +27,5 @@ buildOctavePackage rec {
     license = with licenses; [ gpl3Plus bsd3 ];
     maintainers = with maintainers; [ KarlJoad ];
     description = "Wrapper for OpenCV's CvCapture_FFMPEG and CvVideoWriter_FFMPEG";
-    # Marked this way due to configure error "error: FFmpeg libswscale, libavformat, libavcodec or libavutil not found"
-    broken = true;
   };
 }
