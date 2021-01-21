@@ -23,6 +23,7 @@
 , patches ? []
 , patchPhase ? ""
 
+, enableParallelBuilding ? true
 # Build-time dependencies for the package, which were compiled for the system compiling this.
 , nativeBuildInputs ? []
 
@@ -70,6 +71,8 @@ in stdenv.mkDerivation {
   inherit dontPatch patches patchPhase;
 
   dontConfigure = true;
+
+  enableParallelBuilding = enableParallelBuilding;
 
   requiredOctavePackages = requiredOctavePackages';
 
