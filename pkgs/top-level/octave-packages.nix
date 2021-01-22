@@ -57,9 +57,7 @@ makeScope newScope (self:
       inherit (pkgs) arduino;
     };
 
-    audio = callPackage ../development/octave-modules/audio {
-      inherit (pkgs) jack2 alsaLib rtmidi;
-    };
+    audio = callPackage ../development/octave-modules/audio { };
 
     bim = callPackage ../development/octave-modules/bim { };
 
@@ -67,23 +65,17 @@ makeScope newScope (self:
 
     cgi = callPackage ../development/octave-modules/cgi { };
 
-    communications = callPackage ../development/octave-modules/communications {
-      hdf5 = pkgs.hdf5;
-    };
+    communications = callPackage ../development/octave-modules/communications { };
 
     control = callPackage ../development/octave-modules/control { };
 
     data-smoothing = callPackage ../development/octave-modules/data-smoothing { };
 
-    database = callPackage ../development/octave-modules/database {
-      postgresql = pkgs.postgresql;
-    };
+    database = callPackage ../development/octave-modules/database { };
 
     dataframe = callPackage ../development/octave-modules/dataframe { };
 
-    dicom = callPackage ../development/octave-modules/dicom {
-      inherit (pkgs) gdcm;
-    };
+    dicom = callPackage ../development/octave-modules/dicom { };
 
     divand = callPackage ../development/octave-modules/divand { };
 
@@ -95,12 +87,9 @@ makeScope newScope (self:
       # I am still not super sure about this
       dolfin = python.pkgs.fenics;
       fenics = python.pkgs.fenics;
-      pkg-config = pkgs.pkg-config;
     };
 
-    fits = callPackage ../development/octave-modules/fits {
-      inherit (pkgs) cfitsio pkg-config;
-    };
+    fits = callPackage ../development/octave-modules/fits { };
 
     financial = callPackage ../development/octave-modules/financial { };
 
@@ -110,9 +99,7 @@ makeScope newScope (self:
 
     ga = callPackage ../development/octave-modules/ga { };
 
-    general = callPackage ../development/octave-modules/general {
-      nettle = pkgs.nettle;
-    };
+    general = callPackage ../development/octave-modules/general { };
 
     generate_html = callPackage ../development/octave-modules/generate_html { };
 
@@ -129,13 +116,10 @@ makeScope newScope (self:
     instrument-control = callPackage ../development/octave-modules/instrument-control { };
 
     io = callPackage ../development/octave-modules/io {
-      inherit (octave) enableJava jdk;
-      inherit (pkgs) unzip;
+      inherit (octave) enableJava;
     };
 
-    interval = callPackage ../development/octave-modules/interval {
-      inherit (pkgs) mpfr;
-    };
+    interval = callPackage ../development/octave-modules/interval { };
 
     level-set = callPackage ../development/octave-modules/level-set { };
 
@@ -149,9 +133,7 @@ makeScope newScope (self:
 
     matgeom = callPackage ../development/octave-modules/matgeom { };
 
-    miscellaneous = callPackage ../development/octave-modules/miscellaneous {
-      inherit (pkgs) mlterm ncurses units;
-    };
+    miscellaneous = callPackage ../development/octave-modules/miscellaneous { };
 
     msh = callPackage ../development/octave-modules/msh {
       gmsh = pkgs.gmsh;
@@ -175,9 +157,7 @@ makeScope newScope (self:
 
     octclip = callPackage ../development/octave-modules/octclip { };
 
-    octproj = callPackage ../development/octave-modules/octproj {
-      proj = pkgs.proj;
-    };
+    octproj = callPackage ../development/octave-modules/octproj { };
 
     optics = callPackage ../development/octave-modules/optics { };
 
@@ -185,10 +165,7 @@ makeScope newScope (self:
 
     optiminterp = callPackage ../development/octave-modules/optiminterp { };
 
-    parallel = callPackage ../development/octave-modules/parallel {
-      gnutls = pkgs.gnutls;
-      pkg-config = pkgs.pkg-config;
-    };
+    parallel = callPackage ../development/octave-modules/parallel { };
 
     quaternion = callPackage ../development/octave-modules/quaternion { };
 
@@ -210,16 +187,11 @@ makeScope newScope (self:
 
     statistics = callPackage ../development/octave-modules/statistics { };
 
-    strings = callPackage ../development/octave-modules/strings {
-      pcre = pkgs.pcre;
-    };
+    strings = callPackage ../development/octave-modules/strings { };
 
     struct = callPackage ../development/octave-modules/struct { };
 
-    symbolic = callPackage ../development/octave-modules/symbolic {
-      inherit (octave) python;
-      inherit (pkgs) python2Packages;
-    };
+    symbolic = callPackage ../development/octave-modules/symbolic { };
 
     tisean = callPackage ../development/octave-modules/tisean { };
 
@@ -231,9 +203,7 @@ makeScope newScope (self:
       # https://github.com/ENSTABretagneRobotics/VIBES
     };
 
-    video = callPackage ../development/octave-modules/video {
-      inherit (pkgs) ffmpeg;
-    };
+    video = callPackage ../development/octave-modules/video { };
 
     vrml = callPackage ../development/octave-modules/vrml {
       freewrl = null;
@@ -242,7 +212,7 @@ makeScope newScope (self:
     windows = callPackage ../development/octave-modules/windows { };
 
     zeromq = callPackage ../development/octave-modules/zeromq {
-      zeromq = pkgs.zeromq;
+      inherit (pkgs) zeromq;
     };
 
   })
