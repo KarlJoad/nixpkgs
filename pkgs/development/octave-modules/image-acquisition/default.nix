@@ -2,7 +2,7 @@
 , lib
 , fetchurl
 , libv4l
-, libfltk
+, fltk
 }:
 
 buildOctavePackage rec {
@@ -16,7 +16,7 @@ buildOctavePackage rec {
 
   buildInputs = [
     libv4l
-    libfltk
+    fltk
   ];
 
   meta = with lib; {
