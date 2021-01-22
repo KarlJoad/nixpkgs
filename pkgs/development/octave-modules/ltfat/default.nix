@@ -8,7 +8,7 @@
 , lapack
 , blas
 , portaudio
-, jre
+, jdk
 }:
 
 buildOctavePackage rec {
@@ -33,7 +33,7 @@ buildOctavePackage rec {
     lapack
     blas
     portaudio
-    jre
+    jdk
   ];
 
   meta = with lib; {
