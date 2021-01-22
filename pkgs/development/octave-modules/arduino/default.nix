@@ -18,6 +18,7 @@ buildOctavePackage rec {
     instrument-control
   ];
 
+  # Might be able to use pkgs.arduino-core
   propagatedBuildInputs = [
     arduino
   ];
