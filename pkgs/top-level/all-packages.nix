@@ -29279,6 +29279,8 @@ in
 
   openspecfun = callPackage ../development/libraries/science/math/openspecfun {};
 
+  slepc = callPackage ../development/libraries/science/math/slepc { };
+
   planarity = callPackage ../development/libraries/science/math/planarity { };
 
   scalapack = callPackage ../development/libraries/science/math/scalapack { };
