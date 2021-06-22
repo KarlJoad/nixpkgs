@@ -9559,6 +9559,8 @@ in
     autoconf = buildPackages.autoconf269;
   };
 
+  nvc = callPackage ../applications/science/electronics/nvc { };
+
   versus = callPackage ../applications/networking/versus { };
 
   vgrep = callPackage ../tools/text/vgrep { };
