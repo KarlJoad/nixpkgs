@@ -82,6 +82,11 @@ stdenv.mkDerivation rec {
   # Need to run cleanall target to remove any previously-generated files.
   preBuild = ''
     make cleanall
+    # Clean up a C++17 warning
+    # Remove this substituteInPlace on the next release, upstream is permanently
+    # fixing this issue.
+    substituteInPlace librsbpp/rsbpp.hpp \
+      --replace '<ccomplex>' '<complex>'
   '';
 
   nativeCheckInputs = [
