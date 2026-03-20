@@ -14,6 +14,7 @@
   # Headers/Libraries
   blas,
   zlib,
+  hwloc,
   # RPC headers (rpc/xdr.h)
   openmpi,
   help2man,
@@ -73,6 +74,7 @@ stdenv.mkDerivation rec {
     which
     blas
     zlib
+    hwloc
     openmpi
     octave
     help2man # Turn "--help" into a man-page
