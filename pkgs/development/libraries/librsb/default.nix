@@ -50,6 +50,7 @@ stdenv.mkDerivation rec {
   ];
 
   # Ensure C/Fortran code is position-independent.
+  # octavePackages.sparsersb depends on PIC for instance.
   env = {
     NIX_CFLAGS_COMPILE = toString [
       "-fPIC"
