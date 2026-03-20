@@ -8,6 +8,7 @@
   m4,
   gnum4,
   file,
+  which,
   # Memory Hierarchy (End-user can provide this.)
   memHierarchy ? "",
   # Headers/Libraries
@@ -69,6 +70,7 @@ stdenv.mkDerivation rec {
     m4
     gnum4
     file
+    which
     blas
     zlib
     openmpi
