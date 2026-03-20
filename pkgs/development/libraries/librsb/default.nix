@@ -12,7 +12,6 @@
   # Memory Hierarchy (End-user can provide this.)
   memHierarchy ? "",
   # Headers/Libraries
-  blas,
   zlib,
   hwloc,
   # RPC headers (rpc/xdr.h)
@@ -72,7 +71,6 @@ stdenv.mkDerivation rec {
     gnum4
     file
     which
-    blas
     zlib
     hwloc
     openmpi
