@@ -29,6 +29,10 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-GMb8RD+hz9KoEQ99S4jVu8tJO56Fs6YgFLi7V6hI4E8=";
   };
 
+  patches = [
+    ./no-omp-h-include-as-extern-c.patch
+  ];
+
   # The default configure flags are still present when building
   # --disable-static --disable-dependency-tracking
   # Along with the --prefix=... flag (but we want that one).

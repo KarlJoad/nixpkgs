@@ -1,0 +1,38 @@
+Description: Prevent librsb from including <omp.h> as extern C (shows up with gcc-15)
+Author: Michele Martone <michelemartone@users.sourceforge.net>
+Bug-Debian: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1114183
+Forwarded: not-needed
+Reviewed-By: Rafael Laboissière <rafael@debian.org>
+Last-Update: 2025-10-25
+
+diff --git a/rsb_common.h b/rsb_common.h
+index 93c77f4..667ca5e 100644
+--- a/rsb_common.h
++++ b/rsb_common.h
+@@ -28,12 +28,6 @@ If not, see <http://www.gnu.org/licenses/>.
+ #ifndef RSB_COMMON_H_INCLUDED
+ #define RSB_COMMON_H_INCLUDED
+ 
+-#ifdef __cplusplus
+-extern "C" {
+-#endif /* __cplusplus */
+-#ifdef __cplusplus
+-#define restrict	/* for now, the restrict keyword is not allowed in C++ */
+-#endif  /* __cplusplus */
+ /**
+  *
+  * VBR internals the user shouldn't use, no way.
+@@ -102,6 +96,13 @@ extern "C" {
+ #define RSB_WITH_MM
+ /*#undef RSB_WITH_MM*/
+ 
++#ifdef __cplusplus
++extern "C" {
++#endif /* __cplusplus */
++#ifdef __cplusplus
++#define restrict	/* for now, the restrict keyword is not allowed in C++ */
++#endif  /* __cplusplus */
++
+ #ifndef __cplusplus
+ #ifdef RSB_WITH_MM
+ #include "rsb_mmio.h"
