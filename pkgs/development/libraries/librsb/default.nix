@@ -45,7 +45,7 @@ stdenv.mkDerivation rec {
     "--enable-fortran-module-install"
     "--enable-pkg-config-install"
     "--enable-matrix-types=all"
-    "--with-zlib=${zlib}/lib/libz.so"
+    "--without-zlib"
     "--with-memhinfo=${memHierarchy}"
   ];
 
@@ -110,7 +110,5 @@ stdenv.mkDerivation rec {
     license = with lib.licenses; [ lgpl3Plus ];
     maintainers = with lib.maintainers; [ KarlJoad ];
     platforms = lib.platforms.all;
-    # linking errors such as 'undefined reference to `gzungetc'
-    broken = true;
   };
 }
