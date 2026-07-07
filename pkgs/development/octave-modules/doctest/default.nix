@@ -1,16 +1,20 @@
 {
   buildOctavePackage,
   lib,
-  fetchurl,
+  fetchFromGitHub,
 }:
 
 buildOctavePackage rec {
   pname = "doctest";
   version = "0.8.2";
+  # version = "0.8.3";
 
-  src = fetchurl {
-    url = "mirror://sourceforge/octave/${pname}-${version}.tar.gz";
-    sha256 = "sha256-olJtj4P4svur+rNWEc/yQKiPf+9wE4fWkky1NXGjKDo=";
+  src = fetchFromGitHub {
+    owner = "gnu-octave";
+    repo = "octave-doctest";
+    rev = "383e3412800101901c3eee98988f529a7b7a6285";
+    # tag = "v${version}";
+    sha256 = "sha256-3HzQMkjpHE7GhcWQ12eRDXdA111Owl357ehPP2CQfEk=";
   };
 
   meta = {
